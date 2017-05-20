@@ -7,6 +7,7 @@
 //
 
 #include "GameWorld.hpp"
+#include "Player.hpp"
 #include <stdlib.h>
 
 GameWorld::GameWorld(float gGravity)
@@ -16,6 +17,19 @@ GameWorld::GameWorld(float gGravity)
     painter->setupRenderContext();
 }
 
+void GameWorld::initLevel()
+{
+    //Add player
+    Player *p = new Player(0);
+    gObjects.push_back(p);
+    
+    //Add pipes
+//    int numPipes = 3;
+//    for(int i = 0; i < numPipes; ++i) {
+//        Pipe* p = new Pipe(6);
+//        gObjects.push_back(p);
+//    }
+}
 
 GameWorld::~GameWorld()
 {
@@ -24,5 +38,18 @@ GameWorld::~GameWorld()
 
 void GameWorld::render()
 {
-    painter->render();
+    painter->render(gObjects);
+}
+
+bool GameWorld::add(GameObject *gObject)
+{
+    gObjects.push_back(gObject);
+    return true;
+}
+
+void GameWorld::update(float dt)
+{
+    for(int i = 0; i < gObjects.size(); ++i) {
+        gObjects[i]->update(dt);
+    }
 }

@@ -12,13 +12,14 @@
 #include <stdio.h>
 #include <OpenGLES/ES2/gl.h>
 #include "Shader.hpp"
-
+#include <vector>
+#include "GameObject.hpp"
 
 class Renderer {
     
 public:
     void setupRenderContext();
-    void render();
+    void render(vector<GameObject*> objects);
     
    private:
     GLuint indexBuffer;
@@ -31,7 +32,7 @@ public:
     
     void setupVBO();
     void loadShader();
-
+    
     Shader* pipeline;
 };
 

@@ -21,15 +21,15 @@ class GameWorld {
 private:
     float gravity;
     Renderer* painter;
-
+    vector<GameObject*> gObjects;
     
 public:
     GameWorld(float gravity);
     ~GameWorld();
     void render();
     
-    //bool add(GameObject *gObject);
-    //void update(float dt);
-    //void initLevel();
+    bool add(GameObject *gObject);
+    void update(float dt);
+    void initLevel();
 };
 #endif /* GameWorld_hpp */
