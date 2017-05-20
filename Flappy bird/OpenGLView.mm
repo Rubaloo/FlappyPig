@@ -8,7 +8,16 @@
 
 #import "OpenGLView.h"
 #import "GLMatrix.hpp"
+#import "GameWorld.hpp"
 
+
+
+
+@interface OpenGLView (PrivateMethods)
+- (void)setupGWorld;
+@end
+
+GameWorld* gWorld;
 
 @implementation OpenGLView
 
@@ -159,6 +168,7 @@ const GLubyte Indices[] = {
 }
 
 - (void)render:(CADisplayLink*)displayLink {
+    gWorld->render();
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
@@ -208,7 +218,15 @@ const GLubyte Indices[] = {
     [self setupFrameBuffer];
     [self compileShaders];
     [self setupVBOs];
+    [self setupGWorld];
     [self setupDisplayLink];
+}
+
+-(void)setupGWorld
+{
+    float gGravity = 5.0;
+    gWorld = new GameWorld(gGravity);
+    //gWorld->initLevel();
 }
 
 @end
