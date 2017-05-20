@@ -13,15 +13,14 @@
 #include <iostream>
 #include <vector>
 
-//#include "Renderer.hpp"
+#include "Renderer.hpp"
 
 using namespace std;
 
 class GameWorld {
 private:
     float gravity;
-    
-    //Renderer* painter;
+    Renderer* painter;
 
     
 public:

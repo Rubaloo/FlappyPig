@@ -12,8 +12,8 @@
 GameWorld::GameWorld(float gGravity)
 {
     gravity = gGravity;
-//    painter = new Renderer();
-//    painter->setupRenderContext();
+    painter = new Renderer();
+    painter->setupRenderContext();
 }
 
 
@@ -24,6 +24,5 @@ GameWorld::~GameWorld()
 
 void GameWorld::render()
 {
-    int p;
-    //painter->render();
+    painter->render();
 }
