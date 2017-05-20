@@ -13,9 +13,9 @@ GLVertex::GLVertex(kmGLVec3 position, kmGLVec4 color) {
     populate(position, color);
 }
 
-glVertex* GLVertex::glVertex()
+glVertex GLVertex::glVertex()
 {
-    return &vertex;
+    return vertex;
 }
 
 void GLVertex::populate(kmGLVec3 gPosition, kmGLVec4 gColor) {

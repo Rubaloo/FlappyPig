@@ -23,7 +23,7 @@ class GLVertex {
     
 public:
     GLVertex(kmGLVec3 position, kmGLVec4 color);
-    glVertex* glVertex();
+    glVertex glVertex();
     void populate(kmGLVec3 position, kmGLVec4 color);
     
 private:

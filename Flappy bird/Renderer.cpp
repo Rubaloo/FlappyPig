@@ -98,10 +98,10 @@ void Renderer::render()
     GLVertex gv3(kmGLVec3Make(screenSize.h/2.0, screenSize.w/2.0, 0.0), green);
     GLVertex gv4(kmGLVec3Make(screenSize.h/2.0, 0.0, 0.0),red);
     
-    vertexs.push_back(*gv1.glVertex());
-    vertexs.push_back(*gv2.glVertex());
-    vertexs.push_back(*gv3.glVertex());
-    vertexs.push_back(*gv4.glVertex());
+    vertexs.push_back(gv1.glVertex());
+    vertexs.push_back(gv2.glVertex());
+    vertexs.push_back(gv3.glVertex());
+    vertexs.push_back(gv4.glVertex());
 
     
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
