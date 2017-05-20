@@ -32,7 +32,7 @@ void Renderer::setupRenderContext()
 
 void Renderer::render()
 {
-    int p;
+    
 }
 
 

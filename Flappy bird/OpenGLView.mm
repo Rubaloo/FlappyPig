@@ -9,12 +9,14 @@
 #import "OpenGLView.h"
 #import "GLMatrix.hpp"
 #import "GameWorld.hpp"
+#import "GDirector.hpp"
 
 
 
 
 @interface OpenGLView (PrivateMethods)
 - (void)setupGWorld;
+- (void)setupGDirector;
 @end
 
 GameWorld* gWorld;
@@ -219,6 +221,7 @@ const GLubyte Indices[] = {
     [self compileShaders];
     [self setupVBOs];
     [self setupGWorld];
+    [self setupGDirector];
     [self setupDisplayLink];
 }
 
@@ -227,6 +230,15 @@ const GLubyte Indices[] = {
     float gGravity = 5.0;
     gWorld = new GameWorld(gGravity);
     //gWorld->initLevel();
+}
+
+-(void) setupGDirector
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    GDirector::getInstance()->setWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
 }
 
 @end
