@@ -37,6 +37,33 @@ void Renderer::setupRenderContext()
     glGenBuffers(1, &indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+    
+    //Compile Shaders
+    pipeline = new Shader(VERTEX_SHADER_NAME, FRAGMENT_SHADER_NAME);
+    
+    if(!pipeline->compileAndLink()) {
+        printf("Encountered problems when loading shader, application will crash...");
+    }
+    else {
+        GLuint shaderProgram = pipeline->getProgram();
+        glUseProgram(shaderProgram);
+        
+        //EnableAttributtes
+        positionSlot = glGetAttribLocation(shaderProgram, "Position");
+        colorSlot = glGetAttribLocation(shaderProgram, "SourceColor");
+        modelViewUniform = glGetUniformLocation(shaderProgram, "ModelView");
+        projectionUniform = glGetUniformLocation(shaderProgram, "Projection");
+        
+        //check that the locations are valid, negative value means invalid
+        if(positionSlot < 0 || colorSlot < 0 ||
+           modelViewUniform < 0  || projectionUniform < 0)
+        {
+            printf("Could not query attribute locations");
+        }
+        
+        glEnableVertexAttribArray(positionSlot);
+        glEnableVertexAttribArray(colorSlot);
+    }
 }
 
 void Renderer::render()

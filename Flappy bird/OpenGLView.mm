@@ -158,6 +158,17 @@ const GLubyte Indices[] = {
     _projectionUniform = glGetUniformLocation(programHandle, "Projection");
     _modelViewUniform = glGetUniformLocation(programHandle, "Modelview");
 }
+- (void)setupVBOs {
+    
+    glGenBuffers(1, &_vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+    
+    glGenBuffers(1, &_indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+}
+
 - (void)render:(CADisplayLink*)displayLink {
     gWorld->render();
 //    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
@@ -207,7 +218,8 @@ const GLubyte Indices[] = {
     [self setupDepthBuffer];
     [self setupRenderBuffer];
     [self setupFrameBuffer];
-    [self compileShaders];
+    //[self compileShaders];
+    //[self setupVBOs];
     [self setupGWorld];
     [self setupGDirector];
     [self setupDisplayLink];

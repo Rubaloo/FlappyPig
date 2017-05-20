@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <OpenGLES/ES2/gl.h>
-//#include "Shader.hpp"
+#include "Shader.hpp"
 
 
 class Renderer {
@@ -28,7 +28,7 @@ public:
     int positionSlot;
     int colorSlot;
 
-    //Shader* pipeline;
+    Shader* pipeline;
 };
 
 #endif /* Renderer_hpp */

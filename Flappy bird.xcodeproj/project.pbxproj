@@ -18,11 +18,11 @@
 		4501FF5E1ECFBF8500BBE43F /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */; };
 		4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */; };
 		4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF611ECFBFA700BBE43F /* GTypes.cpp */; };
-		4501FF841ED06DE000BBE43F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF821ED06DE000BBE43F /* Shader.cpp */; };
 		4501FF881ED06DF400BBE43F /* IO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF871ED06DF400BBE43F /* IO.mm */; };
 		4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF891ED073ED00BBE43F /* GameWorld.cpp */; };
 		4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8C1ED0758600BBE43F /* Renderer.cpp */; };
 		4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8F1ED09C4700BBE43F /* GDirector.cpp */; };
+		4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF921ED0A08D00BBE43F /* Shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +44,6 @@
 		4501FF601ECFBFA700BBE43F /* GLMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLMatrix.hpp; sourceTree = "<group>"; };
 		4501FF611ECFBFA700BBE43F /* GTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GTypes.cpp; sourceTree = "<group>"; };
 		4501FF621ECFBFA700BBE43F /* GTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GTypes.hpp; sourceTree = "<group>"; };
-		4501FF821ED06DE000BBE43F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
-		4501FF831ED06DE000BBE43F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		4501FF851ED06DF400BBE43F /* IO-C-Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IO-C-Interface.h"; sourceTree = "<group>"; };
 		4501FF861ED06DF400BBE43F /* IO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IO.h; sourceTree = "<group>"; };
 		4501FF871ED06DF400BBE43F /* IO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IO.mm; sourceTree = "<group>"; };
@@ -55,6 +53,8 @@
 		4501FF8D1ED0758600BBE43F /* Renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 		4501FF8F1ED09C4700BBE43F /* GDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDirector.cpp; sourceTree = "<group>"; };
 		4501FF901ED09C4700BBE43F /* GDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDirector.hpp; sourceTree = "<group>"; };
+		4501FF921ED0A08D00BBE43F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		4501FF931ED0A08D00BBE43F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +93,8 @@
 				4501FF8C1ED0758600BBE43F /* Renderer.cpp */,
 				4501FF8A1ED073ED00BBE43F /* GameWorld.hpp */,
 				4501FF891ED073ED00BBE43F /* GameWorld.cpp */,
-				4501FF831ED06DE000BBE43F /* Shader.hpp */,
-				4501FF821ED06DE000BBE43F /* Shader.cpp */,
+				4501FF931ED0A08D00BBE43F /* Shader.hpp */,
+				4501FF921ED0A08D00BBE43F /* Shader.cpp */,
 				4501FF851ED06DF400BBE43F /* IO-C-Interface.h */,
 				4501FF861ED06DF400BBE43F /* IO.h */,
 				4501FF871ED06DF400BBE43F /* IO.mm */,
@@ -205,11 +205,11 @@
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				4501FF461ECFBE4400BBE43F /* AppDelegate.m in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
-				4501FF841ED06DE000BBE43F /* Shader.cpp in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
 				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
+				4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */,
 				4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
