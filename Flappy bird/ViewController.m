@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "OpenGLView.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet OpenGLView *glView;
 
 @end
 
@@ -17,8 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+  
 }
 
+-(void) viewDidLayoutSubviews
+{
+  [_glView setupGL];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

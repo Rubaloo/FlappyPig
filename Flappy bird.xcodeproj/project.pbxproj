@@ -13,6 +13,11 @@
 		4501FF4C1ECFBE4400BBE43F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF4A1ECFBE4400BBE43F /* Main.storyboard */; };
 		4501FF4E1ECFBE4400BBE43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF4D1ECFBE4400BBE43F /* Assets.xcassets */; };
 		4501FF511ECFBE4400BBE43F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF4F1ECFBE4400BBE43F /* LaunchScreen.storyboard */; };
+		4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF591ECFBEA200BBE43F /* OpenGLView.mm */; };
+		4501FF5D1ECFBF8500BBE43F /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */; };
+		4501FF5E1ECFBF8500BBE43F /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */; };
+		4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */; };
+		4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF611ECFBFA700BBE43F /* GTypes.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,14 @@
 		4501FF4D1ECFBE4400BBE43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4501FF501ECFBE4400BBE43F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4501FF521ECFBE4400BBE43F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4501FF581ECFBEA200BBE43F /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
+		4501FF591ECFBEA200BBE43F /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
+		4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
+		4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
+		4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLMatrix.cpp; sourceTree = "<group>"; };
+		4501FF601ECFBFA700BBE43F /* GLMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLMatrix.hpp; sourceTree = "<group>"; };
+		4501FF611ECFBFA700BBE43F /* GTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GTypes.cpp; sourceTree = "<group>"; };
+		4501FF621ECFBFA700BBE43F /* GTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GTypes.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,14 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */,
+				4501FF601ECFBFA700BBE43F /* GLMatrix.hpp */,
+				4501FF611ECFBFA700BBE43F /* GTypes.cpp */,
+				4501FF621ECFBFA700BBE43F /* GTypes.hpp */,
+				4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */,
+				4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */,
+				4501FF581ECFBEA200BBE43F /* OpenGLView.h */,
+				4501FF591ECFBEA200BBE43F /* OpenGLView.mm */,
 				4501FF441ECFBE4400BBE43F /* AppDelegate.h */,
 				4501FF451ECFBE4400BBE43F /* AppDelegate.m */,
 				4501FF471ECFBE4400BBE43F /* ViewController.h */,
@@ -138,6 +159,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4501FF511ECFBE4400BBE43F /* LaunchScreen.storyboard in Resources */,
+				4501FF5D1ECFBF8500BBE43F /* SimpleFragment.glsl in Resources */,
+				4501FF5E1ECFBF8500BBE43F /* SimpleVertex.glsl in Resources */,
 				4501FF4E1ECFBE4400BBE43F /* Assets.xcassets in Resources */,
 				4501FF4C1ECFBE4400BBE43F /* Main.storyboard in Resources */,
 			);
@@ -151,8 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4501FF491ECFBE4400BBE43F /* ViewController.m in Sources */,
+				4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */,
 				4501FF461ECFBE4400BBE43F /* AppDelegate.m in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
+				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
+				4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
