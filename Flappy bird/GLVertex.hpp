@@ -15,7 +15,7 @@
 
 
 typedef struct glVertex {
-    GLfloat position[2];
+    GLfloat position[3];
     GLfloat color[4];
 } glVertex;
 

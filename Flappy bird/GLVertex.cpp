@@ -21,6 +21,7 @@ glVertex* GLVertex::glVertex()
 void GLVertex::populate(kmGLVec3 gPosition, kmGLVec4 gColor) {
     vertex.position[0] = gPosition.x;
     vertex.position[1] = gPosition.y;
+    vertex.position[2] = gPosition.z;
     
     vertex.color[0] = gColor.x;
     vertex.color[1] = gColor.y;
