@@ -16,24 +16,6 @@
 #define VERTEX_SHADER_NAME "SimpleVertex"
 #define FRAGMENT_SHADER_NAME "SimpleFragment"
 
-typedef struct {
-    float Position[3];
-    float Color[4];
-} Vertex;
-
-const Vertex Vertices[] = {
-    {{0, 0, 0}, {1, 0, 0, 1}},
-    {{0.5, 0, 0}, {0, 1, 0, 1}},
-    {{0.5, 0.5, 0}, {0, 0, 1, 1}},
-    {{0, 0.5, 0}, {0, 0, 1, 1}}
-};
-
-vector<glVertex> vertexs;
-vector<GLubyte> indexs;
-
-const GLubyte Indices[] = {
-    0, 1, 3, 2
-};
 
 void Renderer::setupRenderContext()
 {
@@ -42,37 +24,12 @@ void Renderer::setupRenderContext()
 }
 void Renderer::setupVBO()
 {
-    
-    kmGLVec4 red = kmGLVec4Make(1.0, 0.0, 0.0, 1.0);
-    kmGLVec4 blue = kmGLVec4Make(0.0, 0.0, 1.0, 1.0);
-    kmGLVec4 green = kmGLVec4Make(0.0, 1.0, 0.0, 1.0);
-    
-    
-    GLVertex gv1(kmGLVec3Make(0.0, 0.0, 0.0), red);
-    GLVertex gv2(kmGLVec3Make(0.5, 0.0, 0.0), green);
-    GLVertex gv3(kmGLVec3Make(0.5, 0.5, 0.0), blue);
-    GLVertex gv4(kmGLVec3Make(0.0, 0.5, 0.0), blue);
-    
-    vertexs.push_back(gv1.glVertex());
-    vertexs.push_back(gv2.glVertex());
-    vertexs.push_back(gv3.glVertex());
-    vertexs.push_back(gv4.glVertex());
-    
-    
-    indexs.push_back(0);
-    indexs.push_back(1);
-    indexs.push_back(3);
-    indexs.push_back(2);
-    
     // setup VBO
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     
     glGenBuffers(1, &indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexs.size() * sizeof(GLubyte), &indexs[0], GL_STATIC_DRAW);
-
 }
 
 void Renderer::loadShader()
@@ -108,13 +65,16 @@ void Renderer::loadShader()
 
 void Renderer::render(vector<GameObject*> objects)
 {
+    vector<glVertex> vertexs;
+    vector<GLubyte> indexs;
+
     
+    for(int i = 0; i < objects.size(); ++i) {
+        GameObject* object = objects[i];
+        object->addVertexs(&vertexs);
+        object->addIndexs(&indexs);
+    }
     
-//    for(int i = 0; i < objects.size(); ++i) {
-//        GameObject* object = objects[i];
-//        object->addVertexs(&vertexs);
-//        object->addIndexs(&indexs);
-//    }
     kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
     
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
@@ -133,11 +93,14 @@ void Renderer::render(vector<GameObject*> objects)
     glViewport(0, 0, screenSize.w, screenSize.h);
     
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, vertexs.size() * sizeof(glVertex), &vertexs[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexs.size() * sizeof(GLubyte), &indexs[0], GL_STATIC_DRAW);
+
     
     // 2
-    glVertexAttribPointer(positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-    glVertexAttribPointer(colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+    glVertexAttribPointer(positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, position));
+    glVertexAttribPointer(colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, color));
     
     // 3
     glDrawElements(GL_TRIANGLE_STRIP, indexs.size(), GL_UNSIGNED_BYTE, 0);

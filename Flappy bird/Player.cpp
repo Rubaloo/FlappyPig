@@ -24,17 +24,15 @@ void Player::update(float dt)
 
 
 void Player::setGeometry() {
-    kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
-    
     kmGLVec4 red = kmGLVec4Make(1.0, 0.0, 0.0, 1.0);
     kmGLVec4 blue = kmGLVec4Make(0.0, 0.0, 1.0, 1.0);
     kmGLVec4 green = kmGLVec4Make(0.0, 1.0, 0.0, 1.0);
 
 
     GLVertex gv1(kmGLVec3Make(0.0, 0.0, 0.0), red);
-    GLVertex gv2(kmGLVec3Make(0.0, screenSize.w/2.0, 0.0),blue);
-    GLVertex gv3(kmGLVec3Make(screenSize.h/2.0, screenSize.w/2.0, 0.0), green);
-    GLVertex gv4(kmGLVec3Make(screenSize.h/2.0, 0.0, 0.0),red);
+    GLVertex gv2(kmGLVec3Make(0.5, 0.0, 0.0),blue);
+    GLVertex gv3(kmGLVec3Make(0.0, 0.5, 0.0), green);
+    GLVertex gv4(kmGLVec3Make(0.5, 0.5, 0.0),red);
     
     vertexs.push_back(gv1.glVertex());
     vertexs.push_back(gv2.glVertex());
@@ -44,8 +42,8 @@ void Player::setGeometry() {
     
     indexs.push_back(0);
     indexs.push_back(1);
-    indexs.push_back(3);
     indexs.push_back(2);
+    indexs.push_back(3);
 }
 
 void Player::setColor() {

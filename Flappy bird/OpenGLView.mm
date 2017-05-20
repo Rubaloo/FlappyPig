@@ -229,7 +229,7 @@ const GLubyte Indices[] = {
 {
     float gGravity = 5.0;
     gWorld = new GameWorld(gGravity);
-    //gWorld->initLevel();
+    gWorld->initLevel();
 }
 
 -(void) setupGDirector
