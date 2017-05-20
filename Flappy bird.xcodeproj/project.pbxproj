@@ -89,10 +89,10 @@
 			children = (
 				4501FF581ECFBEA200BBE43F /* OpenGLView.h */,
 				4501FF591ECFBEA200BBE43F /* OpenGLView.mm */,
-				4501FF8A1ED073ED00BBE43F /* GameWorld.hpp */,
-				4501FF891ED073ED00BBE43F /* GameWorld.cpp */,
 				4501FF8D1ED0758600BBE43F /* Renderer.hpp */,
 				4501FF8C1ED0758600BBE43F /* Renderer.cpp */,
+				4501FF8A1ED073ED00BBE43F /* GameWorld.hpp */,
+				4501FF891ED073ED00BBE43F /* GameWorld.cpp */,
 				4501FF831ED06DE000BBE43F /* Shader.hpp */,
 				4501FF821ED06DE000BBE43F /* Shader.cpp */,
 				4501FF851ED06DF400BBE43F /* IO-C-Interface.h */,

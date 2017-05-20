@@ -158,43 +158,32 @@ const GLubyte Indices[] = {
     _projectionUniform = glGetUniformLocation(programHandle, "Projection");
     _modelViewUniform = glGetUniformLocation(programHandle, "Modelview");
 }
-- (void)setupVBOs {
-    
-    glGenBuffers(1, &_vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-    
-    glGenBuffers(1, &_indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-}
-
 - (void)render:(CADisplayLink*)displayLink {
     gWorld->render();
-    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    GLMatrix projection;
-    projection.populateOrtho(-1, 1, -1, 1, -1, 1);
-    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
-    
-    GLMatrix modelView;
-    modelView.populateFromTranslation(kmVec3Make(0, 0, 0));
-    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
-    glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.matrix());
-    
-    // 1
-    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-        
-    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-    
-    // 2
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
-    
-    // 3
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+//    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+//    glClear(GL_COLOR_BUFFER_BIT);
+//    
+//    GLMatrix projection;
+//    projection.populateOrtho(-1, 1, -1, 1, -1, 1);
+//    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
+//    
+//    GLMatrix modelView;
+//    modelView.populateFromTranslation(kmVec3Make(0, 0, 0));
+//    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
+//    glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.matrix());
+//    
+//    // 1
+//    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+//        
+//    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
+//    
+//    // 2
+//    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+//    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+//    
+//    // 3
+//    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -219,7 +208,6 @@ const GLubyte Indices[] = {
     [self setupRenderBuffer];
     [self setupFrameBuffer];
     [self compileShaders];
-    [self setupVBOs];
     [self setupGWorld];
     [self setupGDirector];
     [self setupDisplayLink];

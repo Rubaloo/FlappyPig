@@ -20,6 +20,14 @@ public:
     void setupRenderContext();
     void render();
    private:
+    GLuint indexBuffer;
+    GLuint vertexBuffer;
+    
+    int modelViewUniform;
+    int projectionUniform;
+    int positionSlot;
+    int colorSlot;
+
     //Shader* pipeline;
 };
 
