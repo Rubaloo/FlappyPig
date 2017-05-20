@@ -19,6 +19,7 @@ class Renderer {
 public:
     void setupRenderContext();
     void render();
+    
    private:
     GLuint indexBuffer;
     GLuint vertexBuffer;
@@ -27,6 +28,9 @@ public:
     int projectionUniform;
     int positionSlot;
     int colorSlot;
+    
+    void setupVBO();
+    void loadShader();
 
     Shader* pipeline;
 };

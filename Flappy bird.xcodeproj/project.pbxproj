@@ -23,6 +23,7 @@
 		4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8C1ED0758600BBE43F /* Renderer.cpp */; };
 		4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8F1ED09C4700BBE43F /* GDirector.cpp */; };
 		4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF921ED0A08D00BBE43F /* Shader.cpp */; };
+		4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF951ED0A9F600BBE43F /* GLVertex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		4501FF901ED09C4700BBE43F /* GDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDirector.hpp; sourceTree = "<group>"; };
 		4501FF921ED0A08D00BBE43F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		4501FF931ED0A08D00BBE43F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		4501FF951ED0A9F600BBE43F /* GLVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLVertex.cpp; sourceTree = "<group>"; };
+		4501FF961ED0A9F600BBE43F /* GLVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLVertex.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				4501FF951ED0A9F600BBE43F /* GLVertex.cpp */,
+				4501FF961ED0A9F600BBE43F /* GLVertex.hpp */,
 				4501FF581ECFBEA200BBE43F /* OpenGLView.h */,
 				4501FF591ECFBEA200BBE43F /* OpenGLView.mm */,
 				4501FF8D1ED0758600BBE43F /* Renderer.hpp */,
@@ -202,6 +207,7 @@
 			files = (
 				4501FF491ECFBE4400BBE43F /* ViewController.m in Sources */,
 				4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */,
+				4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				4501FF461ECFBE4400BBE43F /* AppDelegate.m in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
