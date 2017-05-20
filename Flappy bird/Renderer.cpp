@@ -19,12 +19,13 @@ typedef struct {
 
 const Vertex Vertices[] = {
     {{0, 0, 0}, {1, 0, 0, 1}},
-    {{1, 0, 0}, {0, 1, 0, 1}},
-    {{1, 1, 0}, {0, 0, 1, 1}}
+    {{0.5, 0, 0}, {0, 1, 0, 1}},
+    {{0.5, 0.5, 0}, {0, 0, 1, 1}},
+    {{0, 0.5, 0}, {0, 0, 1, 1}}
 };
  
 const GLubyte Indices[] = {
-    0, 1, 2
+    0, 1, 3, 2
 };
 
 void Renderer::setupRenderContext()
@@ -93,7 +94,7 @@ void Renderer::render()
     glVertexAttribPointer(colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
     
     // 3
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+    glDrawElements(GL_TRIANGLE_STRIP, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
 
 }
