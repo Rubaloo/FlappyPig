@@ -18,14 +18,11 @@ class Player : public GameObject {
 public:
     Player();
     Player(Box body, int firstScore);
-    Player(Box body, int firstScore, int i);
     ~Player();
     
 private:
     void render();
     void update(float dt);
-    void setGeometry(int i);
-    void setColor();
     int score;
 };
 

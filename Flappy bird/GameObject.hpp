@@ -26,13 +26,11 @@ class GameObject {
 protected:
     Box body;
     vector<glVertex> vertexs;
-    vector<GLubyte> indexs;
 
 public:
     GameObject();
     GameObject(Box b);
     void update(float dt){};
     vector<glVertex>* getVertexs();
-    vector<GLubyte>* getIndexs();
 };
 #endif /* GameObject_hpp */

@@ -65,8 +65,7 @@ void Renderer::loadShader()
 
 void Renderer::addDegenerateTriangles(vector<glVertex>* vertexs,
                                       glVertex start,
-                                      glVertex end)
-{
+                                      glVertex end) {
     vertexs->push_back(start);
     vertexs->push_back(start);
     vertexs->push_back(end);

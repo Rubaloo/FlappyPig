@@ -34,13 +34,3 @@ vector<glVertex>* GameObject::getVertexs() {
     
     return &vertexs;
 }
-
-vector<GLubyte>* GameObject::getIndexs(){
-    indexs.clear();
-    indexs.push_back(0);
-    indexs.push_back(1);
-    indexs.push_back(2);
-    indexs.push_back(3);
-    return &indexs;
-}
-
