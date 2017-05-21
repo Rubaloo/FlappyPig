@@ -23,8 +23,8 @@ void GameWorld::initLevel()
     Player *p = new Player(kmVec3Make(0,0,0), 0, 0);
     gObjects.push_back(p);
     
-//    Player *p2 = new Player(kmVec3Make(-0.5,-0.5, 0), 0, 1);
-//    gObjects.push_back(p2);
+    Player *p2 = new Player(kmVec3Make(-0.5,-0.5, 0), 0, 1);
+    gObjects.push_back(p2);
 
     
     //Add pipes

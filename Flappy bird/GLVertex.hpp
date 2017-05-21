@@ -22,9 +22,9 @@ typedef struct glVertex {
 class GLVertex {
     
 public:
-    GLVertex(kmGLVec3 position, kmGLVec4 color);
+    GLVertex(kmVec3 position, kmVec4 color);
     glVertex glVertex();
-    void populate(kmGLVec3 position, kmGLVec4 color);
+    void populate(kmVec3 position, kmVec4 color);
     
 private:
     struct glVertex vertex;

@@ -60,7 +60,7 @@ typedef struct {
 } kmMat4;
 
 kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w);
-kmVertex kmGLVertexMake(kmVec3 position, kmVec4 color);
+kmVertex kmVertexMake(kmVec3 position, kmVec4 color);
 
 /** Returns a kmVec3 structure constructed from the vector components. */
 kmVec3 kmVec3Make(kmScalar x, kmScalar y, kmScalar z);

@@ -9,7 +9,7 @@
 #include "GLVertex.hpp"
 
 
-GLVertex::GLVertex(kmGLVec3 position, kmGLVec4 color) {
+GLVertex::GLVertex(kmVec3 position, kmVec4 color) {
     populate(position, color);
 }
 
@@ -18,7 +18,7 @@ glVertex GLVertex::glVertex()
     return vertex;
 }
 
-void GLVertex::populate(kmGLVec3 gPosition, kmGLVec4 gColor) {
+void GLVertex::populate(kmVec3 gPosition, kmVec4 gColor) {
     vertex.position[0] = gPosition.x;
     vertex.position[1] = gPosition.y;
     vertex.position[2] = gPosition.z;
