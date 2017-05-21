@@ -17,24 +17,23 @@
 #include "GDirector.hpp"
 #include "GTypes.hpp"
 #include "GLVertex.hpp"
+#include "Body.hpp"
 
 using namespace std;
 
 class GameObject {
 private:
-    //Body body;
-    //fvec direction; to Body
-    //fvec velocity; to Body
-    //bool isVisible; to Body
-    
-    //fvec moveTo(fvec direction); to Body
-    //bool intersect(GameObject gameObject); to Body
+    Body body;
+    kmVec3 position;
+
 protected:
     vector<glVertex> vertexs;
     vector<GLubyte> indexs;
 
 public:
+    GameObject(kmVec3 position);
     void update(float dt){};
+    kmVec3 getPosition();
     void addVertexs(vector<glVertex>* vertexs);
     void addIndexs(vector<GLubyte>* geometry);
 };

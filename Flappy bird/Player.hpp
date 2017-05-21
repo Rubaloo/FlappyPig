@@ -17,13 +17,13 @@
 class Player : public GameObject {
 public:
     Player();
-    Player(int score);
+    Player(kmVec3 position, int score, int i);
     ~Player();
     
 private:
     void render();
     void update(float dt);
-    void setGeometry();
+    void setGeometry(int i);
     void setColor();
     int score;
 };

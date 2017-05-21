@@ -8,6 +8,12 @@
 
 #include "GameObject.hpp"
 
+
+GameObject::GameObject(kmVec3 pos)
+{
+    position = pos;
+}
+
 void GameObject::addVertexs(vector<glVertex>* geometry)
 {
     geometry->insert(geometry->end(), vertexs.begin(), vertexs.end());
