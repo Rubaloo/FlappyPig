@@ -11,15 +11,23 @@
 
 #include <stdio.h>
 #include "GTypes.hpp"
+#include <vector>
+
+using namespace std;
 
 class Box {
     
 public:
+    Box();
+    Box(kmVec3 center, kmSize size);
     bool moveTo(kmVec3 direction);
     bool intersect(Box* gameObject);
+    vector<kmVec3> getVertexs();
     
 private:
-    float mass;
+    GLfloat mass;
+    kmVec3 center;
+    kmSize size;
     kmVec3 direction;
     kmVec3 velocity;
     bool isVisible;

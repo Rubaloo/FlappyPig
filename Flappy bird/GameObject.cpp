@@ -8,10 +8,10 @@
 
 #include "GameObject.hpp"
 
-
-GameObject::GameObject(kmVec3 pos)
+GameObject::GameObject(){}
+GameObject::GameObject(Box b)
 {
-    position = pos;
+    body = b;
 }
 
 void GameObject::addVertexs(vector<glVertex>* geometry)

@@ -7,11 +7,11 @@
 //
 
 #include "Player.hpp"
-
-Player::Player(kmVec3 position, int firstScore, int i) : GameObject(position)
+Player::Player() : GameObject(){}
+Player::Player(Box body, int firstScore) : GameObject(body)
 {
     score = firstScore;
-    setGeometry(i);
+    setGeometry(0);
     setColor();
 }
 
@@ -28,11 +28,12 @@ void Player::setGeometry(int i) {
     kmVec4 blue = kmVec4Make(0.0, 0.0, 1.0, 1.0);
     kmVec4 green = kmVec4Make(0.0, 1.0, 0.0, 1.0);
     
+    vector<kmVec3> boxV = body.getVertexs();
     if(i == 0) {
-        GLVertex gv1(kmVec3Make(0.0, 0.0, 0.0), red);
-        GLVertex gv2(kmVec3Make(0.5, 0.0, 0.0),blue);
-        GLVertex gv3(kmVec3Make(0.0, 0.5, 0.0), green);
-        GLVertex gv4(kmVec3Make(0.5, 0.5, 0.0),red);
+        GLVertex gv1(boxV[0], red);
+        GLVertex gv2(boxV[1],blue);
+        GLVertex gv3(boxV[2], green);
+        GLVertex gv4(boxV[3],red);
         
         vertexs.push_back(gv1.glVertex());
         vertexs.push_back(gv2.glVertex());

@@ -20,11 +20,12 @@ GameWorld::GameWorld(float gGravity)
 void GameWorld::initLevel()
 {
     //Add player
-    Player *p = new Player(kmVec3Make(0,0,0), 0, 0);
+    Box pBox(kmVec3Make(0.25, 0.25, 0.0),kmSizeMake(0.5, 0.5));
+    Player *p = new Player(pBox, 0);
     gObjects.push_back(p);
     
-    Player *p2 = new Player(kmVec3Make(-0.5,-0.5, 0), 0, 1);
-    gObjects.push_back(p2);
+    //Player *p2 = new Player(kmVec3Make(-0.5,-0.5, 0), 0, 1);
+    //gObjects.push_back(p2);
 
     
     //Add pipes

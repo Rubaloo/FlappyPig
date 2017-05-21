@@ -17,7 +17,7 @@
 class Player : public GameObject {
 public:
     Player();
-    Player(kmVec3 position, int score, int i);
+    Player(Box body, int firstScore);
     ~Player();
     
 private:
