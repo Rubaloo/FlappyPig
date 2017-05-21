@@ -13,30 +13,11 @@
 
 #define KM_FALSE 0
 #define KM_TRUE 1
-#define kmScalar float
-#define kmGLScalar GLfloat
+#define kmScalar GLfloat
 #include <OpenGLES/ES2/gl.h>
 
 
-/** A three-dimensional vector. */
-typedef struct kmGLVec3 {
-    kmGLScalar x;
-    kmGLScalar y;
-    kmGLScalar z;
-} kmGLVec3;
 
-/** A three-dimensional vector. */
-typedef struct kmGlVec4 {
-    kmGLScalar x;
-    kmGLScalar y;
-    kmGLScalar z;
-    kmGLScalar w;
-} kmGLVec4;
-
-typedef struct kmGLVertex{
-    kmGLVec3 position;
-    kmGLVec4 color;
-} kmGLVertex;
 
 /** A homogeneous four-dimensional vector. */
 typedef struct kmVec4 {
@@ -58,6 +39,12 @@ typedef struct kmVec3 {
     kmScalar z;
 } kmVec3;
 
+typedef struct kmVertex{
+    kmVec3 position;
+    kmVec4 color;
+} kmVertex;
+
+
 /** A homogeneous four-dimensional vector. */
 /** A rotational quaternion */
 typedef struct kmQuaternion {
@@ -72,9 +59,8 @@ typedef struct {
     kmScalar mat[16];
 } kmMat4;
 
-kmGLVec3 kmGLVec3Make(kmGLScalar x, kmGLScalar y, kmGLScalar z);
-kmGLVec4 kmGLVec4Make(kmGLScalar x, kmGLScalar y, kmGLScalar z, kmGLScalar w);
-kmGLVertex kmGLVertexMake(kmGLVec3 position, kmGLVec4 color);
+kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w);
+kmVertex kmGLVertexMake(kmVec3 position, kmVec4 color);
 
 /** Returns a kmVec3 structure constructed from the vector components. */
 kmVec3 kmVec3Make(kmScalar x, kmScalar y, kmScalar z);

@@ -13,16 +13,9 @@
 #import <math.h>
 
 
-kmGLVec3 kmGLVec3Make(kmGLScalar x, kmGLScalar y, kmGLScalar z){
-    kmGLVec3 v;
-    v.x = x;
-    v.y = y;
-    v.z = z;
-    return v;
-}
 
-kmGLVec4 kmGLVec4Make(kmGLScalar x, kmGLScalar y, kmGLScalar z, kmGLScalar w){
-    kmGLVec4 v;
+kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w){
+    kmVec4 v;
     v.x = x;
     v.y = y;
     v.z = z;
@@ -30,8 +23,8 @@ kmGLVec4 kmGLVec4Make(kmGLScalar x, kmGLScalar y, kmGLScalar z, kmGLScalar w){
     return v;
 }
 
-kmGLVertex kmGLVertexMake(kmGLVec3 position, kmGLVec4 color){
-    kmGLVertex v;
+kmVertex kmVertexMake(kmVec3 position, kmVec4 color){
+    kmVertex v;
     v.position = position;
     v.color = color;
     return v;
