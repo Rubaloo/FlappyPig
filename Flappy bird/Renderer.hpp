@@ -30,6 +30,9 @@ public:
     int positionSlot;
     int colorSlot;
     
+    void addDegenerateTriangles(vector<glVertex>* vertexs,
+                                          glVertex start,
+                                glVertex end);
     void setupVBO();
     void loadShader();
     

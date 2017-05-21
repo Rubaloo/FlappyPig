@@ -63,25 +63,38 @@ void Renderer::loadShader()
 
 }
 
+void Renderer::addDegenerateTriangles(vector<glVertex>* vertexs,
+                                      glVertex start,
+                                      glVertex end)
+{
+    vertexs->push_back(start);
+    vertexs->push_back(start);
+    vertexs->push_back(end);
+    vertexs->push_back(end);
+}
+
 void Renderer::render(vector<GameObject*> objects)
 {
+    //Gather objects vertexs
     vector<glVertex> vertexs;
-    vector<GLubyte> indexs;
-
-    
     for(int i = 0; i < objects.size(); ++i) {
         GameObject* object = objects[i];
-//        if(i > 0) {
-//            glVertex start = vertexs[vertexs.size()-1];
-//            glVertex end = vertexs[vertexs.size()-1];
-//            addDegenerateTriangles(start, end);
-//        }
         vector<glVertex>* objectVertexs = object->getVertexs();
+        if(i > 0) {
+            glVertex start = vertexs[vertexs.size()-1];
+            glVertex end = objectVertexs->at(0);
+            addDegenerateTriangles(&vertexs, start, end);
+        }
         vertexs.insert(vertexs.end(), objectVertexs->begin(), objectVertexs->end());
-        vector<GLubyte>* objectIndexs = object->getIndexs();
-        indexs.insert(indexs.end(), objectIndexs->begin(), objectIndexs->end());
     }
     
+    //Set indexs
+    vector<GLubyte> indexs;
+    for(int i = 0; i < vertexs.size(); ++i)
+    {
+        indexs.push_back(i);
+    }
+
     kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
     
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
