@@ -32,7 +32,7 @@ public:
     GameObject();
     GameObject(Box b);
     void update(float dt){};
-    void addVertexs(vector<glVertex>* vertexs);
-    void addIndexs(vector<GLubyte>* geometry);
+    vector<glVertex>* getVertexs();
+    vector<GLubyte>* getIndexs();
 };
 #endif /* GameObject_hpp */

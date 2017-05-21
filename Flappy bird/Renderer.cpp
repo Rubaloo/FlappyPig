@@ -71,8 +71,15 @@ void Renderer::render(vector<GameObject*> objects)
     
     for(int i = 0; i < objects.size(); ++i) {
         GameObject* object = objects[i];
-        object->addVertexs(&vertexs);
-        object->addIndexs(&indexs);
+//        if(i > 0) {
+//            glVertex start = vertexs[vertexs.size()-1];
+//            glVertex end = vertexs[vertexs.size()-1];
+//            addDegenerateTriangles(start, end);
+//        }
+        vector<glVertex>* objectVertexs = object->getVertexs();
+        vertexs.insert(vertexs.end(), objectVertexs->begin(), objectVertexs->end());
+        vector<GLubyte>* objectIndexs = object->getIndexs();
+        indexs.insert(indexs.end(), objectIndexs->begin(), objectIndexs->end());
     }
     
     kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
