@@ -1,22 +1,22 @@
 //
-//  Body.hpp
+//  Box.hpp
 //  Flappy bird
 //
 //  Created by Ruben on 21/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#ifndef Body_hpp
-#define Body_hpp
+#ifndef Box_hpp
+#define Box_hpp
 
 #include <stdio.h>
 #include "GTypes.hpp"
 
-class Body {
+class Box {
     
 public:
     bool moveTo(kmVec3 direction);
-    bool intersect(Body* gameObject);
+    bool intersect(Box* gameObject);
     
 private:
     float mass;
@@ -25,8 +25,4 @@ private:
     bool isVisible;
 };
 
-
-
-
-
-#endif /* Body_hpp */
+#endif /* Box_hpp */

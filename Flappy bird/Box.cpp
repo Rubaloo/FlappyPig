@@ -1,18 +1,18 @@
 //
-//  Body.cpp
+//  Box.cpp
 //  Flappy bird
 //
 //  Created by Ruben on 21/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#include "Body.hpp"
+#include "Box.hpp"
 
 
-bool Body::moveTo(kmVec3 direction) {
+bool Box::moveTo(kmVec3 direction) {
     return true;
 };
 
-bool Body::intersect(Body* gameObject) {
+bool Box::intersect(Box* gameObject) {
     return true;
 };

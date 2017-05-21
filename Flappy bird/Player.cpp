@@ -52,9 +52,9 @@ void Player::setGeometry(int i) {
         kmVec4 green = kmVec4Make(0.0, 1.0, 0.0, 1.0);
 
         GLVertex gv1(kmVec3Make(-0.5, -0.5, 0.0), red);
-        GLVertex gv2(kmVec3Make(-0.1, -0.5, 0.0), blue);
+        GLVertex gv2(kmVec3Make(0.0, -0.5, 0.0), blue);
         GLVertex gv3(kmVec3Make(-0.5, 0.0, 0.0), green);
-        GLVertex gv4(kmVec3Make(-0.1, 0.0, 0.0), red);
+        GLVertex gv4(kmVec3Make(0.0, 0.0, 0.0), red);
         
         
         //degenerate triangle

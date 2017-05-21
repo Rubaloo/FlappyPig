@@ -26,7 +26,7 @@
 		4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF951ED0A9F600BBE43F /* GLVertex.cpp */; };
 		4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF981ED0ACAE00BBE43F /* GameObject.cpp */; };
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
-		4501FFA31ED1C8D800BBE43F /* Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFA11ED1C8D800BBE43F /* Body.cpp */; };
+		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +65,8 @@
 		4501FF991ED0ACAE00BBE43F /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		4501FF9B1ED0ACBC00BBE43F /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		4501FF9C1ED0ACBC00BBE43F /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
-		4501FFA11ED1C8D800BBE43F /* Body.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Body.cpp; sourceTree = "<group>"; };
-		4501FFA21ED1C8D800BBE43F /* Body.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Body.hpp; sourceTree = "<group>"; };
+		4501FFAA1ED204EE00BBE43F /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
+		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 				4501FF8F1ED09C4700BBE43F /* GDirector.cpp */,
 				4501FF901ED09C4700BBE43F /* GDirector.hpp */,
 				4501FF411ECFBE4400BBE43F /* Supporting Files */,
-				4501FFA11ED1C8D800BBE43F /* Body.cpp */,
-				4501FFA21ED1C8D800BBE43F /* Body.hpp */,
+				4501FFAA1ED204EE00BBE43F /* Box.cpp */,
+				4501FFAB1ED204EE00BBE43F /* Box.hpp */,
 			);
 			path = "Flappy bird";
 			sourceTree = "<group>";
@@ -221,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4501FF491ECFBE4400BBE43F /* ViewController.m in Sources */,
+				4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */,
 				4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */,
 				4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */,
 				4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */,
@@ -229,7 +230,6 @@
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */,
-				4501FFA31ED1C8D800BBE43F /* Body.cpp in Sources */,
 				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
 				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
