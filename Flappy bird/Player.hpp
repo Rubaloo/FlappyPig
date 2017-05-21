@@ -18,6 +18,7 @@ class Player : public GameObject {
 public:
     Player();
     Player(Box body, int firstScore);
+    Player(Box body, int firstScore, int i);
     ~Player();
     
 private:

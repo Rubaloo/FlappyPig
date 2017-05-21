@@ -11,7 +11,14 @@ Player::Player() : GameObject(){}
 Player::Player(Box body, int firstScore) : GameObject(body)
 {
     score = firstScore;
-    setGeometry(0);
+    //setGeometry(0);
+    setColor();
+}
+
+Player::Player(Box body, int firstScore, int i) : GameObject(body)
+{
+    score = firstScore;
+    setGeometry(i);
     setColor();
 }
 
@@ -48,10 +55,6 @@ void Player::setGeometry(int i) {
 
     }
     else {
-        kmVec4 red = kmVec4Make(1.0, 0.0, 0.0, 1.0);
-        kmVec4 blue = kmVec4Make(0.0, 0.0, 1.0, 1.0);
-        kmVec4 green = kmVec4Make(0.0, 1.0, 0.0, 1.0);
-
         GLVertex gv1(kmVec3Make(-0.5, -0.5, 0.0), red);
         GLVertex gv2(kmVec3Make(0.0, -0.5, 0.0), blue);
         GLVertex gv3(kmVec3Make(-0.5, 0.0, 0.0), green);

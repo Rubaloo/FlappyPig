@@ -23,9 +23,9 @@ void GameWorld::initLevel()
     Box pBox(kmVec3Make(0.25, 0.25, 0.0),kmSizeMake(0.5, 0.5));
     Player *p = new Player(pBox, 0);
     gObjects.push_back(p);
-    
-    //Player *p2 = new Player(kmVec3Make(-0.5,-0.5, 0), 0, 1);
-    //gObjects.push_back(p2);
+//    Box p2Box(kmVec3Make(-0.25, -0.25, 0.0),kmSizeMake(0.5, 0.5));
+//    Player *p2 = new Player(p2Box, 0, 1);
+//    gObjects.push_back(p2);
 
     
     //Add pipes
