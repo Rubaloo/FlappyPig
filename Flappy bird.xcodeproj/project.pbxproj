@@ -27,6 +27,7 @@
 		4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF981ED0ACAE00BBE43F /* GameObject.cpp */; };
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
+		45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A8E1ED3637E00575060 /* ShaderUtils.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,8 @@
 		4501FF9C1ED0ACBC00BBE43F /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		4501FFAA1ED204EE00BBE43F /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
 		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
+		45944A8E1ED3637E00575060 /* ShaderUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderUtils.cpp; sourceTree = "<group>"; };
+		45944A8F1ED3637E00575060 /* ShaderUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderUtils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				4501FF521ECFBE4400BBE43F /* Info.plist */,
 				4501FF8F1ED09C4700BBE43F /* GDirector.cpp */,
 				4501FF901ED09C4700BBE43F /* GDirector.hpp */,
+				45944A8F1ED3637E00575060 /* ShaderUtils.hpp */,
+				45944A8E1ED3637E00575060 /* ShaderUtils.cpp */,
 				4501FF411ECFBE4400BBE43F /* Supporting Files */,
 				4501FFAA1ED204EE00BBE43F /* Box.cpp */,
 				4501FFAB1ED204EE00BBE43F /* Box.hpp */,
@@ -228,6 +233,7 @@
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				4501FF461ECFBE4400BBE43F /* AppDelegate.m in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
+				45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */,
 				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
