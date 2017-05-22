@@ -30,7 +30,7 @@ protected:
 public:
     GameObject();
     GameObject(Box b);
-    void update(float dt){};
+    virtual void update(float dt){};
     vector<glVertex>* getVertexs();
 };
 #endif /* GameObject_hpp */

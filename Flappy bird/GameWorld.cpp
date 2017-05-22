@@ -20,7 +20,8 @@ GameWorld::GameWorld(float gGravity)
 void GameWorld::initLevel()
 {
     //Add player
-    Box pBox(kmVec3Make(0.0, 0.0, 0.0),kmSizeMake(0.50, 0.50));
+    // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
+    Box pBox(kmVec3Make(0.0, 0.0, 0.0), kmSizeMake(0.50, 0.50));
     Player *p = new Player(pBox, 0);
     gObjects.push_back(p);
 

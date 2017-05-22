@@ -168,33 +168,23 @@ const GLubyte Indices[] = {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 }
-
+float previousTimestamp = 0;
 - (void)render:(CADisplayLink*)displayLink {
+    
+
+    float dt = (displayLink.targetTimestamp - displayLink.timestamp);
+    float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
+    
+//    NSLog(@"Frames per second: %f", FPS);
+//    NSLog(@"Duration: %f", [displayLink duration]);
+//    NSLog(@"Timpestamp: %f", [displayLink timestamp]);
+//    NSLog(@"Target Timestamp: %f", [displayLink targetTimestamp]);
+//    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
+//    NSLog(@"Timestamp differences: %f", [displayLink timestamp] - previousTimestamp);
+    
+    previousTimestamp = [displayLink timestamp];
+    gWorld->update(dt);
     gWorld->render();
-//    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
-//    glClear(GL_COLOR_BUFFER_BIT);
-//    
-//    GLMatrix projection;
-//    projection.populateOrtho(-1, 1, -1, 1, -1, 1);
-//    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
-//    
-//    GLMatrix modelView;
-//    modelView.populateFromTranslation(kmVec3Make(0, 0, 0));
-//    glUniformMatrix4fv(_projectionUniform, 1, 0, projection.matrix());
-//    glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.matrix());
-//    
-//    // 1
-//    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-//        
-//    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-//    
-//    // 2
-//    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-//    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
-//    
-//    // 3
-//    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
     
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -218,8 +208,6 @@ const GLubyte Indices[] = {
     [self setupDepthBuffer];
     [self setupRenderBuffer];
     [self setupFrameBuffer];
-    //[self compileShaders];
-    //[self setupVBOs];
     [self setupGWorld];
     [self setupGDirector];
     [self setupDisplayLink];
