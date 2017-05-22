@@ -18,19 +18,26 @@
 #include "GTypes.hpp"
 #include "GLVertex.hpp"
 #include "Box.hpp"
+#include "VertexArray.hpp"
+#include "GLMatrix.hpp"
 
 using namespace std;
 
 class GameObject {
 
 protected:
+    
+    GLMatrix modelView;
     Box body;
     vector<glVertex> vertexs;
+    
+    VertexArray* modelMesh;
 
 public:
     GameObject();
     GameObject(Box b);
     virtual void update(float dt){};
+    virtual void render(){};
     vector<glVertex>* getVertexs();
 };
 #endif /* GameObject_hpp */

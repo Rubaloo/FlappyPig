@@ -12,9 +12,10 @@
 
 GameWorld::GameWorld(float gGravity)
 {
+    GShader::loadAll();
     gravity = gGravity;
-    painter = new Renderer();
-    painter->setupRenderContext();
+    //painter = new Renderer();
+    //painter->setupRenderContext();
 }
 
 void GameWorld::initLevel()
@@ -36,12 +37,20 @@ void GameWorld::initLevel()
 
 GameWorld::~GameWorld()
 {
-    
+    GShader::loadAll();
 }
 
 void GameWorld::render()
 {
-    painter->render(gObjects);
+    kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
+    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    glViewport(0, 0, screenSize.w, screenSize.h);
+
+    for(int i = 0; i < gObjects.size(); ++i) {
+        gObjects[i]->render();
+    }
 }
 
 bool GameWorld::add(GameObject *gObject)

@@ -108,6 +108,7 @@ void Renderer::render(vector<GameObject*> objects)
     glUniformMatrix4fv(projectionUniform, 1, 0, projection.matrix());
     glUniformMatrix4fv(modelViewUniform, 1, 0, modelView.matrix());
 
+    
     // 1
     glViewport(0, 0, screenSize.w, screenSize.h);
     

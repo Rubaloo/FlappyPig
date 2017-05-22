@@ -17,7 +17,7 @@ class VertexArray {
     
 public:
     VertexArray();
-    VertexArray(glVertex vertexs[], GLbyte indexs[]);
+    VertexArray(glVertex vertexs[], GLubyte indexs[]);
     void bind();
     void unbind();
     void draw();

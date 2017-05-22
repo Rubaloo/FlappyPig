@@ -10,7 +10,19 @@
 Player::Player() : GameObject(){}
 Player::Player(Box body, int firstScore) : GameObject(body)
 {
+    
     score = firstScore;
+    modelView.populateFromTranslation(kmVec3Make(0, 0, 0));
+    
+    glVertex modelVertexs[] = {
+        {{1,-1,0},{1,0,0,1}},
+        {{1,-1,0},{0,1,0,1}},
+        {{1,-1,0},{0,0,1,1}},
+        {{1,-1,0},{1,0,0,1}}
+    };
+    
+    GLubyte modelIndexs[] = {0,1,2,3};
+    modelMesh = new VertexArray(modelVertexs, modelIndexs);
 }
 
 Player::~Player(){};
@@ -36,3 +48,18 @@ void Player::update(float dt)
     //printf("Total Force: %fx %fy %fz \n", totalForce.x, totalForce.y, totalForce.z);
     printf("next position: %f x %f y %fz \n", position.x, position.y, position.z);
 }
+
+void Player::render() {
+    
+    GLMatrix projection;
+    projection.populateOrtho(-1, 1, -1, 1, -1, 1);
+    
+    printf("Player render");
+    GShader::BIRD->enable();
+    GShader::BIRD->setUniform4f("ModelView", modelView.matrix());
+    GShader::BIRD->setUniform4f("Projection", projection.matrix());
+    modelMesh->render();
+    GShader::BIRD->disable();
+    
+
+};

@@ -22,17 +22,17 @@ using namespace std;
 static const GLuint GSHADER_VERTEX_ATTRIB = 0;
 static const GLuint GSHADER_COLOR_ATTRIB = 1;
 
+
 class GShader {
 public:
     GShader(string vertex, string fragment);
-
-//    static GShader* BIRD;
-//    static void loadAll();
+    static GShader* BIRD;
+    static void loadAll();
     
     GLuint getUniform(string name);
     
     void setUniform3f(string name, kmVec3 vector);
-    void setUniform4f(string name, kmMat4 matrix);
+    void setUniform4f(string name, GLfloat* matrix);
     void enable();
     void disable();
     

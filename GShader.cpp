@@ -8,14 +8,17 @@
 
 #include "GShader.hpp"
 
+GShader* GShader::BIRD;
+
 GShader::GShader(string vertexName, string fragmentName) {
     enabled = false;
     ID = ShaderUtils::getInstance()->load(vertexName, fragmentName);
 }
 
-//void GShader::loadAll() {
-//    BIRD = new GShader("SimpleVertex", "FragmentVertex");
-//}
+void GShader::loadAll() {
+    printf("%d", GSHADER_VERTEX_ATTRIB);
+    BIRD = new GShader("SimpleVertex", "SimpleFragment");
+}
 
 GLuint GShader::getUniform(string name) {
     GLuint result = glGetUniformLocation(ID, name.c_str());
@@ -33,9 +36,9 @@ void GShader::setUniform3f(string name, kmVec3 vector) {
     glUniform3f(getUniform(name), vector.x, vector.y, vector.z);
 }
 
-void GShader::setUniform4f(string name, kmMat4 matrix) {
+void GShader::setUniform4f(string name, GLfloat* matrix) {
     if (!enabled) enable();
-    glUniformMatrix4fv(getUniform(name), 1, GL_FALSE, matrix.mat);
+    glUniformMatrix4fv(getUniform(name), 1, GL_FALSE, matrix);
 }
 
 void GShader::enable() {
