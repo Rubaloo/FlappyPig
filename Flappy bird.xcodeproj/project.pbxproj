@@ -28,6 +28,7 @@
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
 		45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A8E1ED3637E00575060 /* ShaderUtils.cpp */; };
+		45944A931ED367B400575060 /* GShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A911ED367B400575060 /* GShader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,8 @@
 		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
 		45944A8E1ED3637E00575060 /* ShaderUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderUtils.cpp; sourceTree = "<group>"; };
 		45944A8F1ED3637E00575060 /* ShaderUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderUtils.hpp; sourceTree = "<group>"; };
+		45944A911ED367B400575060 /* GShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GShader.cpp; path = ../GShader.cpp; sourceTree = "<group>"; };
+		45944A921ED367B400575060 /* GShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GShader.hpp; path = ../GShader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				45944A921ED367B400575060 /* GShader.hpp */,
+				45944A911ED367B400575060 /* GShader.cpp */,
 				4501FF9B1ED0ACBC00BBE43F /* Player.cpp */,
 				4501FF9C1ED0ACBC00BBE43F /* Player.hpp */,
 				4501FF991ED0ACAE00BBE43F /* GameObject.hpp */,
@@ -237,6 +242,7 @@
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */,
 				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
+				45944A931ED367B400575060 /* GShader.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
 				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
 				4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */,
