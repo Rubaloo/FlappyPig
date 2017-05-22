@@ -17,7 +17,10 @@
 #include <OpenGLES/ES2/gl.h>
 
 
-
+typedef struct glVertex {
+    kmScalar position[3];
+    kmScalar color[4];
+} glVertex;
 
 /** A homogeneous four-dimensional vector. */
 typedef struct kmVec4 {

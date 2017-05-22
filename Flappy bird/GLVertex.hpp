@@ -14,10 +14,7 @@
 #include "GTypes.hpp"
 
 
-typedef struct glVertex {
-    GLfloat position[3];
-    GLfloat color[4];
-} glVertex;
+
 
 class GLVertex {
     

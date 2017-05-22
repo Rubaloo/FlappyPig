@@ -29,6 +29,7 @@
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
 		45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A8E1ED3637E00575060 /* ShaderUtils.cpp */; };
 		45944A931ED367B400575060 /* GShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A911ED367B400575060 /* GShader.cpp */; };
+		45944A961ED370D200575060 /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A941ED370D200575060 /* VertexArray.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		45944A8F1ED3637E00575060 /* ShaderUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderUtils.hpp; sourceTree = "<group>"; };
 		45944A911ED367B400575060 /* GShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GShader.cpp; path = ../GShader.cpp; sourceTree = "<group>"; };
 		45944A921ED367B400575060 /* GShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GShader.hpp; path = ../GShader.hpp; sourceTree = "<group>"; };
+		45944A941ED370D200575060 /* VertexArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
+		45944A951ED370D200575060 /* VertexArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				4501FF411ECFBE4400BBE43F /* Supporting Files */,
 				4501FFAA1ED204EE00BBE43F /* Box.cpp */,
 				4501FFAB1ED204EE00BBE43F /* Box.hpp */,
+				45944A951ED370D200575060 /* VertexArray.hpp */,
+				45944A941ED370D200575060 /* VertexArray.cpp */,
 			);
 			path = "Flappy bird";
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				4501FF461ECFBE4400BBE43F /* AppDelegate.m in Sources */,
+				45944A961ED370D200575060 /* VertexArray.cpp in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
 				45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,

@@ -19,6 +19,9 @@
 
 using namespace std;
 
+static const GLuint GSHADER_VERTEX_ATTRIB = 0;
+static const GLuint GSHADER_COLOR_ATTRIB = 1;
+
 class GShader {
 public:
     GShader(string vertex, string fragment);
