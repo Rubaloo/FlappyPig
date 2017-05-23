@@ -20,10 +20,10 @@ VertexArray::VertexArray(glVertex vertexs[], GLubyte indexs[]){
     } Vertex;
     
     const Vertex Vertices[] = {
-        {{1, -1, 0}, {1, 0, 0, 1}},
-        {{1, 1, 0}, {0, 1, 0, 1}},
+        {{-1, -1, 0}, {1, 0, 0, 1}},
+        {{1, -1, 0}, {0, 1, 0, 1}},
         {{-1, 1, 0}, {0, 0, 1, 1}},
-        {{-1, -1, 0}, {0, 0, 0, 1}}
+        {{1, 1, 0}, {0, 0, 0, 1}}
     };
     
     const GLubyte Indices[] = {

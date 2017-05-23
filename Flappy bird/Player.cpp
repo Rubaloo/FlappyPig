@@ -15,10 +15,10 @@ Player::Player(Box body, int firstScore) : GameObject(body)
     modelView.populateFromTranslation(kmVec3Make(0, 0, 0));
     
     glVertex modelVertexs[] = {
-        {{1,-1,0},{1,0,0,1}},
+        {{-1,-1,0},{1,0,0,1}},
         {{1,-1,0},{0,1,0,1}},
-        {{1,-1,0},{0,0,1,1}},
-        {{1,-1,0},{1,0,0,1}}
+        {{-1, 1, 0},{0,0,1,1}},
+        {{1, 1,0},{1,0,0,1}}
     };
     
     GLubyte modelIndexs[] = {0,1,2,3};

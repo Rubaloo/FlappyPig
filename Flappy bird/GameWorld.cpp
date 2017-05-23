@@ -47,10 +47,11 @@ void GameWorld::render()
     glClear(GL_COLOR_BUFFER_BIT);
     
     glViewport(0, 0, screenSize.w, screenSize.h);
-    painter->render(gObjects);
-//    for(int i = 0; i < gObjects.size(); ++i) {
-//        gObjects[i]->render();
-//    }
+    //painter->render(gObjects);
+    
+    for(int i = 0; i < gObjects.size(); ++i) {
+        gObjects[i]->render();
+    }
 }
 
 bool GameWorld::add(GameObject *gObject)
