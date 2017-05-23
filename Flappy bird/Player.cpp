@@ -56,6 +56,8 @@ void Player::render() {
     
     printf("Player render");
     GShader::BIRD->enable();
+    GShader::BIRD->enableVertexAttribute("Position");
+    GShader::BIRD->enableVertexAttribute("SourceColor");
     GShader::BIRD->setUniform4f("ModelView", modelView.matrix());
     GShader::BIRD->setUniform4f("Projection", projection.matrix());
     modelMesh->render();
