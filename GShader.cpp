@@ -15,8 +15,11 @@ GShader::GShader(string vertexName, string fragmentName) {
     ID = ShaderUtils::getInstance()->load(vertexName, fragmentName);
 }
 
+GLuint GShader::getID() {
+    return ID;
+};
+
 void GShader::loadAll() {
-    printf("%d", GSHADER_VERTEX_ATTRIB);
     BIRD = new GShader("SimpleVertex", "SimpleFragment");
 }
 
@@ -24,6 +27,17 @@ GLuint GShader::getUniform(string name) {
     GLuint result = glGetUniformLocation(ID, name.c_str());
     if(result == -1) {
         printf("Cannot find uniform variable: %s", name.c_str());
+    }
+    else {
+        // save to cache
+    }
+    return result;
+}
+
+GLuint GShader::getAttribute(string name) {
+    GLuint result = glGetAttribLocation(ID, name.c_str());
+    if(result == -1) {
+        printf("Cannot find attribute variable: %s", name.c_str());
     }
     else {
         // save to cache
