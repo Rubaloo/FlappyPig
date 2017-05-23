@@ -21,6 +21,7 @@ void Renderer::setupRenderContext()
 {
     setupVBO();
     loadShader();
+    GShader::BIRD->enable();
 }
 void Renderer::setupVBO()
 {
@@ -34,21 +35,15 @@ void Renderer::setupVBO()
 
 void Renderer::loadShader()
 {
-    //Compile Shaders
-    pipeline = new Shader(VERTEX_SHADER_NAME, FRAGMENT_SHADER_NAME);
     
-    if(!pipeline->compileAndLink()) {
-        printf("Encountered problems when loading shader, application will crash...");
-    }
-    else {
-        GLuint shaderProgram = pipeline->getProgram();
-        glUseProgram(shaderProgram);
+        GLuint shaderProgram = GShader::BIRD->getID();
+        //glUseProgram(shaderProgram);
         
         //EnableAttributtes
-        positionSlot = glGetAttribLocation(shaderProgram, "Position");
-        colorSlot = glGetAttribLocation(shaderProgram, "SourceColor");
-        modelViewUniform = glGetUniformLocation(shaderProgram, "ModelView");
-        projectionUniform = glGetUniformLocation(shaderProgram, "Projection");
+        positionSlot = GShader::BIRD->getAttribute("Position");
+        colorSlot = GShader::BIRD->getAttribute("SourceColor");
+        modelViewUniform = GShader::BIRD->getUniform("ModelView");
+        projectionUniform = GShader::BIRD->getUniform("Projection");
         
         //check that the locations are valid, negative value means invalid
         if(positionSlot < 0 || colorSlot < 0 ||
@@ -59,8 +54,6 @@ void Renderer::loadShader()
         
         glEnableVertexAttribArray(positionSlot);
         glEnableVertexAttribArray(colorSlot);
-    }
-
 }
 
 void Renderer::addDegenerateTriangles(vector<glVertex>* vertexs,

@@ -21,7 +21,7 @@ bool ShaderUtils::instanceFlag = false;
 ShaderUtils* ShaderUtils::single = NULL;
 ShaderUtils* ShaderUtils::getInstance()
 {
-    if(! instanceFlag)
+    if(!instanceFlag)
     {
         single = new ShaderUtils();
         instanceFlag = true;
