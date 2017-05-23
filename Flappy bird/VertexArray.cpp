@@ -10,32 +10,25 @@
 
 
 VertexArray::VertexArray() {}
-VertexArray::VertexArray(glVertex vertexs[], GLubyte indexs[]){
+VertexArray::VertexArray(glVertex vertexs[4], GLubyte indexs[4]){
     
-//    vao = glGenVertexArrays();
-    //glBindVertexArray(vao);
-    typedef struct {
-        float Position[3];
-        float Color[4];
-    } Vertex;
-    
-    const Vertex Vertices[] = {
-        {{-1, -1, 0}, {1, 0, 0, 1}},
-        {{1, -1, 0}, {0, 1, 0, 1}},
-        {{-1, 1, 0}, {0, 0, 1, 1}},
-        {{1, 1, 0}, {0, 0, 0, 1}}
+    const glVertex Vertices[] = {
+        {vertexs[0]},
+        {vertexs[1]},
+        {vertexs[2]},
+        {vertexs[3]}
     };
     
     const GLubyte Indices[] = {
-        0, 1, 2, 3
+        indexs[0], indexs[1], indexs[2], indexs[3]
     };
     indexCount = sizeof(Indices);
     
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(GSHADER_VERTEX_ATTRIB, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Position));
-    glVertexAttribPointer(GSHADER_COLOR_ATTRIB, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Color));
+    glVertexAttribPointer(GSHADER_VERTEX_ATTRIB, 3, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, position));
+    glVertexAttribPointer(GSHADER_COLOR_ATTRIB, 4, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, color));
     
     glGenBuffers(1, &ibo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);

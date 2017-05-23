@@ -179,7 +179,7 @@ float previousTimestamp = 0;
 //    NSLog(@"Duration: %f", [displayLink duration]);
 //    NSLog(@"Timpestamp: %f", [displayLink timestamp]);
 //    NSLog(@"Target Timestamp: %f", [displayLink targetTimestamp]);
-//    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
+    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
 //    NSLog(@"Timestamp differences: %f", [displayLink timestamp] - previousTimestamp);
     previousTimestamp = [displayLink timestamp];
     gWorld->update(dt);
