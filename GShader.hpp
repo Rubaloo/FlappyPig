@@ -31,10 +31,12 @@ public:
     
     GLuint getUniform(string name);
     GLuint getAttribute(string name);
-    
+
     GLuint getID();
     void setUniform3f(string name, kmVec3 vector);
     void setUniform4f(string name, GLfloat* matrix);
+    void enableVertexAttribute(string name);
+    
     void enable();
     void disable();
     

@@ -45,6 +45,11 @@ GLuint GShader::getAttribute(string name) {
     return result;
 }
 
+void GShader::enableVertexAttribute(string name)
+{
+    glEnableVertexAttribArray(getAttribute(name));
+}
+
 void GShader::setUniform3f(string name, kmVec3 vector) {
     if (!enabled) enable();
     glUniform3f(getUniform(name), vector.x, vector.y, vector.z);

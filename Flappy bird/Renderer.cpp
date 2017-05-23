@@ -37,23 +37,33 @@ void Renderer::loadShader()
 {
     
         GLuint shaderProgram = GShader::BIRD->getID();
-        //glUseProgram(shaderProgram);
-        
-        //EnableAttributtes
-        positionSlot = GShader::BIRD->getAttribute("Position");
-        colorSlot = GShader::BIRD->getAttribute("SourceColor");
-        modelViewUniform = GShader::BIRD->getUniform("ModelView");
-        projectionUniform = GShader::BIRD->getUniform("Projection");
-        
-        //check that the locations are valid, negative value means invalid
-        if(positionSlot < 0 || colorSlot < 0 ||
-           modelViewUniform < 0  || projectionUniform < 0)
-        {
-            printf("Could not query attribute locations");
-        }
-        
-        glEnableVertexAttribArray(positionSlot);
-        glEnableVertexAttribArray(colorSlot);
+//        glUseProgram(shaderProgram);
+//        
+//        //EnableAttributtes
+//        positionSlot = glGetAttribLocation(shaderProgram, "Position");
+//        colorSlot = glGetAttribLocation(shaderProgram, "SourceColor");
+//        modelViewUniform = glGetUniformLocation(shaderProgram, "ModelView");
+//        projectionUniform = glGetUniformLocation(shaderProgram, "Projection");
+//        
+//        //check that the locations are valid, negative value means invalid
+//        if(positionSlot < 0 || colorSlot < 0 ||
+//           modelViewUniform < 0  || projectionUniform < 0)
+//        {
+//            printf("Could not query attribute locations");
+//        }
+//        
+//        glEnableVertexAttribArray(positionSlot);
+//        glEnableVertexAttribArray(colorSlot);
+    
+    //EnableAttributtes
+    positionSlot = GShader::BIRD->getAttribute("Position");
+    colorSlot = GShader::BIRD->getAttribute("SourceColor");
+    modelViewUniform = GShader::BIRD->getUniform("ModelView");
+    projectionUniform = GShader::BIRD->getUniform("Projection");
+    
+    GShader::BIRD->enableVertexAttribute("Position");
+    GShader::BIRD->enableVertexAttribute("SourceColor");
+
 }
 
 void Renderer::addDegenerateTriangles(vector<glVertex>* vertexs,
