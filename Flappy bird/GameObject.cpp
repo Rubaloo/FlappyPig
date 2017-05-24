@@ -34,3 +34,8 @@ vector<glVertex>* GameObject::getVertexs() {
     
     return &vertexs;
 }
+
+Box* GameObject::getBox()
+{
+    return &body;
+}

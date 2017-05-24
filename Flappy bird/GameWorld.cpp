@@ -7,13 +7,15 @@
 //
 
 #include "GameWorld.hpp"
-#include "Player.hpp"
 #include <stdlib.h>
+
+#define SCREEN_TOUCH 0
 
 GameWorld::GameWorld(float gGravity)
 {
     GShader::loadAll();
     gravity = gGravity;
+    mm = new MessageManager();
     painter = new Renderer();
     painter->setupRenderContext();
 }
@@ -25,8 +27,8 @@ void GameWorld::initLevel()
     Box pBox(kmVec3Make(0.5, 0.5, 0.0), kmSizeMake(0.50, 0.50));
     pBox.enableGravity();
     
-    Player *p = new Player(pBox, 0);
-    gObjects.push_back(p);
+    bird = new Player(pBox, 0);
+    gObjects.push_back(bird);
     
     
     //Add pipes
@@ -62,9 +64,41 @@ bool GameWorld::add(GameObject *gObject)
     return true;
 }
 
+void GameWorld::logic()
+{
+    for(int i = 0; i < messages.size(); ++i) {
+        int messageId = messages.front();
+        messages.pop();
+        switch (messageId) {
+            case SCREEN_TOUCH:
+                bird->getBox()->applyImpulse(100,kmVec3Make(0, 1, 0));
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+
+}
+
 void GameWorld::update(float dt)
 {
     for(int i = 0; i < gObjects.size(); ++i) {
         gObjects[i]->update(dt);
     }
+}
+
+void GameWorld::pollUpdates() {
+    int msgNumber = mm->getMessagesNumber();
+    if(msgNumber > 0) {
+        for(int i = 0; i < msgNumber; ++i) {
+            messages.push(mm->remove());
+        }
+    }
+}
+
+void GameWorld::handleMessage(int msg)
+{
+    mm->add(msg);
 }

@@ -25,17 +25,23 @@ Box::Box(kmVec3 c, kmSize s)
 
 void Box::updateEndForce()
 {
-    for(int i = 0; i < forces.size(); ++i) {
-        endForce = kmVec3Add(endForce, forces[i]);
+    endForce = kmVec3Make(0,0,0);
+    for(int i = 0; i < constantForces.size(); ++i) {
+        endForce = kmVec3Add(endForce, constantForces[i]);
     }
+    
+    for(int i = 0; i < momentForces.size(); ++i) {
+        endForce = kmVec3Add(endForce, momentForces[i]);
+    }
+    
+    momentForces.clear();
 }
 
 
 void Box::enableGravity()
 {
     kmVec3 gravityForce = kmVec3Make(0.0, K_GRAVITY, 0.0);
-    forces.push_back(gravityForce);
-    updateEndForce();
+    constantForces.push_back(gravityForce);
 }
 
 //triangle strip box representation
@@ -63,15 +69,19 @@ kmVec3 Box::getCenter()
 
 void Box::applyImpulse(float force, kmVec3 direction)
 {
-    kmVec3 forceI = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
-    endForce = kmVec3Make(endForce.x + forceI.x, endForce.y + forceI.y, endForce.z + forceI.z);
+    kmVec3 impulseForce = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
+    
+    momentForces.push_back(impulseForce);
 }
 
 kmVec3 Box::update(float dt)
 {
+    updateEndForce();
+    
     kmVec3 nextPosition = kmVec3Make(0, 0, 0);
     
     kmVec3 acceleration = kmVec3Make(endForce.x/mass, endForce.y/mass, endForce.z/mass);
+    
     kmVec3 v = kmVec3Make(acceleration.x * dt, acceleration.y * dt, acceleration.z * dt);
     
     velocity = kmVec3Make(v.x + velocity.x, v.y + velocity.y, v.z + velocity.z);

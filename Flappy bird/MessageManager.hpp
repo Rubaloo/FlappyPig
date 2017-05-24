@@ -22,8 +22,8 @@ public:
     void add(int a);
     int remove();
     int getMessagesNumber();
-private:
     
+private:
     pthread_mutex_t mutex;
     pthread_mutexattr_t mattr;
     queue<int> messages;

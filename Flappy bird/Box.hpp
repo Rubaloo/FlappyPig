@@ -39,7 +39,8 @@ private:
     kmVec3 center;
     kmSize size;
     //Physhcs
-    vector<kmVec3> forces;
+    vector<kmVec3> constantForces;
+    vector<kmVec3> momentForces;
     kmVec3 velocity;
     kmVec3 direction;
     kmVec3 endForce;

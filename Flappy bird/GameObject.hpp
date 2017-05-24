@@ -30,7 +30,6 @@ protected:
     GLMatrix modelView;
     Box body;
     vector<glVertex> vertexs;
-    
     VertexArray* modelMesh;
 
 public:
@@ -39,5 +38,6 @@ public:
     virtual void update(float dt){};
     virtual void render(){};
     vector<glVertex>* getVertexs();
+    Box* getBox();
 };
 #endif /* GameObject_hpp */

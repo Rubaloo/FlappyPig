@@ -27,6 +27,9 @@
 		4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF981ED0ACAE00BBE43F /* GameObject.cpp */; };
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
+		45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C211ED5F41D0073C63A /* Receiver.cpp */; };
+		45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C241ED5F42B0073C63A /* PostMan.cpp */; };
+		45471C291ED602700073C63A /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C271ED602700073C63A /* MessageManager.cpp */; };
 		45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A8E1ED3637E00575060 /* ShaderUtils.cpp */; };
 		45944A931ED367B400575060 /* GShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A911ED367B400575060 /* GShader.cpp */; };
 		45944A961ED370D200575060 /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A941ED370D200575060 /* VertexArray.cpp */; };
@@ -70,6 +73,12 @@
 		4501FF9C1ED0ACBC00BBE43F /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		4501FFAA1ED204EE00BBE43F /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
 		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
+		45471C211ED5F41D0073C63A /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
+		45471C221ED5F41D0073C63A /* Receiver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Receiver.hpp; sourceTree = "<group>"; };
+		45471C241ED5F42B0073C63A /* PostMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostMan.cpp; sourceTree = "<group>"; };
+		45471C251ED5F42B0073C63A /* PostMan.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PostMan.hpp; sourceTree = "<group>"; };
+		45471C271ED602700073C63A /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageManager.cpp; sourceTree = "<group>"; };
+		45471C281ED602700073C63A /* MessageManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MessageManager.hpp; sourceTree = "<group>"; };
 		45944A8E1ED3637E00575060 /* ShaderUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderUtils.cpp; sourceTree = "<group>"; };
 		45944A8F1ED3637E00575060 /* ShaderUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderUtils.hpp; sourceTree = "<group>"; };
 		45944A911ED367B400575060 /* GShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GShader.cpp; path = ../GShader.cpp; sourceTree = "<group>"; };
@@ -108,6 +117,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				45471C271ED602700073C63A /* MessageManager.cpp */,
+				45471C281ED602700073C63A /* MessageManager.hpp */,
 				45944A921ED367B400575060 /* GShader.hpp */,
 				45944A911ED367B400575060 /* GShader.cpp */,
 				4501FF9B1ED0ACBC00BBE43F /* Player.cpp */,
@@ -150,6 +161,10 @@
 				4501FFAB1ED204EE00BBE43F /* Box.hpp */,
 				45944A951ED370D200575060 /* VertexArray.hpp */,
 				45944A941ED370D200575060 /* VertexArray.cpp */,
+				45471C211ED5F41D0073C63A /* Receiver.cpp */,
+				45471C221ED5F41D0073C63A /* Receiver.hpp */,
+				45471C241ED5F42B0073C63A /* PostMan.cpp */,
+				45471C251ED5F42B0073C63A /* PostMan.hpp */,
 			);
 			path = "Flappy bird";
 			sourceTree = "<group>";
@@ -245,11 +260,14 @@
 				45944A961ED370D200575060 /* VertexArray.cpp in Sources */,
 				4501FF431ECFBE4400BBE43F /* main.m in Sources */,
 				45944A901ED3637E00575060 /* ShaderUtils.cpp in Sources */,
+				45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */,
 				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
 				45944A931ED367B400575060 /* GShader.cpp in Sources */,
+				45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
+				45471C291ED602700073C63A /* MessageManager.cpp in Sources */,
 				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
 				4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */,
 				4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */,

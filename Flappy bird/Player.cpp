@@ -38,7 +38,6 @@ void Player::render() {
     GLMatrix projection;
     projection.populateOrtho(-1, 1, -1, 1, -1, 1);
     
-    printf("Player render");
     GShader::BIRD->enable();
     GShader::BIRD->enableVertexAttribute("Position");
     GShader::BIRD->enableVertexAttribute("SourceColor");

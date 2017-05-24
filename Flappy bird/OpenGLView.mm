@@ -10,6 +10,7 @@
 #import "GLMatrix.hpp"
 #import "GameWorld.hpp"
 #import "GDirector.hpp"
+#import "PostMan.hpp"
 
 
 
@@ -20,6 +21,7 @@
 @end
 
 GameWorld* gWorld;
+PostMan* postMan;
 
 @implementation OpenGLView
 
@@ -179,9 +181,11 @@ float previousTimestamp = 0;
 //    NSLog(@"Duration: %f", [displayLink duration]);
 //    NSLog(@"Timpestamp: %f", [displayLink timestamp]);
 //    NSLog(@"Target Timestamp: %f", [displayLink targetTimestamp]);
-    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
+//    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
 //    NSLog(@"Timestamp differences: %f", [displayLink timestamp] - previousTimestamp);
     previousTimestamp = [displayLink timestamp];
+    gWorld->pollUpdates();
+    gWorld->logic();
     gWorld->update(dt);
     gWorld->render();
     
@@ -209,6 +213,7 @@ float previousTimestamp = 0;
     [self setupFrameBuffer];
     [self setupGWorld];
     [self setupGDirector];
+    [self setupPostMan];
     [self setupDisplayLink];
 }
 
@@ -217,6 +222,11 @@ float previousTimestamp = 0;
     float gGravity = 5.0;
     gWorld = new GameWorld(gGravity);
     gWorld->initLevel();
+}
+
+-(void) setupPostMan {
+    postMan = new PostMan();
+    postMan->addReceiver(gWorld);
 }
 
 -(void) setupGDirector
@@ -228,4 +238,8 @@ float previousTimestamp = 0;
     GDirector::getInstance()->setWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
 }
 
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)even
+{
+    postMan->send(0);
+}
 @end
