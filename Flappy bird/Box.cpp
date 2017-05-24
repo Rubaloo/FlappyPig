@@ -7,17 +7,35 @@
 //
 
 #include "Box.hpp"
+#define K_GRAVITY -1.0
 
 Box::Box(){};
 Box::Box(kmVec3 c, kmSize s)
 {
     center = c;
     size = s;
+    
     velocity = kmVec3Make(0, 0, 0);
-    gravity = kmVec3Make(0.0, -1.0, 0.0);
-    kmVec3 impulse = kmVec3Make(0.0, 0.0, 0.0);
-    endForce = gravity;
     mass = 1;
+    
+    isVisible = true;
+    gravityEnabled = false;
+    endForce = kmVec3Make(0, 0, 0);
+}
+
+void Box::updateEndForce()
+{
+    for(int i = 0; i < forces.size(); ++i) {
+        endForce = kmVec3Add(endForce, forces[i]);
+    }
+}
+
+
+void Box::enableGravity()
+{
+    kmVec3 gravityForce = kmVec3Make(0.0, K_GRAVITY, 0.0);
+    forces.push_back(gravityForce);
+    updateEndForce();
 }
 
 //triangle strip box representation

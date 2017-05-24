@@ -19,25 +19,35 @@ class Box {
 public:
     Box();
     Box(kmVec3 center, kmSize size);
+    
     bool moveTo(kmVec3 direction);
     bool intersect(Box* gameObject);
+    
     vector<kmVec3> getVertexs();
     kmVec3 getCenter();
+    
     void setCenter(kmVec3 center);
+    
+    
     kmVec3 update(float dt);
+    
     void applyImpulse(float force, kmVec3 direction);
+    void enableGravity();
     
 private:
     GLfloat mass;
     kmVec3 center;
     kmSize size;
     //Physhcs
+    vector<kmVec3> forces;
     kmVec3 velocity;
     kmVec3 direction;
-    kmVec3 gravity;
     kmVec3 endForce;
     
+    bool gravityEnabled;
     bool isVisible;
+    
+    void updateEndForce();
 };
 
 #endif /* Box_hpp */
