@@ -13,6 +13,21 @@
 #import <math.h>
 
 
+kmVec3 kmVec3Add(kmVec3 v, kmVec3 k) {
+    kmVec3 sum;
+    sum.x = v.x + k.x;
+    sum.y = v.y + k.y;
+    sum.z = v.z + k.z;
+    return sum;
+}
+
+kmVec3 kmVec3Sub(kmVec3 v, kmVec3 k){
+    kmVec3 sub;
+    sub.x = v.x - k.x;
+    sub.y = v.y - k.y;
+    sub.z = v.z - k.z;
+    return sub;
+}
 
 kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w){
     kmVec4 v;

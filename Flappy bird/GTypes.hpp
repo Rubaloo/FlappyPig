@@ -62,6 +62,10 @@ typedef struct {
     kmScalar mat[16];
 } kmMat4;
 
+
+kmVec3 kmVec3Add(kmVec3 v, kmVec3 k);
+kmVec3 kmVec3Sub(kmVec3 v, kmVec3 k);
+
 kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w);
 kmVertex kmVertexMake(kmVec3 position, kmVec4 color);
 
