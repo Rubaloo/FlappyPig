@@ -13,7 +13,8 @@ Box::Box(kmVec3 c, kmSize s)
 {
     center = c;
     size = s;
-    gravity = kmVec3Make(0.0, -100.0, 0.0);
+    velocity = kmVec3Make(0, 0, 0);
+    gravity = kmVec3Make(0.0, -1.0, 0.0);
     kmVec3 impulse = kmVec3Make(0.0, 0.0, 0.0);
     endForce = gravity;
     mass = 1;
@@ -53,11 +54,14 @@ kmVec3 Box::update(float dt)
     kmVec3 nextPosition = kmVec3Make(0, 0, 0);
     
     kmVec3 acceleration = kmVec3Make(endForce.x/mass, endForce.y/mass, endForce.z/mass);
-    kmVec3 velocity = kmVec3Make(acceleration.x * dt, acceleration.y * dt, acceleration.z * dt);
+    kmVec3 v = kmVec3Make(acceleration.x * dt, acceleration.y * dt, acceleration.z * dt);
+    
+    velocity = kmVec3Make(v.x + velocity.x, v.y + velocity.y, v.z + velocity.z);
+    
     kmVec3 step = kmVec3Make(velocity.x * dt, velocity.y * dt, velocity.z * dt);
     nextPosition = kmVec3Make(center.x + step.x, center.y + step.y, center.z + step.z);
     setCenter(nextPosition);
-    printf("next position: %f x %f y %fz \n", step.x, step.y, step.z);
+    //printf("next position: %f x %f y %fz \n", step.x, step.y, step.z);
     
     return nextPosition;
 }

@@ -32,6 +32,7 @@ private:
     kmVec3 center;
     kmSize size;
     //Physhcs
+    kmVec3 velocity;
     kmVec3 direction;
     kmVec3 gravity;
     kmVec3 endForce;
