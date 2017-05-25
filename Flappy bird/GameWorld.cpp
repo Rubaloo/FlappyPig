@@ -24,7 +24,10 @@ void GameWorld::initLevel()
 {
     //Add player
     // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
-    Box pBox(kmVec3Make(0.5, 0.5, 0.0), kmSizeMake(0.50, 0.50));
+    kmSize screen = GDirector::getInstance()->getWinSizeInPixels();
+    float x = screen.w/2.0;
+    float y = screen.h/2.0;
+    Box pBox(kmVec3Make(x, y, 0.0), kmSizeMake(x, x));
     pBox.enableGravity();
     
     bird = new Player(pBox, 0);

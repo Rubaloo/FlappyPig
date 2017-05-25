@@ -211,9 +211,9 @@ float previousTimestamp = 0;
     [self setupDepthBuffer];
     [self setupRenderBuffer];
     [self setupFrameBuffer];
-    [self setupGWorld];
     [self setupGDirector];
     [self setupPostMan];
+    [self setupGWorld];
     [self setupDisplayLink];
 }
 

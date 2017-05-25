@@ -25,6 +25,8 @@ public:
     
     vector<kmVec3> getVertexs();
     kmVec3 getCenter();
+    kmSize getSize();
+
     
     void setCenter(kmVec3 center);
     

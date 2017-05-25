@@ -7,13 +7,22 @@
 //
 
 #include "Box.hpp"
+#include "GDirector.hpp"
 #define K_GRAVITY -1.0
 
 Box::Box(){};
-Box::Box(kmVec3 c, kmSize s)
+Box::Box(kmVec3 position, kmSize s)
 {
-    center = c;
-    size = s;
+    // System cordinates change
+    GLfloat x = (position.x*ASPECT_RATIO)/SCREEN_WIDTH;
+    GLfloat y = (position.y)/SCREEN_HEIGHT;
+    center = kmVec3Make(x, y, 0);
+    
+    // Size change
+    GLfloat w = (s.w*ASPECT_RATIO)/SCREEN_WIDTH;
+    GLfloat h = s.h/SCREEN_HEIGHT;
+
+    size = kmSizeMake(w, h);
     
     velocity = kmVec3Make(0, 0, 0);
     mass = 1;
@@ -65,6 +74,10 @@ vector<kmVec3> Box::getVertexs()
 kmVec3 Box::getCenter()
 {
     return center;
+}
+
+kmSize Box::getSize(){
+    return size;
 }
 
 void Box::applyImpulse(float force, kmVec3 direction)
