@@ -24,6 +24,7 @@ class GameWorld : public Receiver {
     
 private:
     Player* bird;
+    Player* bird2;
     float gravity;
     MessageManager* mm;
     Renderer* painter;

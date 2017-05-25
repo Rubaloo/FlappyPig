@@ -8,7 +8,7 @@
 
 #include "Box.hpp"
 #include "GDirector.hpp"
-#define K_GRAVITY -1.0
+#define K_GRAVITY 1.0
 
 Box::Box(){};
 Box::Box(kmVec3 position, kmSize s)

@@ -7,6 +7,7 @@
 //
 
 #include "GameWorld.hpp"
+#include "Pipe.hpp"
 #include <stdlib.h>
 
 #define SCREEN_TOUCH 0
@@ -16,8 +17,6 @@ GameWorld::GameWorld(float gGravity)
     GShader::loadAll();
     gravity = gGravity;
     mm = new MessageManager();
-    painter = new Renderer();
-    painter->setupRenderContext();
 }
 
 void GameWorld::initLevel()
@@ -27,19 +26,33 @@ void GameWorld::initLevel()
     kmSize screen = GDirector::getInstance()->getWinSizeInPixels();
     float x = screen.w/2.0;
     float y = screen.h/2.0;
-    Box pBox(kmVec3Make(x, y, 0.0), kmSizeMake(x, x));
+    Box pBox(kmVec3Make(15, 15, 0.0), kmSizeMake(30, 30));
     pBox.enableGravity();
-    
     bird = new Player(pBox, 0);
     gObjects.push_back(bird);
     
-    
+
     //Add pipes
-//    int numPipes = 3;
-//    for(int i = 0; i < numPipes; ++i) {
-//        Pipe* p = new Pipe(6);
-//        gObjects.push_back(p);
-//    }
+    
+    float numPipes = 1;
+    float offset = 60;
+    float space = 100;
+    float pipeHeight = 100;
+    float pipeWidth = 50;
+    
+    for(int i = 0; i < numPipes; ++i) {
+        GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i);
+        
+        Box uPipeBox(kmVec3Make(pipeX, 0.0, 0.0), kmSizeMake(pipeWidth, pipeHeight));
+        Box dPipeBox(kmVec3Make(pipeX, pipeHeight+space , 0.0), kmSizeMake(pipeWidth, SCREEN_HEIGHT-pipeHeight+space));
+        
+        Pipe* up = new Pipe(uPipeBox);
+        //Pipe* dp = new Pipe(dPipeBox);
+        
+        gObjects.push_back(up);
+        //gObjects.push_back(dp);
+        
+    }
 }
 
 GameWorld::~GameWorld()
@@ -74,7 +87,7 @@ void GameWorld::logic()
         messages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird->getBox()->applyImpulse(100,kmVec3Make(0, 1, 0));
+                bird->getBox()->applyImpulse(100,kmVec3Make(0, -1, 0));
                 break;
                 
             default:

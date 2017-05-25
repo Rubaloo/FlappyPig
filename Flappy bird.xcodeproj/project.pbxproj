@@ -27,6 +27,7 @@
 		4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF981ED0ACAE00BBE43F /* GameObject.cpp */; };
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
+		451FA0181ED76C3E00FAAC48 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451FA0161ED76C3E00FAAC48 /* Pipe.cpp */; };
 		45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C211ED5F41D0073C63A /* Receiver.cpp */; };
 		45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C241ED5F42B0073C63A /* PostMan.cpp */; };
 		45471C291ED602700073C63A /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C271ED602700073C63A /* MessageManager.cpp */; };
@@ -73,6 +74,8 @@
 		4501FF9C1ED0ACBC00BBE43F /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		4501FFAA1ED204EE00BBE43F /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
 		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
+		451FA0161ED76C3E00FAAC48 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		451FA0171ED76C3E00FAAC48 /* Pipe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pipe.hpp; sourceTree = "<group>"; };
 		45471C211ED5F41D0073C63A /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
 		45471C221ED5F41D0073C63A /* Receiver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Receiver.hpp; sourceTree = "<group>"; };
 		45471C241ED5F42B0073C63A /* PostMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostMan.cpp; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				451FA0161ED76C3E00FAAC48 /* Pipe.cpp */,
+				451FA0171ED76C3E00FAAC48 /* Pipe.hpp */,
 				45471C271ED602700073C63A /* MessageManager.cpp */,
 				45471C281ED602700073C63A /* MessageManager.hpp */,
 				45944A921ED367B400575060 /* GShader.hpp */,
@@ -253,6 +258,7 @@
 				4501FF491ECFBE4400BBE43F /* ViewController.m in Sources */,
 				4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */,
 				4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */,
+				451FA0181ED76C3E00FAAC48 /* Pipe.cpp in Sources */,
 				4501FF9A1ED0ACAE00BBE43F /* GameObject.cpp in Sources */,
 				4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,

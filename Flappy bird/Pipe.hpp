@@ -20,9 +20,8 @@ public:
     ~Pipe();
     
 private:
-    float height;
     void update(float dt);
     void render();
-    
+    int heigth;
 };
 #endif /* Pipe_hpp */

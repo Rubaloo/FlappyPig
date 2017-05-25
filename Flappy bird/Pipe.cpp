@@ -7,11 +7,11 @@
 //
 
 #include "Pipe.hpp"
-
+#include "GTypes.hpp"
 #include "GameObject.hpp"
 
 Pipe::Pipe() : GameObject(){}
-Pipe::Pipe(Box body) : GameObject(body)
+Pipe::Pipe(Box body) :GameObject(body)
 {
     kmSize bodySize = body.getSize();
     
@@ -19,8 +19,9 @@ Pipe::Pipe(Box body) : GameObject(body)
         {{0.0, bodySize.h, 0.0},{1,0,0,1}},
         {{bodySize.w, bodySize.h, 0.0},{0,1,0,1}},
         {{0.0, 0.0, 0.0},{0,0,1,1}},
-        {{0.0, bodySize.w, 0},{1,0,0,1}}
+        {{bodySize.w, 0.0, 0},{1,0,0,1}}
     };
+    
     modelView.populateFromTranslation(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
@@ -28,7 +29,6 @@ Pipe::Pipe(Box body) : GameObject(body)
 
 Pipe::~Pipe(){};
 
-int i = 0;
 void Pipe::update(float dt)
 {
     //kmVec3 nextPosition = body.update(dt);
@@ -38,7 +38,7 @@ void Pipe::update(float dt)
 void Pipe::render() {
     
     GLMatrix projection;
-    projection.populateOrtho(-1, 1, -1, 1, -1, 1);
+    projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
     
     GShader::BIRD->enable();
     GShader::BIRD->enableVertexAttribute("Position");

@@ -17,10 +17,10 @@ Player::Player(Box body, int firstScore) : GameObject(body)
     GLfloat w2 = size.w/2.0;
     
     glVertex modelVertexs[] = {
-        {{-w2, h2,0},{1,0,0,1}},
-        {{w2, h2,0},{0,1,0,1}},
+        {{-w2, h2, 0},{1,0,0,1}},
+        {{w2, h2, 0},{0,1,0,1}},
         {{-w2, -h2, 0},{0,0,1,1}},
-        {{w2,-h2,0},{1,0,0,1}}
+        {{w2,-h2, 0},{1,0,0,1}}
     };
     
     modelView.populateFromTranslation(body.getCenter());
