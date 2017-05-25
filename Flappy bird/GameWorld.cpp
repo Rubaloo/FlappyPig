@@ -34,23 +34,24 @@ void GameWorld::initLevel()
 
     //Add pipes
     
-    float numPipes = 1;
-    float offset = 60;
+    float numPipes = 10;
+    float offset = 200;
     float space = 100;
     float pipeHeight = 100;
     float pipeWidth = 50;
     
     for(int i = 0; i < numPipes; ++i) {
+        pipeHeight = rand() % 300 + 100;
         GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i);
         
         Box uPipeBox(kmVec3Make(pipeX, 0.0, 0.0), kmSizeMake(pipeWidth, pipeHeight));
         Box dPipeBox(kmVec3Make(pipeX, pipeHeight+space , 0.0), kmSizeMake(pipeWidth, SCREEN_HEIGHT-pipeHeight+space));
         
         Pipe* up = new Pipe(uPipeBox);
-        //Pipe* dp = new Pipe(dPipeBox);
+        Pipe* dp = new Pipe(dPipeBox);
         
         gObjects.push_back(up);
-        //gObjects.push_back(dp);
+        gObjects.push_back(dp);
         
     }
 }

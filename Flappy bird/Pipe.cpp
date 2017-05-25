@@ -22,6 +22,7 @@ Pipe::Pipe(Box body) :GameObject(body)
         {{bodySize.w, 0.0, 0},{1,0,0,1}}
     };
     
+    body.setVelocity(kmVec3Make(-30,0,0));
     modelView.populateFromTranslation(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
@@ -31,8 +32,8 @@ Pipe::~Pipe(){};
 
 void Pipe::update(float dt)
 {
-    //kmVec3 nextPosition = body.update(dt);
-    //modelView.populateFromTranslation(nextPosition);
+    kmVec3 nextPosition = body.update(dt);
+    modelView.populateFromTranslation(nextPosition);
 }
 
 void Pipe::render() {

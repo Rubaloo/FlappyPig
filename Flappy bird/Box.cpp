@@ -70,6 +70,10 @@ vector<kmVec3> Box::getVertexs()
 }
 
 
+void Box::setVelocity(kmVec3 v)
+{
+    velocity = v;
+}
 
 kmVec3 Box::getCenter()
 {

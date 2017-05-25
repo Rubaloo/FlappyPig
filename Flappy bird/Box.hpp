@@ -29,6 +29,7 @@ public:
 
     
     void setCenter(kmVec3 center);
+    void setVelocity(kmVec3 velocity);
     
     
     kmVec3 update(float dt);
