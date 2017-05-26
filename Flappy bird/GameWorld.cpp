@@ -63,12 +63,10 @@ GameWorld::~GameWorld()
 
 void GameWorld::render()
 {
-    kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
-    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
     
-    glViewport(0, 0, screenSize.w, screenSize.h);
-    //painter->render(gObjects);
+    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     for(int i = 0; i < gObjects.size(); ++i) {
         gObjects[i]->render();
@@ -88,7 +86,7 @@ void GameWorld::logic()
         messages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird->getBox()->applyImpulse(100,kmVec3Make(0, -1, 0));
+                bird->getBox()->applyImpulse(100,kmVec3Make(1, 0, 0));
                 break;
                 
             default:
