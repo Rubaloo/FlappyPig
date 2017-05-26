@@ -38,13 +38,14 @@ VertexArray::VertexArray(glVertex vertexs[4], GLubyte indexs[4]){
 }
 
 void VertexArray::bind(){
-    if(ibo > 0) {
+    if(ibo > 0 && vbo > 0) {
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     }
 }
 void VertexArray::unbind(){
-    if(ibo > 0) {
+    if(ibo > 0 && vbo > 0) {
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 }
