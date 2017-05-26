@@ -13,15 +13,18 @@
 Pipe::Pipe() : GameObject(){}
 Pipe::Pipe(Box body) :GameObject(body)
 {
-    kmSize bodySize = body.getSize();
+    kmSize size = body.getSize();
+    
+    GLfloat h2 = size.h/2.0;
+    GLfloat w2 = size.w/2.0;
     
     glVertex modelVertexs[] = {
-        {{0.0, bodySize.h, 0.0},{1,0,0,1}},
-        {{bodySize.w, bodySize.h, 0.0},{0,1,0,1}},
-        {{0.0, 0.0, 0.0},{0,0,1,1}},
-        {{bodySize.w, 0.0, 0},{1,0,0,1}}
+        {{-w2, h2, 0},{1,0,0,1}},
+        {{w2, h2, 0},{0,1,0,1}},
+        {{-w2, -h2, 0},{0,0,1,1}},
+        {{w2,-h2, 0},{1,0,0,1}}
     };
-    
+
     modelView.populateFromTranslation(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
