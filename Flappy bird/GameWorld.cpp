@@ -21,43 +21,45 @@ GameWorld::GameWorld(float gGravity)
 
 void GameWorld::initLevel()
 {
+    
+
+    //Add pipes
+    
+    float numPipes = 20;
+    float offset = 200;
+    float space = 100;
+    float pipeWidth = 50;
+    
+    for(int i = 0; i < numPipes; ++i) {
+        float uPipeHeight = rand() % 300 + 100;
+        float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - space;
+        GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i) + pipeWidth/2.0;
+        
+        Box uPipeBox(kmVec3Make(pipeX, uPipeHeight/2.0, 0.0), kmSizeMake(pipeWidth, uPipeHeight));
+        uPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
+        Box dPipeBox(kmVec3Make(pipeX, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(pipeWidth, dPipeHeight));
+        dPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
+        
+        Pipe* up = new Pipe(uPipeBox);
+        Pipe* dp = new Pipe(dPipeBox);
+        
+        gObjects.push_back(up);
+        gObjects.push_back(dp);
+        
+        pipes.push_back(up);
+        pipes.push_back(dp);
+    }
+    
     //Add player
     // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
     kmSize screen = GDirector::getInstance()->getWinSizeInPixels();
     float x = screen.w/2.0;
     float y = screen.h/2.0;
     Box pBox(kmVec3Make(15, 15, 0.0), kmSizeMake(30, 30));
-    //pBox.enableGravity();
+    pBox.enableGravity();
     bird = new Player(pBox, 0);
     gObjects.push_back(bird);
-    
 
-    //Add pipes
-    
-    float numPipes = 1;
-    float offset = 200;
-    float space = 100;
-    float pipeHeight = 100;
-    float pipeWidth = 50;
-    
-    for(int i = 0; i < numPipes; ++i) {
-        pipeHeight = rand() % 300 + 100;
-        GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i) + pipeWidth/2.0;
-        
-        Box uPipeBox(kmVec3Make(pipeX, pipeHeight/2.0, 0.0), kmSizeMake(pipeWidth, pipeHeight));
-        uPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
-        Box dPipeBox(kmVec3Make(pipeX, pipeHeight + space + (pipeHeight/2.0) , 0.0), kmSizeMake(pipeWidth, SCREEN_HEIGHT-pipeHeight+space));
-        //dPipeBox.enableGravity();
-        //uPipeBox.enableGravity();
-        
-        
-        Pipe* up = new Pipe(uPipeBox);
-        //Pipe* dp = new Pipe(dPipeBox);
-        
-        gObjects.push_back(up);
-        //gObjects.push_back(dp);
-        pipes.push_back(up);
-    }
 }
 
 GameWorld::~GameWorld()
@@ -90,7 +92,7 @@ void GameWorld::logic()
         messages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird->getBox()->applyImpulse(100,kmVec3Make(1, 0, 0));
+                bird->getBox()->applyImpulse(20, kmVec3Make(0, -1, 0));
                 break;
                 
             default:
