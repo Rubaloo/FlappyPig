@@ -29,12 +29,12 @@ void GameWorld::initLevel()
     Box pBox(kmVec3Make(15, 15, 0.0), kmSizeMake(30, 30));
     pBox.enableGravity();
     bird = new Player(pBox, 0);
-    gObjects.push_back(bird);
+    //gObjects.push_back(bird);
     
 
     //Add pipes
     
-    float numPipes = 10;
+    float numPipes = 1;
     float offset = 200;
     float space = 100;
     float pipeHeight = 100;
@@ -45,13 +45,16 @@ void GameWorld::initLevel()
         GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i);
         
         Box uPipeBox(kmVec3Make(pipeX, 0.0, 0.0), kmSizeMake(pipeWidth, pipeHeight));
-        Box dPipeBox(kmVec3Make(pipeX, pipeHeight+space , 0.0), kmSizeMake(pipeWidth, SCREEN_HEIGHT-pipeHeight+space));
+        uPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
+        //Box dPipeBox(kmVec3Make(pipeX, pipeHeight+space , 0.0), kmSizeMake(pipeWidth, SCREEN_HEIGHT-pipeHeight+space));
+        //uPipeBox.enableGravity();
+        //dPipeBox.enableGravity();
         
         Pipe* up = new Pipe(uPipeBox);
-        Pipe* dp = new Pipe(dPipeBox);
+        //Pipe* dp = new Pipe(dPipeBox);
         
         gObjects.push_back(up);
-        gObjects.push_back(dp);
+        //gObjects.push_back(dp);
         
     }
 }

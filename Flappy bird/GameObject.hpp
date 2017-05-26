@@ -37,7 +37,6 @@ public:
     GameObject(Box b);
     virtual void update(float dt){};
     virtual void render(){};
-    vector<glVertex>* getVertexs();
     Box* getBox();
 };
 #endif /* GameObject_hpp */

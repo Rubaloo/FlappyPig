@@ -22,7 +22,6 @@ Pipe::Pipe(Box body) :GameObject(body)
         {{bodySize.w, 0.0, 0},{1,0,0,1}}
     };
     
-    body.setVelocity(kmVec3Make(-30,0,0));
     modelView.populateFromTranslation(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
