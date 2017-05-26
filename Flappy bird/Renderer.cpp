@@ -79,23 +79,7 @@ void Renderer::render(vector<GameObject*> objects)
 {
     //Gather objects vertexs
     vector<glVertex> vertexs;
-    for(int i = 0; i < objects.size(); ++i) {
-        GameObject* object = objects[i];
-        vector<glVertex>* objectVertexs = object->getVertexs();
-        if(i > 0) {
-            glVertex start = vertexs[vertexs.size()-1];
-            glVertex end = objectVertexs->at(0);
-            addDegenerateTriangles(&vertexs, start, end);
-        }
-        vertexs.insert(vertexs.end(), objectVertexs->begin(), objectVertexs->end());
-    }
     
-    //Set indexs
-    vector<GLubyte> indexs;
-    for(int i = 0; i < vertexs.size(); ++i)
-    {
-        indexs.push_back(i);
-    }
 
     kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
     
@@ -118,7 +102,7 @@ void Renderer::render(vector<GameObject*> objects)
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, vertexs.size() * sizeof(glVertex), &vertexs[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexs.size() * sizeof(GLubyte), &indexs[0], GL_STATIC_DRAW);
+    
 
     
     // 2
@@ -126,7 +110,7 @@ void Renderer::render(vector<GameObject*> objects)
     glVertexAttribPointer(colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, color));
     
     // 3
-    glDrawElements(GL_TRIANGLE_STRIP, indexs.size(), GL_UNSIGNED_BYTE, 0);
+   
 }
 
 

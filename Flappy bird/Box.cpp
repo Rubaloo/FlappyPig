@@ -8,6 +8,7 @@
 
 #include "Box.hpp"
 #include "GDirector.hpp"
+#include <cmath>
 #define K_GRAVITY 1.0
 
 Box::Box(){};
@@ -54,19 +55,19 @@ void Box::enableGravity()
 }
 
 //triangle strip box representation
-vector<kmVec3> Box::getVertexs()
+kmRect Box::getRect()
 {
-    vector<kmVec3> vertexs;
+    kmRect rect;
+    
     GLfloat hWidth = size.w/2.0;
     GLfloat hHeight = size.h/2.0;
     
-    kmVec3 bl = kmVec3Make(center.x - hWidth , center.y - hHeight, 0.0);
-    kmVec3 br = kmVec3Make(center.x + hWidth , center.y - hHeight, 0.0);
-    kmVec3 tl = kmVec3Make(center.x - hWidth , center.y + hHeight, 0.0);
-    kmVec3 tr = kmVec3Make(center.x + hWidth , center.y + hHeight, 0.0);
+    rect.bl = kmVec3Make(center.x - hWidth , center.y - hHeight, 0.0);
+    rect.br = kmVec3Make(center.x + hWidth , center.y - hHeight, 0.0);
+    rect.tl = kmVec3Make(center.x - hWidth , center.y + hHeight, 0.0);
+    rect.tr = kmVec3Make(center.x + hWidth , center.y + hHeight, 0.0);
     
-    vertexs.push_back(bl); vertexs.push_back(br); vertexs.push_back(tl); vertexs.push_back(tr);
-    return vertexs;
+    return rect;
 }
 
 
@@ -122,5 +123,14 @@ bool Box::moveTo(kmVec3 direction) {
 };
 
 bool Box::intersect(Box* gameObject) {
-    return true;
+    
+    kmVec3 a = gameObject->getCenter();
+    kmVec3 b = center;
+    kmSize aSize = gameObject->getSize();
+    kmSize bSize = size;
+    
+    
+    
+    return (abs(a.x - b.x) * 2 < (aSize.w + bSize.w)) &&
+    (abs(a.y - b.y) * 2 < (aSize.h + bSize.h));
 };

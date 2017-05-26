@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 class Receiver {
+    
 public:
     virtual void handleMessage(int i)=0;
 };

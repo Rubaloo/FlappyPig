@@ -23,7 +23,7 @@ public:
     bool moveTo(kmVec3 direction);
     bool intersect(Box* gameObject);
     
-    vector<kmVec3> getVertexs();
+    kmRect getRect();
     kmVec3 getCenter();
     kmSize getSize();
 

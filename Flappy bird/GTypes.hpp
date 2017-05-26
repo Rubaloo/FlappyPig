@@ -50,6 +50,12 @@ typedef struct kmVertex{
     kmVec4 color;
 } kmVertex;
 
+typedef struct kmRect {
+    kmVec3 br;
+    kmVec3 bl;
+    kmVec3 tr;
+    kmVec3 tl;
+} kmRect;
 
 /** A homogeneous four-dimensional vector. */
 /** A rotational quaternion */

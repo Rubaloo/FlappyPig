@@ -92,7 +92,16 @@ void GameWorld::logic()
             default:
                 break;
         }
+    }
+    
+    for(int i = 0; i < pipes.size(); ++i) {
+        Box* pipeBox = pipes[i]->getBox();
         
+        if(bird->getBox()->intersect(pipeBox)){
+            running = false;
+            //sendMessage(running);
+        }
+    
     }
 
 }

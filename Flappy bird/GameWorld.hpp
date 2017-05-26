@@ -15,6 +15,7 @@
 
 #include "Renderer.hpp"
 #include "Player.hpp"
+#include "Pipe.hpp"
 #include "Receiver.hpp"
 #include "MessageManager.hpp"
 
@@ -24,7 +25,8 @@ class GameWorld : public Receiver {
     
 private:
     Player* bird;
-    Player* bird2;
+    vector<Pipe*> pipes;
+    
     float gravity;
     MessageManager* mm;
     Renderer* painter;
@@ -38,7 +40,7 @@ public:
     ~GameWorld();
     
     bool add(GameObject *gObject);
-    
+    bool running;
     
     void render();
     void logic();
