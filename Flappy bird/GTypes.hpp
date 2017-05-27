@@ -57,6 +57,9 @@ typedef struct kmRect {
     kmVec3 tl;
 } kmRect;
 
+kmRect kmRectMake(kmVec3 tl, kmVec3 br);
+bool kmRectInside(const kmRect* target,const kmRect* holder);
+
 /** A homogeneous four-dimensional vector. */
 /** A rotational quaternion */
 typedef struct kmQuaternion {

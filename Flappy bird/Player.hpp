@@ -18,6 +18,7 @@ class Player : public GameObject {
 public:
     Player();
     Player(Box body, int firstScore);
+    void jump();
     ~Player();
     
 private:

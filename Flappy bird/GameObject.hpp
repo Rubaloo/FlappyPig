@@ -35,6 +35,8 @@ protected:
 public:
     GameObject();
     GameObject(Box b);
+    bool outsideLeftLimits();
+    void moveTo(kmVec3 translation);
     virtual void update(float dt){};
     virtual void render(){};
     Box* getBox();

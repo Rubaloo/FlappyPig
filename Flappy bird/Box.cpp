@@ -9,21 +9,15 @@
 #include "Box.hpp"
 #include "GDirector.hpp"
 #include <cmath>
-#define K_GRAVITY 1.0
+#define K_GRAVITY 50.0
 
 Box::Box(){};
 Box::Box(kmVec3 position, kmSize s)
 {
-    // System cordinates change
-    GLfloat x = (position.x*ASPECT_RATIO)/SCREEN_WIDTH;
-    GLfloat y = (position.y)/SCREEN_HEIGHT;
-    center = kmVec3Make(x, y, 0);
+    center = kmVec3Make(position.x, position.y, 0);
     
     // Size change
-    GLfloat w = (s.w*ASPECT_RATIO)/SCREEN_WIDTH;
-    GLfloat h = s.h/SCREEN_HEIGHT;
-
-    size = kmSizeMake(w, h);
+    size = kmSizeMake(s.w, s.h);
     
     velocity = kmVec3Make(0, 0, 0);
     mass = 1;
@@ -88,7 +82,6 @@ kmSize Box::getSize(){
 void Box::applyImpulse(float force, kmVec3 direction)
 {
     kmVec3 impulseForce = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
-    
     momentForces.push_back(impulseForce);
 }
 
@@ -117,19 +110,12 @@ void Box::setCenter(kmVec3 c)
     center = c;
 }
 
-
-bool Box::moveTo(kmVec3 direction) {
-    return true;
-};
-
 bool Box::intersect(Box* gameObject) {
     
     kmVec3 a = gameObject->getCenter();
     kmVec3 b = center;
     kmSize aSize = gameObject->getSize();
     kmSize bSize = size;
-    
-    
     
     return (abs(a.x - b.x) * 2 < (aSize.w + bSize.w)) &&
     (abs(a.y - b.y) * 2 < (aSize.h + bSize.h));

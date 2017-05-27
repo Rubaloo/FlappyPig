@@ -25,20 +25,26 @@ void GameWorld::initLevel()
 
     //Add pipes
     
-    float numPipes = 20;
-    float offset = 200;
-    float space = 100;
+    float columnPipes = 10;
+    float offset = 250;
+    float space = 150;
+    float pipeVelocity = -100;
     float pipeWidth = 50;
     
-    for(int i = 0; i < numPipes; ++i) {
-        float uPipeHeight = rand() % 300 + 100;
+    
+    for(int i = 0; i < columnPipes; ++i) {
+        GLfloat pipeX = SCREEN_WIDTH * 1.5 + (offset*i);
+        //addColumnPipe(previousPipe, );
+        
+        
+    
+        float uPipeHeight = rand() % 200 + 100;
         float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - space;
-        GLfloat pipeX = SCREEN_WIDTH/2.0 + (offset*i) + pipeWidth/2.0;
         
         Box uPipeBox(kmVec3Make(pipeX, uPipeHeight/2.0, 0.0), kmSizeMake(pipeWidth, uPipeHeight));
-        uPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
-        Box dPipeBox(kmVec3Make(pipeX, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(pipeWidth, dPipeHeight));
-        dPipeBox.setVelocity(kmVec3Make(-0.3, 0, 0));
+       Box dPipeBox(kmVec3Make(pipeX, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(pipeWidth, dPipeHeight));
+        uPipeBox.setVelocity(kmVec3Make(pipeVelocity, 0, 0));
+        dPipeBox.setVelocity(kmVec3Make(pipeVelocity, 0, 0));
         
         Pipe* up = new Pipe(uPipeBox);
         Pipe* dp = new Pipe(dPipeBox);
@@ -52,10 +58,7 @@ void GameWorld::initLevel()
     
     //Add player
     // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
-    kmSize screen = GDirector::getInstance()->getWinSizeInPixels();
-    float x = screen.w/2.0;
-    float y = screen.h/2.0;
-    Box pBox(kmVec3Make(15, 15, 0.0), kmSizeMake(30, 30));
+    Box pBox(kmVec3Make(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0, 0.0), kmSizeMake(30, 30));
     pBox.enableGravity();
     bird = new Player(pBox, 0);
     gObjects.push_back(bird);
@@ -87,12 +90,22 @@ bool GameWorld::add(GameObject *gObject)
 
 void GameWorld::logic()
 {
+    for(int i = 0; i < pipes.size(); i+=2) {
+        Pipe* up = pipes[i];
+        Pipe* dp = pipes[i+1];
+        
+        if(up->outsideLeftLimits()) {
+            printf("outside left limits %i\n", i); //addPipes
+        }
+    }
+
+    
     for(int i = 0; i < messages.size(); ++i) {
         int messageId = messages.front();
         messages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird->getBox()->applyImpulse(20, kmVec3Make(0, -1, 0));
+                bird->jump();
                 break;
                 
             default:
@@ -100,11 +113,13 @@ void GameWorld::logic()
         }
     }
     
+    
     for(int i = 0; i < pipes.size(); ++i) {
         Box* pipeBox = pipes[i]->getBox();
         
         if(bird->getBox()->intersect(pipeBox)){
             running = false;
+            printf("HAS CHOCADO NOOOOOOOOB\n");
             //sendMessage(running);
         }
     

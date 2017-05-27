@@ -62,6 +62,20 @@ kmVec3 kmVec3Make(kmScalar x, kmScalar y, kmScalar z) {
     return v;
 }
 
+kmRect kmRectMake(const kmVec3* tl, const kmVec3* br) {
+    kmRect r;
+    r.bl = kmVec3Make(tl->x, br->y, 0);
+    r.br = *br;
+    r.tl = *tl;
+    r.tr = kmVec3Make(br->x, tl->y, 0);
+    return r;
+};
+
+bool kmRectInside(const kmRect* r1,const kmRect* r2){
+    return (r1->tl.x >= r2->tl.x) && (r1->br.x <= r2->br.x) &&
+    (r1->tl.y >= r2->tl.y) && (r1->br.y <= r2->br.y);
+}
+
 // Returns the length of the vector.
 kmScalar kmVec3Length(const kmVec3* pIn) {
     return sqrtf((pIn->x * pIn->x) + (pIn->y * pIn->y) + (pIn->z * pIn->z));

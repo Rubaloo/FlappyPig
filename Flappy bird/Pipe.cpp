@@ -15,8 +15,11 @@ Pipe::Pipe(Box body) :GameObject(body)
 {
     kmSize size = body.getSize();
     
-    GLfloat h2 = size.h/2.0;
-    GLfloat w2 = size.w/2.0;
+    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
+    GLfloat h = size.h/SCREEN_HEIGHT;
+
+    GLfloat h2 = h/2.0;
+    GLfloat w2 = w/2.0;
     
     glVertex modelVertexs[] = {
         {{-w2, h2, 0},{1,0,0,1}},
@@ -25,7 +28,7 @@ Pipe::Pipe(Box body) :GameObject(body)
         {{w2,-h2, 0},{1,0,0,1}}
     };
 
-    modelView.populateFromTranslation(body.getCenter());
+    moveTo(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
 }
@@ -35,7 +38,7 @@ Pipe::~Pipe(){};
 void Pipe::update(float dt)
 {
     kmVec3 nextPosition = body.update(dt);
-    modelView.populateFromTranslation(nextPosition);
+    moveTo(nextPosition);
 }
 
 void Pipe::render() {

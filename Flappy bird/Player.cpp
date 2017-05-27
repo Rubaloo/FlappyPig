@@ -13,8 +13,12 @@ Player::Player(Box body, int firstScore) : GameObject(body)
     kmSize size = body.getSize();
     score = firstScore;
     
-    GLfloat h2 = size.h/2.0;
-    GLfloat w2 = size.w/2.0;
+    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
+    GLfloat h = size.h/SCREEN_HEIGHT;
+
+    GLfloat h2 = h/2.0;
+    GLfloat w2 = w/2.0;
+    
     
     glVertex modelVertexs[] = {
         {{-w2, h2, 0},{1,0,0,1}},
@@ -23,18 +27,21 @@ Player::Player(Box body, int firstScore) : GameObject(body)
         {{w2,-h2, 0},{1,0,0,1}}
     };
     
-    modelView.populateFromTranslation(body.getCenter());
+    moveTo(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
 }
 
 Player::~Player(){};
 
-int i = 0;
+void Player::jump() {
+    body.setVelocity(kmVec3Make(0, 0, 0));
+    body.applyImpulse(35, kmVec3Make(0, -1, 0));
+}
 void Player::update(float dt)
 {
     kmVec3 nextPosition = body.update(dt);
-    modelView.populateFromTranslation(nextPosition);
+    moveTo(nextPosition);
 }
 
 void Player::render() {

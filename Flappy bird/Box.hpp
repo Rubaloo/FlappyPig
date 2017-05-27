@@ -20,7 +20,6 @@ public:
     Box();
     Box(kmVec3 center, kmSize size);
     
-    bool moveTo(kmVec3 direction);
     bool intersect(Box* gameObject);
     
     kmRect getRect();
