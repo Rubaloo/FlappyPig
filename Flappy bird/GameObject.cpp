@@ -26,6 +26,11 @@ bool GameObject::outsideLeftLimits()
     return (rect.tl.x + size.w) < 0;
 };
 
+bool GameObject::intersect(GameObject* object)
+{
+    return body.intersect(object->getBox());
+}
+
 void GameObject::moveTo(kmVec3 translation)
 {
     // System cordinates change
