@@ -28,6 +28,7 @@
 		4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF9B1ED0ACBC00BBE43F /* Player.cpp */; };
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
 		451FA0181ED76C3E00FAAC48 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451FA0161ED76C3E00FAAC48 /* Pipe.cpp */; };
+		452C01171EDA945D0057BEAA /* PipeColumn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01151EDA945D0057BEAA /* PipeColumn.cpp */; };
 		45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C211ED5F41D0073C63A /* Receiver.cpp */; };
 		45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C241ED5F42B0073C63A /* PostMan.cpp */; };
 		45471C291ED602700073C63A /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C271ED602700073C63A /* MessageManager.cpp */; };
@@ -76,6 +77,8 @@
 		4501FFAB1ED204EE00BBE43F /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
 		451FA0161ED76C3E00FAAC48 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
 		451FA0171ED76C3E00FAAC48 /* Pipe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pipe.hpp; sourceTree = "<group>"; };
+		452C01151EDA945D0057BEAA /* PipeColumn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PipeColumn.cpp; sourceTree = "<group>"; };
+		452C01161EDA945D0057BEAA /* PipeColumn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PipeColumn.hpp; sourceTree = "<group>"; };
 		45471C211ED5F41D0073C63A /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
 		45471C221ED5F41D0073C63A /* Receiver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Receiver.hpp; sourceTree = "<group>"; };
 		45471C241ED5F42B0073C63A /* PostMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostMan.cpp; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				452C01151EDA945D0057BEAA /* PipeColumn.cpp */,
+				452C01161EDA945D0057BEAA /* PipeColumn.hpp */,
 				451FA0161ED76C3E00FAAC48 /* Pipe.cpp */,
 				451FA0171ED76C3E00FAAC48 /* Pipe.hpp */,
 				45471C271ED602700073C63A /* MessageManager.cpp */,
@@ -274,6 +279,7 @@
 				45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
 				45471C291ED602700073C63A /* MessageManager.cpp in Sources */,
+				452C01171EDA945D0057BEAA /* PipeColumn.cpp in Sources */,
 				4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */,
 				4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */,
 				4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */,

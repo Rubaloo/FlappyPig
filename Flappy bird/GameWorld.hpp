@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "Renderer.hpp"
+#include "PipeColumn.hpp"
 #include "Player.hpp"
 #include "Pipe.hpp"
 #include "Receiver.hpp"
@@ -25,12 +26,11 @@ class GameWorld : public Receiver {
     
 private:
     Player* bird;
-    vector<Pipe*> pipes;
+    vector<PipeColumn*> cPipes;
     
     float gravity;
     MessageManager* mm;
     Renderer* painter;
-    vector<GameObject*> gObjects;
     queue<int> messages;
     
     void handleMessage(int msg);

@@ -18,10 +18,9 @@ public:
     Pipe();
     Pipe(Box body);
     ~Pipe();
-    
-private:
     void update(float dt);
     void render();
+private:
     int heigth;
 };
 #endif /* Pipe_hpp */

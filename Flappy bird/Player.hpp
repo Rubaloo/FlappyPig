@@ -17,13 +17,14 @@
 class Player : public GameObject {
 public:
     Player();
+    ~Player();
     Player(Box body, int firstScore);
     void jump();
-    ~Player();
-    
-private:
     void render();
     void update(float dt);
+    
+private:
+    
     int score;
 };
 

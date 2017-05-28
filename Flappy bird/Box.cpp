@@ -117,6 +117,5 @@ bool Box::intersect(Box* gameObject) {
     kmSize aSize = gameObject->getSize();
     kmSize bSize = size;
     
-    return (abs(a.x - b.x) * 2 < (aSize.w + bSize.w)) &&
-    (abs(a.y - b.y) * 2 < (aSize.h + bSize.h));
+    return (abs(a.x - b.x) * 2 < (aSize.w + bSize.w)) && (abs(a.y - b.y) * 2 < (aSize.h + bSize.h));
 };

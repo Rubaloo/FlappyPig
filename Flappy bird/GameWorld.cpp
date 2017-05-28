@@ -21,39 +21,14 @@ GameWorld::GameWorld(float gGravity)
 
 void GameWorld::initLevel()
 {
-    
-
     //Add pipes
-    
     float columnPipes = 10;
     float offset = 250;
-    float space = 150;
-    float pipeVelocity = -100;
-    float pipeWidth = 50;
-    
     
     for(int i = 0; i < columnPipes; ++i) {
         GLfloat pipeX = SCREEN_WIDTH * 1.5 + (offset*i);
-        //addColumnPipe(previousPipe, );
-        
-        
-    
-        float uPipeHeight = rand() % 200 + 100;
-        float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - space;
-        
-        Box uPipeBox(kmVec3Make(pipeX, uPipeHeight/2.0, 0.0), kmSizeMake(pipeWidth, uPipeHeight));
-       Box dPipeBox(kmVec3Make(pipeX, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(pipeWidth, dPipeHeight));
-        uPipeBox.setVelocity(kmVec3Make(pipeVelocity, 0, 0));
-        dPipeBox.setVelocity(kmVec3Make(pipeVelocity, 0, 0));
-        
-        Pipe* up = new Pipe(uPipeBox);
-        Pipe* dp = new Pipe(dPipeBox);
-        
-        gObjects.push_back(up);
-        gObjects.push_back(dp);
-        
-        pipes.push_back(up);
-        pipes.push_back(dp);
+        PipeColumn* pc = new PipeColumn(pipeX);
+        cPipes.push_back(pc);
     }
     
     //Add player
@@ -61,8 +36,6 @@ void GameWorld::initLevel()
     Box pBox(kmVec3Make(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0, 0.0), kmSizeMake(30, 30));
     pBox.enableGravity();
     bird = new Player(pBox, 0);
-    gObjects.push_back(bird);
-
 }
 
 GameWorld::~GameWorld()
@@ -77,24 +50,24 @@ void GameWorld::render()
     
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-    for(int i = 0; i < gObjects.size(); ++i) {
-        gObjects[i]->render();
+    bird->render();
+    for(int i = 0; i < cPipes.size(); ++i) {
+        cPipes[i]->render();
     }
 }
 
 bool GameWorld::add(GameObject *gObject)
 {
-    gObjects.push_back(gObject);
+    //gObjects.push_back(gObject);
     return true;
 }
 
 void GameWorld::logic()
 {
-    for(int i = 0; i < pipes.size(); i+=2) {
-        Pipe* up = pipes[i];
-        Pipe* dp = pipes[i+1];
-        
-        if(up->outsideLeftLimits()) {
+    for(int i = 0; i < cPipes.size(); i+=2) {
+        PipeColumn* pc = cPipes[i];
+    
+        if(pc->outsideLeftLimits()) {
             printf("outside left limits %i\n", i); //addPipes
         }
     }
@@ -114,10 +87,10 @@ void GameWorld::logic()
     }
     
     
-    for(int i = 0; i < pipes.size(); ++i) {
-        Box* pipeBox = pipes[i]->getBox();
+    for(int i = 0; i < cPipes.size(); ++i) {
+        PipeColumn* pc = cPipes[i];
         
-        if(bird->getBox()->intersect(pipeBox)){
+        if(pc->intersect(bird)){
             running = false;
             printf("HAS CHOCADO NOOOOOOOOB\n");
             //sendMessage(running);
@@ -129,8 +102,9 @@ void GameWorld::logic()
 
 void GameWorld::update(float dt)
 {
-    for(int i = 0; i < gObjects.size(); ++i) {
-        gObjects[i]->update(dt);
+    bird->update(dt);
+    for(int i = 0; i < cPipes.size(); ++i) {
+        cPipes[i]->update(dt);
     }
 }
 

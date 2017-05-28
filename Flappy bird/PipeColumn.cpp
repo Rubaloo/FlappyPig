@@ -26,7 +26,7 @@ PipeColumn::PipeColumn(int xCenter) {
 
 bool PipeColumn::intersect(GameObject* gObject)
 {
-    return (up->intersect(gObject)) && (down->intersect(gObject));
+    return (up->intersect(gObject)) || (down->intersect(gObject));
 }
 
 void PipeColumn::update(float dt)
