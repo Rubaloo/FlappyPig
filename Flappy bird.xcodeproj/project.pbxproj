@@ -14,8 +14,8 @@
 		4501FF4E1ECFBE4400BBE43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF4D1ECFBE4400BBE43F /* Assets.xcassets */; };
 		4501FF511ECFBE4400BBE43F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF4F1ECFBE4400BBE43F /* LaunchScreen.storyboard */; };
 		4501FF5A1ECFBEA200BBE43F /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF591ECFBEA200BBE43F /* OpenGLView.mm */; };
-		4501FF5D1ECFBF8500BBE43F /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */; };
-		4501FF5E1ECFBF8500BBE43F /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */; };
+		4501FF5D1ECFBF8500BBE43F /* PipeFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5B1ECFBF8500BBE43F /* PipeFragment.glsl */; };
+		4501FF5E1ECFBF8500BBE43F /* PipeVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4501FF5C1ECFBF8500BBE43F /* PipeVertex.glsl */; };
 		4501FF681ECFBFA700BBE43F /* GLMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */; };
 		4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF611ECFBFA700BBE43F /* GTypes.cpp */; };
 		4501FF881ED06DF400BBE43F /* IO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF871ED06DF400BBE43F /* IO.mm */; };
@@ -29,6 +29,8 @@
 		4501FFAC1ED204EE00BBE43F /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FFAA1ED204EE00BBE43F /* Box.cpp */; };
 		451FA0181ED76C3E00FAAC48 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451FA0161ED76C3E00FAAC48 /* Pipe.cpp */; };
 		452C01171EDA945D0057BEAA /* PipeColumn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01151EDA945D0057BEAA /* PipeColumn.cpp */; };
+		452C011A1EDB2FA30057BEAA /* BirdFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01181EDB2FA30057BEAA /* BirdFragment.glsl */; };
+		452C011B1EDB2FA30057BEAA /* BirdVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01191EDB2FA30057BEAA /* BirdVertex.glsl */; };
 		45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C211ED5F41D0073C63A /* Receiver.cpp */; };
 		45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C241ED5F42B0073C63A /* PostMan.cpp */; };
 		45471C291ED602700073C63A /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45471C271ED602700073C63A /* MessageManager.cpp */; };
@@ -50,8 +52,8 @@
 		4501FF521ECFBE4400BBE43F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4501FF581ECFBEA200BBE43F /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
 		4501FF591ECFBEA200BBE43F /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
-		4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
-		4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
+		4501FF5B1ECFBF8500BBE43F /* PipeFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PipeFragment.glsl; sourceTree = "<group>"; };
+		4501FF5C1ECFBF8500BBE43F /* PipeVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PipeVertex.glsl; sourceTree = "<group>"; };
 		4501FF5F1ECFBFA700BBE43F /* GLMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLMatrix.cpp; sourceTree = "<group>"; };
 		4501FF601ECFBFA700BBE43F /* GLMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLMatrix.hpp; sourceTree = "<group>"; };
 		4501FF611ECFBFA700BBE43F /* GTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GTypes.cpp; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		451FA0171ED76C3E00FAAC48 /* Pipe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pipe.hpp; sourceTree = "<group>"; };
 		452C01151EDA945D0057BEAA /* PipeColumn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PipeColumn.cpp; sourceTree = "<group>"; };
 		452C01161EDA945D0057BEAA /* PipeColumn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PipeColumn.hpp; sourceTree = "<group>"; };
+		452C01181EDB2FA30057BEAA /* BirdFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BirdFragment.glsl; sourceTree = "<group>"; };
+		452C01191EDB2FA30057BEAA /* BirdVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BirdVertex.glsl; sourceTree = "<group>"; };
 		45471C211ED5F41D0073C63A /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
 		45471C221ED5F41D0073C63A /* Receiver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Receiver.hpp; sourceTree = "<group>"; };
 		45471C241ED5F42B0073C63A /* PostMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostMan.cpp; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 		4501FF401ECFBE4400BBE43F /* Flappy bird */ = {
 			isa = PBXGroup;
 			children = (
+				452C01181EDB2FA30057BEAA /* BirdFragment.glsl */,
+				452C01191EDB2FA30057BEAA /* BirdVertex.glsl */,
 				452C01151EDA945D0057BEAA /* PipeColumn.cpp */,
 				452C01161EDA945D0057BEAA /* PipeColumn.hpp */,
 				451FA0161ED76C3E00FAAC48 /* Pipe.cpp */,
@@ -152,8 +158,8 @@
 				4501FF601ECFBFA700BBE43F /* GLMatrix.hpp */,
 				4501FF611ECFBFA700BBE43F /* GTypes.cpp */,
 				4501FF621ECFBFA700BBE43F /* GTypes.hpp */,
-				4501FF5B1ECFBF8500BBE43F /* SimpleFragment.glsl */,
-				4501FF5C1ECFBF8500BBE43F /* SimpleVertex.glsl */,
+				4501FF5B1ECFBF8500BBE43F /* PipeFragment.glsl */,
+				4501FF5C1ECFBF8500BBE43F /* PipeVertex.glsl */,
 				4501FF441ECFBE4400BBE43F /* AppDelegate.h */,
 				4501FF451ECFBE4400BBE43F /* AppDelegate.m */,
 				4501FF471ECFBE4400BBE43F /* ViewController.h */,
@@ -245,9 +251,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452C011A1EDB2FA30057BEAA /* BirdFragment.glsl in Resources */,
 				4501FF511ECFBE4400BBE43F /* LaunchScreen.storyboard in Resources */,
-				4501FF5D1ECFBF8500BBE43F /* SimpleFragment.glsl in Resources */,
-				4501FF5E1ECFBF8500BBE43F /* SimpleVertex.glsl in Resources */,
+				4501FF5D1ECFBF8500BBE43F /* PipeFragment.glsl in Resources */,
+				452C011B1EDB2FA30057BEAA /* BirdVertex.glsl in Resources */,
+				4501FF5E1ECFBF8500BBE43F /* PipeVertex.glsl in Resources */,
 				4501FF4E1ECFBE4400BBE43F /* Assets.xcassets in Resources */,
 				4501FF4C1ECFBE4400BBE43F /* Main.storyboard in Resources */,
 			);

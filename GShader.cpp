@@ -20,7 +20,7 @@ GLuint GShader::getID() {
 };
 
 void GShader::loadAll() {
-    BIRD = new GShader("SimpleVertex", "SimpleFragment");
+    BIRD = new GShader("BirdVertex", "BirdFragment");
 }
 
 GLuint GShader::getUniform(string name) {

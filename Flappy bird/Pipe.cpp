@@ -28,7 +28,7 @@ Pipe::Pipe(Box body) :GameObject(body)
         {{w2,-h2, 0},{1,0,0,1}}
     };
 
-    moveTo(body.getCenter());
+    modelView.populateIdentity();
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
 }
@@ -38,6 +38,8 @@ Pipe::~Pipe(){};
 void Pipe::update(float dt)
 {
     kmVec3 nextPosition = body.update(dt);
+    kmVec3 translation = modelView.getTranslation();
+    body.setCenter(kmVec3Add(translation, body.getCenter()));
     moveTo(nextPosition);
 }
 
@@ -49,9 +51,12 @@ void Pipe::render() {
     GShader::BIRD->enable();
     GShader::BIRD->enableVertexAttribute("Position");
     GShader::BIRD->enableVertexAttribute("SourceColor");
-    GShader::BIRD->setUniform4f("ModelView", modelView.matrix());
+    kmMat4 gMatrix;
+    modelView.gMatrix(&gMatrix);
+    GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
     GShader::BIRD->setUniform4f("Projection", projection.matrix());
     modelMesh->render();
+    resetModelView();
     GShader::BIRD->disable();
     
     

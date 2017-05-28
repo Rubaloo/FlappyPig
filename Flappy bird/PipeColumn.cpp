@@ -31,13 +31,26 @@ bool PipeColumn::intersect(GameObject* gObject)
 
 void PipeColumn::update(float dt)
 {
-    up->update(dt);
-    down->update(dt);
+    //if(!outsideLeftLimits()) {
+        up->update(dt);
+        down->update(dt);
+    //}
+}
+
+Pipe* PipeColumn::getUpPipe()
+{
+    return up;
 }
 
 bool PipeColumn::outsideLeftLimits()
 {
     return up->outsideLeftLimits() || down->outsideLeftLimits();
+}
+
+void PipeColumn::moveTo(float xTranslation)
+{
+    up->moveTo(kmVec3Make(xTranslation, 0, 0));
+    down->moveTo(kmVec3Make(xTranslation, 0, 0));
 }
 
 void PipeColumn::render() {

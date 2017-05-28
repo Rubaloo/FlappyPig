@@ -39,6 +39,7 @@ public:
     GameWorld(float gravity);
     ~GameWorld();
     
+    PipeColumn* lastPc;
     bool add(GameObject *gObject);
     bool running;
     

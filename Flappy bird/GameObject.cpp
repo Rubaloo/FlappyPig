@@ -34,8 +34,9 @@ bool GameObject::intersect(GameObject* object)
 void GameObject::moveTo(kmVec3 translation)
 {
     // System cordinates change
-    GLfloat dx = (translation.x*ASPECT_RATIO)/SCREEN_WIDTH;
-    GLfloat dy = (translation.y)/SCREEN_HEIGHT;
-    GLfloat dz = 0.0;
-    modelView.populateFromTranslation(kmVec3Make(dx, dy, dz));
+    modelView.addTranslation(translation);
+}
+
+void GameObject::resetModelView() {
+    modelView.populateIdentity();
 }

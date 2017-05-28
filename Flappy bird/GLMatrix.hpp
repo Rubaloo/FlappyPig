@@ -18,6 +18,7 @@ class GLMatrix {
 
 public:
     GLfloat* matrix();
+    void gMatrix(kmMat4* mat);
     void populateOrtho(GLfloat left,
                        GLfloat right,
                        GLfloat bottom,
@@ -26,10 +27,14 @@ public:
                        GLfloat far);
     
     void populateFromTranslation(kmVec3 translation);
+    void addTranslation(kmVec3 translation);
+    kmVec3 getTranslation();
+    
+    void populateIdentity();
     
 private:
+    bool initialized = false;
     kmMat4 glMatrix;
-    void populateIdentity();
 };
 
 

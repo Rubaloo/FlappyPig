@@ -39,7 +39,7 @@ public:
     bool outsideLeftLimits();
     bool intersect(GameObject* object);
     void moveTo(kmVec3 translation);
-    
+    void resetModelView();
     virtual void update(float dt){};
     virtual void render(){};
     Box* getBox();

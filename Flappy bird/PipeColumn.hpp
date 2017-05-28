@@ -24,9 +24,11 @@ public:
     PipeColumn();
     PipeColumn(int xCenter);
     
+    Pipe* getUpPipe();
     bool outsideLeftLimits();
     bool intersect(GameObject* gObject);
     void update(float dt);
+    void moveTo(float xPosition);
     void render();
 };
 #endif /* PipeColumn_hpp */

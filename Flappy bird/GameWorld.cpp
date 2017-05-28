@@ -10,6 +10,8 @@
 #include "Pipe.hpp"
 #include <stdlib.h>
 
+#define K_PIPES_COLUMNS_NUMBER 100
+#define K_PIPES_OFFSET 250
 #define SCREEN_TOUCH 0
 
 GameWorld::GameWorld(float gGravity)
@@ -22,11 +24,10 @@ GameWorld::GameWorld(float gGravity)
 void GameWorld::initLevel()
 {
     //Add pipes
-    float columnPipes = 10;
-    float offset = 250;
+    float columnPipes = K_PIPES_COLUMNS_NUMBER;
     
     for(int i = 0; i < columnPipes; ++i) {
-        GLfloat pipeX = SCREEN_WIDTH * 1.5 + (offset*i);
+        GLfloat pipeX = SCREEN_WIDTH * 1.5 + (K_PIPES_OFFSET*i);
         PipeColumn* pc = new PipeColumn(pipeX);
         cPipes.push_back(pc);
     }
@@ -64,10 +65,18 @@ bool GameWorld::add(GameObject *gObject)
 
 void GameWorld::logic()
 {
+    //bird->resetModelView();
     for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
-    
         if(pc->outsideLeftLimits()) {
+            if(!lastPc) lastPc = cPipes[cPipes.size()-1];
+            float offset = 0;
+            offset = lastPc->getUpPipe()->getBox()->getCenter().x + K_PIPES_OFFSET;
+            
+            Pipe*up = pc->getUpPipe();
+            kmVec3 next = up->getBox()->getCenter();
+            pc->moveTo(next.x + offset);
+            lastPc = (PipeColumn*)cPipes[i];
             printf("outside left limits %i\n", i); //addPipes
         }
     }

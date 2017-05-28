@@ -26,7 +26,7 @@ Player::Player(Box body, int firstScore) : GameObject(body)
         {{-w2, -h2, 0},{0,0,1,1}},
         {{w2,-h2, 0},{1,0,0,1}}
     };
-    
+    modelView.populateIdentity();
     moveTo(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
@@ -52,9 +52,12 @@ void Player::render() {
     GShader::BIRD->enable();
     GShader::BIRD->enableVertexAttribute("Position");
     GShader::BIRD->enableVertexAttribute("SourceColor");
-    GShader::BIRD->setUniform4f("ModelView", modelView.matrix());
+    kmMat4 gMatrix;
+    modelView.gMatrix(&gMatrix);
+    GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
     GShader::BIRD->setUniform4f("Projection", projection.matrix());
     modelMesh->render();
+    resetModelView();
     GShader::BIRD->disable();
     
 
