@@ -48,16 +48,16 @@ void Pipe::render() {
     GLMatrix projection;
     projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
     
-    GShader::BIRD->enable();
-    GShader::BIRD->enableVertexAttribute("Position");
-    GShader::BIRD->enableVertexAttribute("SourceColor");
+    GShader::PIPE->enable();
+    GShader::PIPE->enableVertexAttribute("Position");
+    GShader::PIPE->enableVertexAttribute("SourceColor");
     kmMat4 gMatrix;
     modelView.gMatrix(&gMatrix);
-    GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
-    GShader::BIRD->setUniform4f("Projection", projection.matrix());
+    GShader::PIPE->setUniform4f("ModelView", gMatrix.mat);
+    GShader::PIPE->setUniform4f("Projection", projection.matrix());
     modelMesh->render();
     resetModelView();
-    GShader::BIRD->disable();
+    GShader::PIPE->disable();
     
     
 };

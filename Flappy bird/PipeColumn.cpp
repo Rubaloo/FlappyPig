@@ -31,10 +31,8 @@ bool PipeColumn::intersect(GameObject* gObject)
 
 void PipeColumn::update(float dt)
 {
-    //if(!outsideLeftLimits()) {
-        up->update(dt);
-        down->update(dt);
-    //}
+    up->update(dt);
+    down->update(dt);
 }
 
 Pipe* PipeColumn::getUpPipe()

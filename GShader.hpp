@@ -27,6 +27,7 @@ class GShader {
 public:
     GShader(string vertex, string fragment);
     static GShader* BIRD;
+    static GShader* PIPE;
     static void loadAll();
     
     GLuint getUniform(string name);

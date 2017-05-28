@@ -9,6 +9,7 @@
 #include "GShader.hpp"
 
 GShader* GShader::BIRD;
+GShader* GShader::PIPE;
 
 GShader::GShader(string vertexName, string fragmentName) {
     enabled = false;
@@ -21,6 +22,7 @@ GLuint GShader::getID() {
 
 void GShader::loadAll() {
     BIRD = new GShader("BirdVertex", "BirdFragment");
+    PIPE = new GShader("PipeVertex", "PipeFragment");
 }
 
 GLuint GShader::getUniform(string name) {
