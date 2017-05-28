@@ -57,6 +57,11 @@ void GShader::setUniform1f(string name, GLfloat f) {
     glUniform1f(getUniform(name), f);
 }
 
+void GShader::setUniform2f(string name, GLfloat x, GLfloat y) {
+    if (!enabled) enable();
+    glUniform2f(getUniform(name), x, y);
+}
+
 void GShader::setUniform3f(string name, kmVec3 vector) {
     if (!enabled) enable();
     glUniform3f(getUniform(name), vector.x, vector.y, vector.z);
