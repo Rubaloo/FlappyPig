@@ -35,6 +35,11 @@ void PipeColumn::update(float dt)
     down->update(dt);
 }
 
+bool PipeColumn::outsideLeftLimits()
+{
+    return up->outsideLeftLimits() || down->outsideLeftLimits();
+}
+
 void PipeColumn::render() {
     up->render();
     down->render();

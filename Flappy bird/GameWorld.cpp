@@ -64,7 +64,7 @@ bool GameWorld::add(GameObject *gObject)
 
 void GameWorld::logic()
 {
-    for(int i = 0; i < cPipes.size(); i+=2) {
+    for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
     
         if(pc->outsideLeftLimits()) {
@@ -86,13 +86,11 @@ void GameWorld::logic()
         }
     }
     
-    
     for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
-        
         if(pc->intersect(bird)){
             running = false;
-            printf("HAS CHOCADO NOOOOOOOOB\n");
+            //printf("HAS CHOCADO NOOOOOOOOB\n");
             //sendMessage(running);
         }
     

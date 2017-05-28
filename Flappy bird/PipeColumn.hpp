@@ -24,6 +24,7 @@ public:
     PipeColumn();
     PipeColumn(int xCenter);
     
+    bool outsideLeftLimits();
     bool intersect(GameObject* gObject);
     void update(float dt);
     void render();
