@@ -56,6 +56,9 @@ void Player::render() {
     modelView.gMatrix(&gMatrix);
     GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
     GShader::BIRD->setUniform4f("Projection", projection.matrix());
+    GShader::BIRD->setUniform1f("ScreenWidth", SCREEN_WIDTH);
+    GShader::BIRD->setUniform1f("ScreenHeight", SCREEN_HEIGHT);
+    GShader::BIRD->setUniform1f("radius", 15.0);
     modelMesh->render();
     resetModelView();
     GShader::BIRD->disable();

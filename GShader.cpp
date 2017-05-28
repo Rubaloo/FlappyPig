@@ -52,6 +52,11 @@ void GShader::enableVertexAttribute(string name)
     glEnableVertexAttribArray(getAttribute(name));
 }
 
+void GShader::setUniform1f(string name, GLfloat f) {
+    if (!enabled) enable();
+    glUniform1f(getUniform(name), f);
+}
+
 void GShader::setUniform3f(string name, kmVec3 vector) {
     if (!enabled) enable();
     glUniform3f(getUniform(name), vector.x, vector.y, vector.z);

@@ -19,6 +19,7 @@ GameWorld::GameWorld(float gGravity)
     GShader::loadAll();
     gravity = gGravity;
     mm = new MessageManager();
+    printf("W: %f, H:%f", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void GameWorld::initLevel()
@@ -42,6 +43,7 @@ void GameWorld::initLevel()
 GameWorld::~GameWorld()
 {
     GShader::loadAll();
+    printf("Width: %f, Height: %f", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void GameWorld::render()
@@ -53,7 +55,7 @@ void GameWorld::render()
     
     bird->render();
     for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i]->render();
+        //cPipes[i]->render();
     }
 }
 
@@ -77,7 +79,7 @@ void GameWorld::logic()
             kmVec3 next = up->getBox()->getCenter();
             pc->moveTo(next.x + offset);
             lastPc = (PipeColumn*)cPipes[i];
-            printf("outside left limits %i\n", i); //addPipes
+            //printf("outside left limits %i\n", i); //addPipes
         }
     }
 
@@ -111,7 +113,7 @@ void GameWorld::update(float dt)
 {
     bird->update(dt);
     for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i]->update(dt);
+        //cPipes[i]->update(dt);
     }
 }
 

@@ -34,6 +34,8 @@ public:
     GLuint getAttribute(string name);
 
     GLuint getID();
+    
+    void setUniform1f(string name, GLfloat f);
     void setUniform3f(string name, kmVec3 vector);
     void setUniform4f(string name, GLfloat* matrix);
     void enableVertexAttribute(string name);
