@@ -19,7 +19,6 @@ GameWorld::GameWorld(float gGravity)
     GShader::loadAll();
     gravity = gGravity;
     mm = new MessageManager();
-    printf("W: %f, H:%f", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void GameWorld::initLevel()
@@ -35,8 +34,8 @@ void GameWorld::initLevel()
     
     //Add player
     // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
-    Box pBox(kmVec3Make(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0, 0.0), kmSizeMake(30, 30));
-    //pBox.enableGravity();
+    Box pBox(kmVec3Make(160, 100, 0), kmSizeMake(30, 30), CIRCULAR_SHAPE);
+    pBox.enableGravity();
     bird = new Player(pBox, 0);
 }
 
@@ -55,7 +54,7 @@ void GameWorld::render()
     
     bird->render();
     for(int i = 0; i < cPipes.size(); ++i) {
-        //cPipes[i]->render();
+        cPipes[i]->render();
     }
 }
 
@@ -101,7 +100,7 @@ void GameWorld::logic()
         PipeColumn* pc = cPipes[i];
         if(pc->intersect(bird)){
             running = false;
-            //printf("HAS CHOCADO NOOOOOOOOB\n");
+            printf("HAS CHOCADO NOOOOOOOOB\n");
             //sendMessage(running);
         }
     
@@ -113,7 +112,7 @@ void GameWorld::update(float dt)
 {
     bird->update(dt);
     for(int i = 0; i < cPipes.size(); ++i) {
-        //cPipes[i]->update(dt);
+        cPipes[i]->update(dt);
     }
 }
 

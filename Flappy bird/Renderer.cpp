@@ -80,7 +80,6 @@ void Renderer::render(vector<GameObject*> objects)
     //Gather objects vertexs
     vector<glVertex> vertexs;
     
-
     kmSize screenSize = GDirector::getInstance()->getWinSizeInPixels();
     
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);

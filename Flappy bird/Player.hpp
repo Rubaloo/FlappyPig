@@ -19,6 +19,7 @@ public:
     Player();
     ~Player();
     Player(Box body, int firstScore);
+    int getShape();
     void jump();
     void render();
     void update(float dt);

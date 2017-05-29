@@ -1,18 +1,14 @@
 varying lowp vec4 DestinationColor;
-precision mediump float;
+precision highp float;
 
-uniform float ScreenWidth;
-uniform float ScreenHeight;
+uniform float xPosition;
+uniform float yPosition;
 uniform float radius;
 
 void main(void) {
     gl_FragColor = DestinationColor;
-    
-    vec2 center = vec2(ScreenWidth/2.0, ScreenHeight/2.0);
-    float x = (gl_FragCoord.x - center.x);
-    float y = (gl_FragCoord.y - center.y);
-    float d = sqrt(x*x + y*y);
-    if(d > radius) {
+    float d2 = distance(gl_FragCoord.xy, vec2(xPosition, yPosition));
+    if(d2 > radius) {
         discard;
     }
 }

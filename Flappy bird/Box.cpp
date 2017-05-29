@@ -9,15 +9,16 @@
 #include "Box.hpp"
 #include "GDirector.hpp"
 #include <cmath>
-#define K_GRAVITY 50.0
+#define K_GRAVITY 300.0
 
 Box::Box(){};
-Box::Box(kmVec3 position, kmSize s)
+Box::Box(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
 {
-    center = kmVec3Make(position.x, position.y, 0);
+    shape = _shape;
+    center = kmVec3Make(_center.x, _center.y, 0);
     
     // Size change
-    size = kmSizeMake(s.w, s.h);
+    size = kmSizeMake(_size.w, _size.h);
     
     velocity = kmVec3Make(0, 0, 0);
     mass = 1;
@@ -79,6 +80,10 @@ kmSize Box::getSize(){
     return size;
 }
 
+int Box::getShape() {
+    return shape;
+}
+
 void Box::applyImpulse(float force, kmVec3 direction)
 {
     kmVec3 impulseForce = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
@@ -100,7 +105,6 @@ kmVec3 Box::update(float dt)
     kmVec3 step = kmVec3Make(velocity.x * dt, velocity.y * dt, velocity.z * dt);
     nextPosition = kmVec3Make(center.x + step.x, center.y + step.y, center.z + step.z);
     setCenter(nextPosition);
-    //printf("next position: %f x %f y %fz \n", step.x, step.y, step.z);
     
     return nextPosition;
 }
@@ -112,10 +116,37 @@ void Box::setCenter(kmVec3 c)
 
 bool Box::intersect(Box* gameObject) {
     
-    kmVec3 a = gameObject->getCenter();
-    kmVec3 b = center;
-    kmSize aSize = gameObject->getSize();
-    kmSize bSize = size;
-    
-    return (abs(a.x - b.x) * 2 < (aSize.w + bSize.w)) && (abs(a.y - b.y) * 2 < (aSize.h + bSize.h));
+    bool intersect = false;
+    if(gameObject->getShape() == SQUARE_SHAPE &&
+       shape == SQUARE_SHAPE) {
+        kmVec3 a = gameObject->getCenter();
+        kmVec3 b = center;
+        kmSize aSize = gameObject->getSize();
+        kmSize bSize = size;
+        intersect = (abs(a.x - b.x)*2 < (aSize.w + bSize.w)) && (abs(a.y - b.y)*2 < (aSize.h + bSize.h));
+    }
+    else if (shape == SQUARE_SHAPE &&
+             gameObject->getShape() == CIRCULAR_SHAPE){
+        intersect = true;
+        kmSize circleSize = gameObject->getSize();
+        kmVec3 circleCenter = gameObject->getCenter();
+        kmSize rectSize = size;
+        kmVec3 rectCenter = center;
+        
+        float circleDistanceX = abs(circleCenter.x - rectCenter.x);
+        float circleDistanceY = abs(circleCenter.y - rectCenter.y);
+        
+        if (circleDistanceX > (rectSize.w/2.0 + circleSize.w/2.0)) { return false; }
+        if (circleDistanceY > (rectSize.h/2.0 + circleSize.h/2.0)) { return false; }
+        
+        if (circleDistanceX <= (rectSize.w/2.0)) { return true; }
+        if (circleDistanceY <= (rectSize.h/2.0)) { return true; }
+        
+        float cornerDistance_sq = pow((circleDistanceX - rectSize.w/2),2) +
+        pow((circleDistanceY - rectSize.h/2),2);
+        
+        intersect = (cornerDistance_sq <= pow(circleSize.w/2.0,2));
+        printf("Intersect: %i\n", intersect);
+    }
+    return intersect;
 };

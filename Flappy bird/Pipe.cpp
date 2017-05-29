@@ -29,6 +29,7 @@ Pipe::Pipe(Box body) :GameObject(body)
     };
 
     modelView.populateIdentity();
+    move(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new VertexArray(modelVertexs, modelIndexs);
 }
@@ -51,9 +52,11 @@ void Pipe::render() {
     GShader::PIPE->enable();
     GShader::PIPE->enableVertexAttribute("Position");
     GShader::PIPE->enableVertexAttribute("SourceColor");
+    
     kmMat4 gMatrix;
     modelView.gMatrix(&gMatrix);
     GShader::PIPE->setUniform4f("ModelView", gMatrix.mat);
+    
     GShader::PIPE->setUniform4f("Projection", projection.matrix());
     modelMesh->render();
     resetModelView();
