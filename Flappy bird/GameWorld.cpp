@@ -18,7 +18,7 @@ GameWorld::GameWorld(float gGravity)
 {
     GShader::loadAll();
     gravity = gGravity;
-    mm = new MessageManager();
+    mm = new GInputManager();
     end = false;
     lastPipeColumnX = -1;
 }

@@ -24,7 +24,7 @@
 		452C01891EDE0E400057BEAA /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01791EDE0E400057BEAA /* GDirector.cpp */; };
 		452C018A1EDE0E400057BEAA /* GShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C017B1EDE0E400057BEAA /* GShaderUtils.cpp */; };
 		452C018E1EDE0E7B0057BEAA /* IO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 452C018D1EDE0E7B0057BEAA /* IO.mm */; };
-		452C01931EDE0F100057BEAA /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01911EDE0F100057BEAA /* MessageManager.cpp */; };
+		452C01931EDE0F100057BEAA /* GInputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01911EDE0F100057BEAA /* GInputManager.cpp */; };
 		452C01991EDE0F750057BEAA /* PostMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01951EDE0F750057BEAA /* PostMan.cpp */; };
 		452C019A1EDE0F750057BEAA /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01971EDE0F750057BEAA /* Receiver.cpp */; };
 		452C01C11EDE17C00057BEAA /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01B61EDE17C00057BEAA /* Pipe.cpp */; };
@@ -71,8 +71,8 @@
 		452C018C1EDE0E7B0057BEAA /* IO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IO.h; sourceTree = "<group>"; };
 		452C018D1EDE0E7B0057BEAA /* IO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IO.mm; sourceTree = "<group>"; };
 		452C018F1EDE0E960057BEAA /* IO-C-Interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IO-C-Interface.h"; sourceTree = "<group>"; };
-		452C01911EDE0F100057BEAA /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageManager.cpp; sourceTree = "<group>"; };
-		452C01921EDE0F100057BEAA /* MessageManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MessageManager.hpp; sourceTree = "<group>"; };
+		452C01911EDE0F100057BEAA /* GInputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GInputManager.cpp; sourceTree = "<group>"; };
+		452C01921EDE0F100057BEAA /* GInputManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GInputManager.hpp; sourceTree = "<group>"; };
 		452C01951EDE0F750057BEAA /* PostMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostMan.cpp; sourceTree = "<group>"; };
 		452C01961EDE0F750057BEAA /* PostMan.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PostMan.hpp; sourceTree = "<group>"; };
 		452C01971EDE0F750057BEAA /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
@@ -246,8 +246,8 @@
 		452C01901EDE0F100057BEAA /* IO */ = {
 			isa = PBXGroup;
 			children = (
-				452C01911EDE0F100057BEAA /* MessageManager.cpp */,
-				452C01921EDE0F100057BEAA /* MessageManager.hpp */,
+				452C01921EDE0F100057BEAA /* GInputManager.hpp */,
+				452C01911EDE0F100057BEAA /* GInputManager.cpp */,
 			);
 			path = IO;
 			sourceTree = "<group>";
@@ -390,7 +390,7 @@
 				452C01831EDE0E400057BEAA /* GBox.cpp in Sources */,
 				45944A931ED367B400575060 /* GShader.cpp in Sources */,
 				452C018E1EDE0E7B0057BEAA /* IO.mm in Sources */,
-				452C01931EDE0F100057BEAA /* MessageManager.cpp in Sources */,
+				452C01931EDE0F100057BEAA /* GInputManager.cpp in Sources */,
 				452C01D81EDE19D30057BEAA /* Bird.cpp in Sources */,
 				452C018A1EDE0E400057BEAA /* GShaderUtils.cpp in Sources */,
 				452C015E1EDE0DBA0057BEAA /* OpenGLView.mm in Sources */,

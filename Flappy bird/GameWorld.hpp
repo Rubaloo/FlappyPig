@@ -17,7 +17,7 @@
 #include "Bird.hpp"
 #include "Pipe.hpp"
 #include "Receiver.hpp"
-#include "MessageManager.hpp"
+#include "GInputManager.hpp"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ private:
     
     GBox playableArea;
     float gravity;
-    MessageManager* mm;
+    GInputManager* mm;
     queue<int> messages;
     
     void handleMessage(int msg);

@@ -1,5 +1,5 @@
 //
-//  MessageManager.hpp
+//  GInputManager.hpp
 //  Flapi Pig
 //
 //  Created by Ruben on 7/5/17.
@@ -14,10 +14,10 @@
 #include <iostream>
 using namespace std;
 
-class MessageManager {
+class GInputManager {
 public:
-    MessageManager();
-    ~MessageManager();
+    GInputManager();
+    ~GInputManager();
     
     void add(int a);
     int remove();
