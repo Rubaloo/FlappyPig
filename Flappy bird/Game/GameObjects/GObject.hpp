@@ -26,25 +26,25 @@ using namespace std;
 class GObject {
 
 protected:
-    
-    GLMatrix modelView;
     GBox body;
-    vector<glVertex> vertexs;
     GVertexArray* modelMesh;
+    GLMatrix modelView;
 
 public:
     GObject();
     GObject(GBox b);
     
+    GBox* getBox();
+    
+    void moveTo(kmVec3 translation);
+    void resetModelView();
+    
+    bool intersect(GObject* object);
     bool reachTop();
     bool reachFloor();
     bool outsideLeftLimits();
-    bool intersect(GBox* GBox);
-    bool intersect(GObject* object);
-    void moveTo(kmVec3 translation);
-    void resetModelView();
+    
     virtual void update(float dt){};
     virtual void render(){};
-    GBox* getBox();
 };
 #endif /* GameObject_hpp */

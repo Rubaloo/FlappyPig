@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "GTypes.hpp"
 #include <vector>
+#include "GDirector.hpp"
+#include <cmath>
 
 #define SQUARE_SHAPE 0
 #define CIRCULAR_SHAPE 1

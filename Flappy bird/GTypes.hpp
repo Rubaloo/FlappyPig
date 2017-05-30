@@ -19,6 +19,7 @@
 #define SCREEN_HEIGHT GDirector::getInstance()->getWinSizeInPixels().h
 #define ASPECT_RATIO SCREEN_WIDTH/SCREEN_HEIGHT
 #define kmScalar GLfloat
+
 #include <OpenGLES/ES2/gl.h>
 
 
@@ -59,9 +60,6 @@ typedef struct kmRect {
     kmVec3 tl;
 } kmRect;
 
-kmRect kmRectMake(kmVec3 tl, kmVec3 br);
-bool kmRectInside(const kmRect* target,const kmRect* holder);
-
 /** A homogeneous four-dimensional vector. */
 /** A rotational quaternion */
 typedef struct kmQuaternion {
@@ -78,7 +76,12 @@ typedef struct {
 
 
 kmVec3 kmVec3Add(kmVec3 v, kmVec3 k);
+
 kmVec3 kmVec3Sub(kmVec3 v, kmVec3 k);
+
+kmRect kmRectMake(kmVec3 tl, kmVec3 br);
+
+bool kmRectInside(const kmRect* target,const kmRect* holder);
 
 kmVec4 kmVec4Make(kmScalar x, kmScalar y, kmScalar z, kmScalar w);
 kmVertex kmVertexMake(kmVec3 position, kmVec4 color);

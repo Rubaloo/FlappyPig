@@ -39,13 +39,8 @@ bool GObject::intersect(GObject* object)
     return body.intersect(object->getBox());
 }
 
-bool GObject::intersect(GBox* GBox) {
-    return body.intersect(GBox);
-}
-
 void GObject::moveTo(kmVec3 translation)
 {
-    // System cordinates change
     modelView.addTranslation(translation);
 }
 

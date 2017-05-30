@@ -22,10 +22,13 @@ class GShaderUtils
 private:
     static bool instanceFlag;
     static GShaderUtils *single;
+    
     GShaderUtils(){}
-    GLuint compileShader(string shaderName, GLenum shaderType);
-    string readFile(char* fileName);
+    
     GLuint create();
+    GLuint compileShader(string shaderName, GLenum shaderType);
+    
+    string readFile(char* fileName);
 public:
     static GShaderUtils* getInstance();
     ~GShaderUtils()

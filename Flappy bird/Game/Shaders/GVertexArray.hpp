@@ -18,6 +18,7 @@ class GVertexArray {
 public:
     GVertexArray();
     GVertexArray(glVertex vertexs[], GLubyte indexs[]);
+    
     void bind();
     void unbind();
     void draw();

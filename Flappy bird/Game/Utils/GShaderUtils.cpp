@@ -6,19 +6,16 @@
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#include "GShaderUtils.hpp"
-
-#include "IO-C-Interface.h"
-#include "GShaderUtils.hpp"
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 #include "GShaderUtils.hpp"
+#include "IO-C-Interface.h"
 
 
 bool GShaderUtils::instanceFlag = false;
 GShaderUtils* GShaderUtils::single = NULL;
+
 GShaderUtils* GShaderUtils::getInstance()
 {
     if(!instanceFlag)
@@ -39,13 +36,11 @@ GLuint GShaderUtils::load(string vertexName, string fragmentName)
     GLuint vertexShader = compileShader(vertexName, GL_VERTEX_SHADER);
     GLuint fragmentShader = compileShader(fragmentName, GL_FRAGMENT_SHADER);
     
-    // 2
     GLuint programHandle = glCreateProgram();
     glAttachShader(programHandle, vertexShader);
     glAttachShader(programHandle, fragmentShader);
     glLinkProgram(programHandle);
     
-    // 3
     GLint linkSuccess;
     glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
     if (linkSuccess == GL_FALSE) {
@@ -61,18 +56,14 @@ GLuint GShaderUtils::load(string vertexName, string fragmentName)
 GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
 {
     string shaderString = readFile(&shaderFileName[0]);
-    // 2
     GLuint shaderHandle = glCreateShader(shaderType);
     
-    // 3
     const char * shaderStringUTF8 = &shaderString[0];
     int shaderStringLength = shaderString.length();
     glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
     
-    // 4
     glCompileShader(shaderHandle);
     
-    // 5
     GLint compileSuccess;
     glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &compileSuccess);
     if (compileSuccess == GL_FALSE) {

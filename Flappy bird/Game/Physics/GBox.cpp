@@ -7,8 +7,7 @@
 //
 
 #include "GBox.hpp"
-#include "GDirector.hpp"
-#include <cmath>
+
 #define K_GRAVITY 300.0
 
 GBox::GBox(){};
@@ -17,7 +16,6 @@ GBox::GBox(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
     shape = _shape;
     center = kmVec3Make(_center.x, _center.y, 0);
     
-    // Size change
     size = kmSizeMake(_size.w, _size.h);
     
     velocity = kmVec3Make(0, 0, 0);
@@ -26,6 +24,44 @@ GBox::GBox(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
     isVisible = true;
     gravityEnabled = false;
     endForce = kmVec3Make(0, 0, 0);
+}
+
+kmRect GBox::getRect()
+{
+    kmRect rect;
+    
+    GLfloat hWidth = size.w/2.0;
+    GLfloat hHeight = size.h/2.0;
+    
+    rect.bl = kmVec3Make(center.x - hWidth , center.y - hHeight, 0.0);
+    rect.br = kmVec3Make(center.x + hWidth , center.y - hHeight, 0.0);
+    rect.tl = kmVec3Make(center.x - hWidth , center.y + hHeight, 0.0);
+    rect.tr = kmVec3Make(center.x + hWidth , center.y + hHeight, 0.0);
+    
+    return rect;
+}
+
+kmVec3 GBox::getCenter()
+{
+    return center;
+}
+
+kmSize GBox::getSize(){
+    return size;
+}
+
+int GBox::getShape() {
+    return shape;
+}
+
+void GBox::setVelocity(kmVec3 v)
+{
+    velocity = v;
+}
+
+void GBox::setCenter(kmVec3 c)
+{
+    center = c;
 }
 
 void GBox::updateEndForce()
@@ -47,41 +83,6 @@ void GBox::enableGravity()
 {
     kmVec3 gravityForce = kmVec3Make(0.0, K_GRAVITY, 0.0);
     constantForces.push_back(gravityForce);
-}
-
-//triangle strip GBox representation
-kmRect GBox::getRect()
-{
-    kmRect rect;
-    
-    GLfloat hWidth = size.w/2.0;
-    GLfloat hHeight = size.h/2.0;
-    
-    rect.bl = kmVec3Make(center.x - hWidth , center.y - hHeight, 0.0);
-    rect.br = kmVec3Make(center.x + hWidth , center.y - hHeight, 0.0);
-    rect.tl = kmVec3Make(center.x - hWidth , center.y + hHeight, 0.0);
-    rect.tr = kmVec3Make(center.x + hWidth , center.y + hHeight, 0.0);
-    
-    return rect;
-}
-
-
-void GBox::setVelocity(kmVec3 v)
-{
-    velocity = v;
-}
-
-kmVec3 GBox::getCenter()
-{
-    return center;
-}
-
-kmSize GBox::getSize(){
-    return size;
-}
-
-int GBox::getShape() {
-    return shape;
 }
 
 void GBox::applyImpulse(float force, kmVec3 direction)
@@ -107,11 +108,6 @@ kmVec3 GBox::update(float dt)
     setCenter(nextPosition);
     
     return nextPosition;
-}
-
-void GBox::setCenter(kmVec3 c)
-{
-    center = c;
 }
 
 bool GBox::intersect(GBox* GObject) {
@@ -146,7 +142,6 @@ bool GBox::intersect(GBox* GObject) {
         pow((circleDistanceY - rectSize.h/2),2);
         
         intersect = (cornerDistance_sq <= pow(circleSize.w/2.0,2));
-        printf("Intersect: %i\n", intersect);
     }
     return intersect;
 };

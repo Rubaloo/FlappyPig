@@ -8,6 +8,12 @@
 
 #include "GShader.hpp"
 
+#define BIRD_VERTEX_SHADER "BirdVertex"
+#define BIRD_FRAGMENT_SHADER "BirdFragment"
+#define PIPE_VERTEX_SHADER "PipeVertex"
+#define PIPE_FRAGMENT_SHADER "PipeFragment"
+
+
 GShader* GShader::BIRD;
 GShader* GShader::PIPE;
 
@@ -21,17 +27,14 @@ GLuint GShader::getID() {
 };
 
 void GShader::loadAll() {
-    BIRD = new GShader("BirdVertex", "BirdFragment");
-    PIPE = new GShader("PipeVertex", "PipeFragment");
+    BIRD = new GShader(BIRD_VERTEX_SHADER, BIRD_FRAGMENT_SHADER);
+    PIPE = new GShader(PIPE_VERTEX_SHADER, PIPE_FRAGMENT_SHADER);
 }
 
 GLuint GShader::getUniform(string name) {
     GLuint result = glGetUniformLocation(ID, name.c_str());
     if(result == -1) {
         printf("Cannot find uniform variable: %s", name.c_str());
-    }
-    else {
-        // save to cache
     }
     return result;
 }
@@ -40,9 +43,6 @@ GLuint GShader::getAttribute(string name) {
     GLuint result = glGetAttribLocation(ID, name.c_str());
     if(result == -1) {
         printf("Cannot find attribute variable: %s", name.c_str());
-    }
-    else {
-        // save to cache
     }
     return result;
 }

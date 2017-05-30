@@ -192,10 +192,10 @@
 		452C01691EDE0E400057BEAA /* math */ = {
 			isa = PBXGroup;
 			children = (
-				452C016A1EDE0E400057BEAA /* GLMatrix.cpp */,
 				452C016B1EDE0E400057BEAA /* GLMatrix.hpp */,
-				452C016C1EDE0E400057BEAA /* GLVertex.cpp */,
+				452C016A1EDE0E400057BEAA /* GLMatrix.cpp */,
 				452C016D1EDE0E400057BEAA /* GLVertex.hpp */,
+				452C016C1EDE0E400057BEAA /* GLVertex.cpp */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -214,8 +214,8 @@
 			children = (
 				45944A921ED367B400575060 /* GShader.hpp */,
 				45944A911ED367B400575060 /* GShader.cpp */,
-				452C01761EDE0E400057BEAA /* GVertexArray.cpp */,
 				452C01771EDE0E400057BEAA /* GVertexArray.hpp */,
+				452C01761EDE0E400057BEAA /* GVertexArray.cpp */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";

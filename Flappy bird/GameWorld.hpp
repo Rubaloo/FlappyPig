@@ -27,10 +27,10 @@ private:
     Bird* bird;
     vector<PipeColumn*> cPipes;
     
-    GInputManager* mm;
+    GInputManager* gim;
     queue<int> messages;
     
-    void handleMessage(int msg);
+    void handleInput(int msg);
 public:
     GameWorld();
     ~GameWorld();

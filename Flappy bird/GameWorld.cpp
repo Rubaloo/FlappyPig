@@ -20,7 +20,7 @@ GameWorld::GameWorld()
     lastPipeColumnX = -1;
     
     GShader::loadAll();
-    mm = new GInputManager();
+    gim = new GInputManager();
 }
 
 void GameWorld::initLevel()
@@ -30,7 +30,7 @@ void GameWorld::initLevel()
     pBox.enableGravity();
     bird = new Bird(pBox);
     
-    //Add pipes
+    //Add pipe columns
     float columnPipes = K_PIPES_COLUMNS_NUMBER;
     for(int i = 0; i < columnPipes; ++i) {
         GLfloat pipeX = SCREEN_WIDTH * 1.5 + (K_PIPES_OFFSET*i);
@@ -133,15 +133,15 @@ void GameWorld::update(float dt)
 }
 
 void GameWorld::pollUpdates() {
-    int msgNumber = mm->getInputsNumber();
+    int msgNumber = gim->getInputsNumber();
     if(msgNumber > 0) {
         for(int i = 0; i < msgNumber; ++i) {
-            messages.push(mm->remove());
+            messages.push(gim->remove());
         }
     }
 }
 
-void GameWorld::handleMessage(int msg)
+void GameWorld::handleInput(int msg)
 {
-    mm->addInput(msg);
+    gim->addInput(msg);
 }

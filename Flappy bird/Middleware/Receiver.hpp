@@ -14,6 +14,6 @@
 class Receiver {
     
 public:
-    virtual void handleMessage(int i)=0;
+    virtual void handleInput(int i)=0;
 };
 #endif /* Receiver_hpp */

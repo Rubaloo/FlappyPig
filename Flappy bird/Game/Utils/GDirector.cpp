@@ -11,6 +11,7 @@
 
 bool GDirector::instanceFlag = false;
 GDirector* GDirector::single = NULL;
+
 GDirector* GDirector::getInstance()
 {
     if(! instanceFlag)

@@ -17,17 +17,20 @@ class GDirector
 {
 private:
     static bool instanceFlag;
+    
     kmSize screenSize;
     static GDirector *single;
     GDirector(){}
 public:
-    static GDirector* getInstance();
-    kmSize getWinSizeInPixels();
-    void setWinSizeInPixels(kmSize winSize);
     ~GDirector()
     {
         instanceFlag = false;
     }
+    
+    static GDirector* getInstance();
+    
+    kmSize getWinSizeInPixels();
+    void setWinSizeInPixels(kmSize winSize);
 };
 
 #endif /* Director_hpp */

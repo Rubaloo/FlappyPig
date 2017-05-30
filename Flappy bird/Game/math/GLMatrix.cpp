@@ -5,7 +5,6 @@
 //  Created by Ruben on 17/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
-#include "GDirector.hpp"
 #include "GLMatrix.hpp"
 
 static const GLfloat identityContents[] = {

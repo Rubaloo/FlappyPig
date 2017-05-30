@@ -22,6 +22,7 @@ GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4]){
     const GLubyte Indices[] = {
         indexs[0], indexs[1], indexs[2], indexs[3]
     };
+    
     indexCount = sizeof(Indices);
     
     glGenBuffers(1, &vbo);
@@ -34,7 +35,6 @@ GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4]){
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    //glBindVertexArray(0);
 }
 
 void GVertexArray::bind(){

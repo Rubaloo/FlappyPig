@@ -26,21 +26,21 @@ static const GLuint GSHADER_COLOR_ATTRIB = 1;
 class GShader {
 public:
     GShader(string vertex, string fragment);
+    
     static GShader* BIRD;
     static GShader* PIPE;
     static void loadAll();
     
     GLuint getUniform(string name);
     GLuint getAttribute(string name);
-
     GLuint getID();
     
     void setUniform1f(string name, GLfloat f);
     void setUniform2f(string name, GLfloat x, GLfloat y);
     void setUniform3f(string name, kmVec3 vector);
     void setUniform4f(string name, GLfloat* matrix);
-    void enableVertexAttribute(string name);
     
+    void enableVertexAttribute(string name);
     void enable();
     void disable();
     

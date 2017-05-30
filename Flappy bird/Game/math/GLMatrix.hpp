@@ -12,6 +12,7 @@
 #include <string>
 #include <stdio.h>
 #include <OpenGLES/ES2/gl.h>
+#include "GDirector.hpp"
 #include "GTypes.hpp"
 
 class GLMatrix {
