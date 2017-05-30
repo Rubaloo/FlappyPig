@@ -13,6 +13,8 @@
 
 #define KM_FALSE 0
 #define KM_TRUE 1
+#define SCREEN_CENTER kmVec3Make(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0, 0.0)
+#define SCREEN_SIZE kmSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT)
 #define SCREEN_WIDTH GDirector::getInstance()->getWinSizeInPixels().w
 #define SCREEN_HEIGHT GDirector::getInstance()->getWinSizeInPixels().h
 #define ASPECT_RATIO SCREEN_WIDTH/SCREEN_HEIGHT

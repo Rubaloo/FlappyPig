@@ -26,9 +26,21 @@ bool GameObject::outsideLeftLimits()
     return (rect.tl.x + size.w) < 0;
 };
 
+bool GameObject::reachFloor() {
+    return (body.getCenter().y + body.getSize().h/2.0) > SCREEN_HEIGHT;
+};
+
+bool GameObject::reachTop() {
+    return (body.getCenter().y - body.getSize().h/2.0) < 0;
+};
+
 bool GameObject::intersect(GameObject* object)
 {
     return body.intersect(object->getBox());
+}
+
+bool GameObject::intersect(Box* box) {
+    return body.intersect(box);
 }
 
 void GameObject::moveTo(kmVec3 translation)

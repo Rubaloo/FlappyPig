@@ -36,7 +36,10 @@ public:
     GameObject();
     GameObject(Box b);
     
+    bool reachTop();
+    bool reachFloor();
     bool outsideLeftLimits();
+    bool intersect(Box* box);
     bool intersect(GameObject* object);
     void moveTo(kmVec3 translation);
     void resetModelView();

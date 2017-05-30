@@ -87,31 +87,19 @@ const GLubyte Indices[] = {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
 }
 
-
-float previousTimestamp = 0;
 - (void)render:(CADisplayLink*)displayLink {
     
-
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
-    float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
+    //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
-//    NSLog(@"Frames per second: %f", FPS);
-//    NSLog(@"Duration: %f", [displayLink duration]);
-//    NSLog(@"Timpestamp: %f", [displayLink timestamp]);
-//    NSLog(@"Target Timestamp: %f", [displayLink targetTimestamp]);
-//    NSLog(@"Target timestamp - timestamp: %f", [displayLink targetTimestamp] - [displayLink timestamp]);
-//    NSLog(@"Timestamp differences: %f", [displayLink timestamp] - previousTimestamp);
-    previousTimestamp = [displayLink timestamp];
-    //if(gWorld->reset) {
-        //plgWorld->initLevel();
-      //  gWorld->setReset(false);
-    //}
-   
+    if(gWorld->end) {
+        gWorld->resetLevel();
+        gWorld->end = false;
+    }
     gWorld->pollUpdates();
     gWorld->logic();
     gWorld->update(dt);
     gWorld->render();
-    
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 

@@ -12,7 +12,11 @@
 
 PipeColumn::PipeColumn(){}
 PipeColumn::PipeColumn(int xCenter) {
-    float uPipeHeight = rand() % 200 + 100;
+    const float MIN_RAND = SCREEN_HEIGHT/6.0, MAX_RAND = SCREEN_HEIGHT - MIN_RAND;
+    const float range = MAX_RAND - MIN_RAND;
+    float random = range * ((((float) rand()) / (float) RAND_MAX)) + MIN_RAND ;
+    
+    float uPipeHeight = random;
     float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - K_COLUMN_PIPES_SPACE;
     
     Box uPipeBox(kmVec3Make(xCenter, uPipeHeight/2.0, 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, uPipeHeight));

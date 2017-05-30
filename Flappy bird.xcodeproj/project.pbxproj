@@ -20,7 +20,6 @@
 		4501FF691ECFBFA700BBE43F /* GTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF611ECFBFA700BBE43F /* GTypes.cpp */; };
 		4501FF881ED06DF400BBE43F /* IO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF871ED06DF400BBE43F /* IO.mm */; };
 		4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF891ED073ED00BBE43F /* GameWorld.cpp */; };
-		4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8C1ED0758600BBE43F /* Renderer.cpp */; };
 		4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF8F1ED09C4700BBE43F /* GDirector.cpp */; };
 		4501FF941ED0A08D00BBE43F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF921ED0A08D00BBE43F /* Shader.cpp */; };
 		4501FF971ED0A9F600BBE43F /* GLVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4501FF951ED0A9F600BBE43F /* GLVertex.cpp */; };
@@ -63,8 +62,6 @@
 		4501FF871ED06DF400BBE43F /* IO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IO.mm; sourceTree = "<group>"; };
 		4501FF891ED073ED00BBE43F /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
 		4501FF8A1ED073ED00BBE43F /* GameWorld.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameWorld.hpp; sourceTree = "<group>"; };
-		4501FF8C1ED0758600BBE43F /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
-		4501FF8D1ED0758600BBE43F /* Renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 		4501FF8F1ED09C4700BBE43F /* GDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDirector.cpp; sourceTree = "<group>"; };
 		4501FF901ED09C4700BBE43F /* GDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDirector.hpp; sourceTree = "<group>"; };
 		4501FF921ED0A08D00BBE43F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
@@ -145,8 +142,6 @@
 				4501FF961ED0A9F600BBE43F /* GLVertex.hpp */,
 				4501FF581ECFBEA200BBE43F /* OpenGLView.h */,
 				4501FF591ECFBEA200BBE43F /* OpenGLView.mm */,
-				4501FF8D1ED0758600BBE43F /* Renderer.hpp */,
-				4501FF8C1ED0758600BBE43F /* Renderer.cpp */,
 				4501FF8A1ED073ED00BBE43F /* GameWorld.hpp */,
 				4501FF891ED073ED00BBE43F /* GameWorld.cpp */,
 				4501FF931ED0A08D00BBE43F /* Shader.hpp */,
@@ -224,6 +219,7 @@
 				TargetAttributes = {
 					4501FF3D1ECFBE4400BBE43F = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = KV32DG22P3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -282,7 +278,6 @@
 				45471C261ED5F42B0073C63A /* PostMan.cpp in Sources */,
 				4501FF911ED09C4700BBE43F /* GDirector.cpp in Sources */,
 				4501FF9D1ED0ACBC00BBE43F /* Player.cpp in Sources */,
-				4501FF8E1ED0758600BBE43F /* Renderer.cpp in Sources */,
 				45944A931ED367B400575060 /* GShader.cpp in Sources */,
 				45471C231ED5F41D0073C63A /* Receiver.cpp in Sources */,
 				4501FF881ED06DF400BBE43F /* IO.mm in Sources */,
@@ -410,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KV32DG22P3;
 				INFOPLIST_FILE = "Flappy bird/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ruben.Flappy-bird";
@@ -421,6 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KV32DG22P3;
 				INFOPLIST_FILE = "Flappy bird/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ruben.Flappy-bird";

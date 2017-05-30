@@ -19,30 +19,40 @@ GameWorld::GameWorld(float gGravity)
     GShader::loadAll();
     gravity = gGravity;
     mm = new MessageManager();
+    end = false;
+    lastPipeColumnX = -1;
 }
 
 void GameWorld::initLevel()
 {
+    //Add player
+    Box pBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE);
+    pBox.enableGravity();
+    bird = new Player(pBox, 0);
+    
     //Add pipes
     float columnPipes = K_PIPES_COLUMNS_NUMBER;
-    
     for(int i = 0; i < columnPipes; ++i) {
         GLfloat pipeX = SCREEN_WIDTH * 1.5 + (K_PIPES_OFFSET*i);
         PipeColumn* pc = new PipeColumn(pipeX);
         cPipes.push_back(pc);
     }
-    
-    //Add player
-    // Trabajar en cordenadas de pantalla y establecer escena inicial antes de empezar con las fisicas
-    Box pBox(kmVec3Make(160, 100, 0), kmSizeMake(30, 30), CIRCULAR_SHAPE);
-    pBox.enableGravity();
-    bird = new Player(pBox, 0);
+}
+
+void GameWorld::resetLevel()
+{
+    delete bird;
+    for (int i = 0; i < cPipes.size(); ++i) {
+        delete cPipes[i];
+    }
+    cPipes.clear();
+    queue<int> empty;
+    swap(messages, empty);
+    initLevel();
 }
 
 GameWorld::~GameWorld()
 {
-    GShader::loadAll();
-    printf("Width: %f, Height: %f", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void GameWorld::render()
@@ -66,23 +76,25 @@ bool GameWorld::add(GameObject *gObject)
 
 void GameWorld::logic()
 {
-    //bird->resetModelView();
+    //Update pipes
     for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
         if(pc->outsideLeftLimits()) {
-            if(!lastPc) lastPc = cPipes[cPipes.size()-1];
+            if(lastPipeColumnX == -1) {
+                lastPipeColumnX = cPipes[cPipes.size()-1]->getUpPipe()->getBox()->getCenter().x;
+            }
             float offset = 0;
-            offset = lastPc->getUpPipe()->getBox()->getCenter().x + K_PIPES_OFFSET;
+            offset = lastPipeColumnX + K_PIPES_OFFSET;
             
             Pipe*up = pc->getUpPipe();
             kmVec3 next = up->getBox()->getCenter();
+            
             pc->moveTo(next.x + offset);
-            lastPc = (PipeColumn*)cPipes[i];
-            //printf("outside left limits %i\n", i); //addPipes
+            lastPipeColumnX = next.x + offset;
         }
     }
 
-    
+    //Jumping
     for(int i = 0; i < messages.size(); ++i) {
         int messageId = messages.front();
         messages.pop();
@@ -90,22 +102,26 @@ void GameWorld::logic()
             case SCREEN_TOUCH:
                 bird->jump();
                 break;
-                
             default:
                 break;
         }
     }
     
+    //endgame conditions
+    if(bird->reachFloor()) {
+        printf("Toca suelo \n");
+        end = true;
+    }
+    if(bird->reachTop()) {
+        printf("Toca techo \n");
+        end = true;
+    }
     for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
         if(pc->intersect(bird)){
-            running = false;
-            printf("HAS CHOCADO NOOOOOOOOB\n");
-            //sendMessage(running);
+            end = true;
         }
-    
     }
-
 }
 
 void GameWorld::update(float dt)

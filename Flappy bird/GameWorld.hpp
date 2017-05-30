@@ -13,7 +13,6 @@
 #include <iostream>
 #include <vector>
 
-#include "Renderer.hpp"
 #include "PipeColumn.hpp"
 #include "Player.hpp"
 #include "Pipe.hpp"
@@ -28,9 +27,9 @@ private:
     Player* bird;
     vector<PipeColumn*> cPipes;
     
+    Box playableArea;
     float gravity;
     MessageManager* mm;
-    Renderer* painter;
     queue<int> messages;
     
     void handleMessage(int msg);
@@ -39,14 +38,16 @@ public:
     GameWorld(float gravity);
     ~GameWorld();
     
-    PipeColumn* lastPc;
+    float lastPipeColumnX;
     bool add(GameObject *gObject);
-    bool running;
+    bool end;
     
     void render();
     void logic();
     void update(float dt);
     void pollUpdates();
+    
     void initLevel();
+    void resetLevel();
 };
 #endif /* GameWorld_hpp */
