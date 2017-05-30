@@ -13,7 +13,7 @@ GShader* GShader::PIPE;
 
 GShader::GShader(string vertexName, string fragmentName) {
     enabled = false;
-    ID = ShaderUtils::getInstance()->load(vertexName, fragmentName);
+    ID = GShaderUtils::getInstance()->load(vertexName, fragmentName);
 }
 
 GLuint GShader::getID() {

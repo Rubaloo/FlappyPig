@@ -1,29 +1,29 @@
 //
-//  ShaderUtils.cpp
+//  GShaderUtils.cpp
 //  Flappy bird
 //
 //  Created by Ruben on 22/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#include "ShaderUtils.hpp"
+#include "GShaderUtils.hpp"
 
 #include "IO-C-Interface.h"
-#include "ShaderUtils.hpp"
+#include "GShaderUtils.hpp"
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "ShaderUtils.hpp"
+#include "GShaderUtils.hpp"
 
 
-bool ShaderUtils::instanceFlag = false;
-ShaderUtils* ShaderUtils::single = NULL;
-ShaderUtils* ShaderUtils::getInstance()
+bool GShaderUtils::instanceFlag = false;
+GShaderUtils* GShaderUtils::single = NULL;
+GShaderUtils* GShaderUtils::getInstance()
 {
     if(!instanceFlag)
     {
-        single = new ShaderUtils();
+        single = new GShaderUtils();
         instanceFlag = true;
         return single;
     }
@@ -34,7 +34,7 @@ ShaderUtils* ShaderUtils::getInstance()
 }
 
 
-GLuint ShaderUtils::load(string vertexName, string fragmentName)
+GLuint GShaderUtils::load(string vertexName, string fragmentName)
 {
     GLuint vertexShader = compileShader(vertexName, GL_VERTEX_SHADER);
     GLuint fragmentShader = compileShader(fragmentName, GL_FRAGMENT_SHADER);
@@ -58,7 +58,7 @@ GLuint ShaderUtils::load(string vertexName, string fragmentName)
     return programHandle;
 }
 
-GLuint ShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
+GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
 {
     string shaderString = readFile(&shaderFileName[0]);
     // 2
@@ -85,7 +85,7 @@ GLuint ShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
     return shaderHandle;
 }
 
-string ShaderUtils::readFile(char* fileName)
+string GShaderUtils::readFile(char* fileName)
 {
     return string(myreadFile(fileName));
 }

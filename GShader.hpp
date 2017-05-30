@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 #include "GTypes.hpp"
-#include "ShaderUtils.hpp"
+#include "GShaderUtils.hpp"
 
 #include <OpenGLES/ES2/gl.h>
 
