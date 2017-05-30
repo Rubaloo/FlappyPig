@@ -102,9 +102,9 @@ PostMan* postMan;
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
     //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
-    if(gWorld->end) {
+    if(gWorld->isLevelFinished()) {
         gWorld->resetLevel();
-        gWorld->end = false;
+        gWorld->setLevelFinished(false);
     }
     gWorld->pollUpdates();
     gWorld->logic();

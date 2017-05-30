@@ -30,21 +30,24 @@ private:
     GInputManager* gim;
     queue<int> messages;
     
+    bool levelFinished;
+    float lastPipeColumnX;
+    
+    
     void handleInput(int msg);
 public:
     GameWorld();
     ~GameWorld();
     
-    float lastPipeColumnX;
-    bool end;
+    bool isLevelFinished();
+    void setLevelFinished(bool finished);
+    void initLevel();
+    void resetLevel();
     
     void render();
     void logic();
     void pollUpdates();
     void update(float dt);
-    
-    void initLevel();
-    void resetLevel();
     
     void checkEndConditions();
     void processMessages();

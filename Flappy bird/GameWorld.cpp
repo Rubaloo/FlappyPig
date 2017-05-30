@@ -16,11 +16,20 @@
 
 GameWorld::GameWorld()
 {
-    end = false;
+    levelFinished = false;
     lastPipeColumnX = -1;
     
     GShader::loadAll();
     gim = new GInputManager();
+}
+
+
+bool GameWorld::isLevelFinished() {
+    return levelFinished;
+}
+
+void GameWorld::setLevelFinished(bool finished) {
+    levelFinished = finished;
 }
 
 void GameWorld::initLevel()
@@ -113,12 +122,12 @@ void GameWorld::processMessages()
 
 void GameWorld::checkEndConditions()
 {
-    end = (bird->reachFloor() || bird->reachTop());
-    if(!end) {
+    levelFinished = (bird->reachFloor() || bird->reachTop());
+    if(!levelFinished) {
         for(int i = 0; i < cPipes.size(); ++i) {
             PipeColumn* pc = cPipes[i];
             if(pc->intersect(bird)){
-                end = true;
+                levelFinished = true;
             }
         }
     }
