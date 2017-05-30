@@ -1,5 +1,5 @@
 //
-//  GameObject.hpp
+//  GObject.hpp
 //  Flapi Pig
 //
 //  Created by Ruben on 13/5/17.
@@ -23,7 +23,7 @@
 
 using namespace std;
 
-class GameObject {
+class GObject {
 
 protected:
     
@@ -33,14 +33,14 @@ protected:
     GVertexArray* modelMesh;
 
 public:
-    GameObject();
-    GameObject(GBox b);
+    GObject();
+    GObject(GBox b);
     
     bool reachTop();
     bool reachFloor();
     bool outsideLeftLimits();
     bool intersect(GBox* GBox);
-    bool intersect(GameObject* object);
+    bool intersect(GObject* object);
     void moveTo(kmVec3 translation);
     void resetModelView();
     virtual void update(float dt){};

@@ -24,7 +24,7 @@ public:
     GBox(kmVec3 center, kmSize size, int shape=SQUARE_SHAPE);
     
     int shape;
-    bool intersect(GBox* gameObject);
+    bool intersect(GBox* GObject);
     
     int getShape();
     kmRect getRect();

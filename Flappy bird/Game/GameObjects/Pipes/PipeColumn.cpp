@@ -28,7 +28,7 @@ PipeColumn::PipeColumn(int xCenter) {
     down = new Pipe(dPipeBox);
 }
 
-bool PipeColumn::intersect(GameObject* gObject)
+bool PipeColumn::intersect(GObject* gObject)
 {
     return (up->intersect(gObject)) || (down->intersect(gObject));
 }

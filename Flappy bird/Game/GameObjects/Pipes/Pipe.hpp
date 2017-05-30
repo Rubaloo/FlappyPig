@@ -10,9 +10,9 @@
 #define Pipe_hpp
 
 #include <stdio.h>
-#include "GameObject.hpp"
+#include "GObject.hpp"
 
-class Pipe : public GameObject {
+class Pipe : public GObject {
     
 public:
     Pipe();

@@ -16,7 +16,7 @@
 		452C013B1EDDCD240057BEAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 452C01351EDDCD240057BEAA /* main.m */; };
 		452C015A1EDE0DB00057BEAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452C01591EDE0DB00057BEAA /* ViewController.m */; };
 		452C015E1EDE0DBA0057BEAA /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 452C015D1EDE0DBA0057BEAA /* OpenGLView.mm */; };
-		452C017D1EDE0E400057BEAA /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01611EDE0E400057BEAA /* GameObject.cpp */; };
+		452C017D1EDE0E400057BEAA /* GObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01611EDE0E400057BEAA /* GObject.cpp */; };
 		452C01811EDE0E400057BEAA /* GLMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016A1EDE0E400057BEAA /* GLMatrix.cpp */; };
 		452C01821EDE0E400057BEAA /* GLVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016C1EDE0E400057BEAA /* GLVertex.cpp */; };
 		452C01831EDE0E400057BEAA /* GBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016F1EDE0E400057BEAA /* GBox.cpp */; };
@@ -54,8 +54,8 @@
 		452C01591EDE0DB00057BEAA /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		452C015C1EDE0DBA0057BEAA /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
 		452C015D1EDE0DBA0057BEAA /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
-		452C01611EDE0E400057BEAA /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
-		452C01621EDE0E400057BEAA /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
+		452C01611EDE0E400057BEAA /* GObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GObject.cpp; sourceTree = "<group>"; };
+		452C01621EDE0E400057BEAA /* GObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GObject.hpp; sourceTree = "<group>"; };
 		452C016A1EDE0E400057BEAA /* GLMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLMatrix.cpp; sourceTree = "<group>"; };
 		452C016B1EDE0E400057BEAA /* GLMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLMatrix.hpp; sourceTree = "<group>"; };
 		452C016C1EDE0E400057BEAA /* GLVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLVertex.cpp; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 			children = (
 				452C01B51EDE17C00057BEAA /* Pipes */,
 				452C01BC1EDE17C00057BEAA /* Player */,
-				452C01611EDE0E400057BEAA /* GameObject.cpp */,
-				452C01621EDE0E400057BEAA /* GameObject.hpp */,
+				452C01621EDE0E400057BEAA /* GObject.hpp */,
+				452C01611EDE0E400057BEAA /* GObject.cpp */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -367,7 +367,7 @@
 				452C01811EDE0E400057BEAA /* GLMatrix.cpp in Sources */,
 				452C01821EDE0E400057BEAA /* GLVertex.cpp in Sources */,
 				452C01C11EDE17C00057BEAA /* Pipe.cpp in Sources */,
-				452C017D1EDE0E400057BEAA /* GameObject.cpp in Sources */,
+				452C017D1EDE0E400057BEAA /* GObject.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */,
 				452C01C71EDE17C00057BEAA /* Player.cpp in Sources */,

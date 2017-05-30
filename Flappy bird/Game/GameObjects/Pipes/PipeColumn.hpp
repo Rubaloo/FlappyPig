@@ -16,7 +16,7 @@
 #define k_COLUMN_SPEED -100
 #define K_COLUMN_PIPES_WIDTH 50
 
-class PipeColumn : public GameObject {
+class PipeColumn : public GObject {
 private:
     Pipe* up;
     Pipe* down;
@@ -26,7 +26,7 @@ public:
     
     Pipe* getUpPipe();
     bool outsideLeftLimits();
-    bool intersect(GameObject* gObject);
+    bool intersect(GObject* gObject);
     void update(float dt);
     void moveTo(float xPosition);
     void render();

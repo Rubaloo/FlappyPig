@@ -39,7 +39,7 @@ public:
     ~GameWorld();
     
     float lastPipeColumnX;
-    bool add(GameObject *gObject);
+    bool add(GObject *gObject);
     bool end;
     
     void render();

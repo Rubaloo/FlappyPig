@@ -68,7 +68,7 @@ void GameWorld::render()
     }
 }
 
-bool GameWorld::add(GameObject *gObject)
+bool GameWorld::add(GObject *gObject)
 {
     //gObjects.push_back(gObject);
     return true;

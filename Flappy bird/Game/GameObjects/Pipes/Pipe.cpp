@@ -8,10 +8,10 @@
 
 #include "Pipe.hpp"
 #include "GTypes.hpp"
-#include "GameObject.hpp"
+#include "GObject.hpp"
 
-Pipe::Pipe() : GameObject(){}
-Pipe::Pipe(GBox body) :GameObject(body)
+Pipe::Pipe() : GObject(){}
+Pipe::Pipe(GBox body) :GObject(body)
 {
     kmSize size = body.getSize();
     

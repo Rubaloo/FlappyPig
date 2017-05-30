@@ -114,22 +114,22 @@ void GBox::setCenter(kmVec3 c)
     center = c;
 }
 
-bool GBox::intersect(GBox* gameObject) {
+bool GBox::intersect(GBox* GObject) {
     
     bool intersect = false;
-    if(gameObject->getShape() == SQUARE_SHAPE &&
+    if(GObject->getShape() == SQUARE_SHAPE &&
        shape == SQUARE_SHAPE) {
-        kmVec3 a = gameObject->getCenter();
+        kmVec3 a = GObject->getCenter();
         kmVec3 b = center;
-        kmSize aSize = gameObject->getSize();
+        kmSize aSize = GObject->getSize();
         kmSize bSize = size;
         intersect = (abs(a.x - b.x)*2 < (aSize.w + bSize.w)) && (abs(a.y - b.y)*2 < (aSize.h + bSize.h));
     }
     else if (shape == SQUARE_SHAPE &&
-             gameObject->getShape() == CIRCULAR_SHAPE){
+             GObject->getShape() == CIRCULAR_SHAPE){
         intersect = true;
-        kmSize circleSize = gameObject->getSize();
-        kmVec3 circleCenter = gameObject->getCenter();
+        kmSize circleSize = GObject->getSize();
+        kmVec3 circleCenter = GObject->getCenter();
         kmSize rectSize = size;
         kmVec3 rectCenter = center;
         

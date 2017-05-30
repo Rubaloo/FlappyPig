@@ -12,9 +12,9 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "GameObject.hpp"
+#include "GObject.hpp"
 
-class Player : public GameObject {
+class Player : public GObject {
 public:
     Player();
     ~Player();
