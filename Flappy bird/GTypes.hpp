@@ -21,7 +21,13 @@
 #define kmScalar GLfloat
 
 #include <OpenGLES/ES2/gl.h>
+#include <stdio.h>
+#import <stdlib.h>
+#import <memory.h>
+#import <math.h>
+#import <cmath>
 
+using namespace std;
 
 typedef struct glVertex {
     kmScalar position[3];

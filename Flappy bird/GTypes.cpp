@@ -7,10 +7,6 @@
 //
 
 #include "GTypes.hpp"
-#include <stdio.h>
-#import <stdlib.h>
-#import <memory.h>
-#import <math.h>
 
 
 kmVec3 kmVec3Add(kmVec3 v, kmVec3 k) {
