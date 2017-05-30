@@ -87,5 +87,5 @@ GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
 
 string GShaderUtils::readFile(char* fileName)
 {
-    return string(myreadFile(fileName));
+    return string(iOSreadFile(fileName));
 }

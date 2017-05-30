@@ -27,27 +27,27 @@ private:
     Bird* bird;
     vector<PipeColumn*> cPipes;
     
-    GBox playableArea;
-    float gravity;
     GInputManager* mm;
     queue<int> messages;
     
     void handleMessage(int msg);
-    
 public:
-    GameWorld(float gravity);
+    GameWorld();
     ~GameWorld();
     
     float lastPipeColumnX;
-    bool add(GObject *gObject);
     bool end;
     
     void render();
     void logic();
-    void update(float dt);
     void pollUpdates();
+    void update(float dt);
     
     void initLevel();
     void resetLevel();
+    
+    void checkEndConditions();
+    void processMessages();
+    void updateCPipes();
 };
 #endif /* GameWorld_hpp */

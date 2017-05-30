@@ -14,13 +14,13 @@
 #define K_PIPES_OFFSET 250
 #define SCREEN_TOUCH 0
 
-GameWorld::GameWorld(float gGravity)
+GameWorld::GameWorld()
 {
-    GShader::loadAll();
-    gravity = gGravity;
-    mm = new GInputManager();
     end = false;
     lastPipeColumnX = -1;
+    
+    GShader::loadAll();
+    mm = new GInputManager();
 }
 
 void GameWorld::initLevel()
@@ -68,15 +68,15 @@ void GameWorld::render()
     }
 }
 
-bool GameWorld::add(GObject *gObject)
-{
-    //gObjects.push_back(gObject);
-    return true;
-}
-
 void GameWorld::logic()
 {
-    //Update pipes
+    updateCPipes();
+    processMessages();
+    checkEndConditions();
+}
+
+void GameWorld::updateCPipes()
+{
     for(int i = 0; i < cPipes.size(); ++i) {
         PipeColumn* pc = cPipes[i];
         if(pc->outsideLeftLimits()) {
@@ -93,8 +93,10 @@ void GameWorld::logic()
             lastPipeColumnX = next.x + offset;
         }
     }
+}
 
-    //Jumping
+void GameWorld::processMessages()
+{
     for(int i = 0; i < messages.size(); ++i) {
         int messageId = messages.front();
         messages.pop();
@@ -106,20 +108,18 @@ void GameWorld::logic()
                 break;
         }
     }
-    
-    //endgame conditions
-    if(bird->reachFloor()) {
-        printf("Toca suelo \n");
-        end = true;
-    }
-    if(bird->reachTop()) {
-        printf("Toca techo \n");
-        end = true;
-    }
-    for(int i = 0; i < cPipes.size(); ++i) {
-        PipeColumn* pc = cPipes[i];
-        if(pc->intersect(bird)){
-            end = true;
+
+}
+
+void GameWorld::checkEndConditions()
+{
+    end = (bird->reachFloor() || bird->reachTop());
+    if(!end) {
+        for(int i = 0; i < cPipes.size(); ++i) {
+            PipeColumn* pc = cPipes[i];
+            if(pc->intersect(bird)){
+                end = true;
+            }
         }
     }
 }

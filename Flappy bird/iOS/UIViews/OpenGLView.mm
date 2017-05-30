@@ -12,9 +12,6 @@
 #import "GDirector.hpp"
 #import "PostMan.hpp"
 
-
-
-
 @interface OpenGLView (PrivateMethods)
 - (void)setupGWorld;
 - (void)setupGDirector;
@@ -25,27 +22,27 @@ PostMan* postMan;
 
 @implementation OpenGLView
 
-typedef struct {
-    float Position[3];
-    float Color[4];
-} Vertex;
-
-const Vertex Vertices[] = {
-    // Front
-    {{1, -1, 0}, {1, 0, 0, 1}},
-    {{1, 1, 0}, {0, 1, 0, 1}},
-    {{-1, 1, 0}, {0, 0, 1, 1}},
-    {{-1, -1, 0}, {0, 0, 0, 1}}
-};
-
-const GLubyte Indices[] = {
-    // Front
-    0, 1, 2,
-    2, 3, 0
-};
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    return self;
+}
 
 + (Class)layerClass {
     return [CAEAGLLayer class];
+}
+
+-(void) setupGL
+{
+    [self setupLayer];
+    [self setupContext];
+    [self setupDepthBuffer];
+    [self setupRenderBuffer];
+    [self setupFrameBuffer];
+    [self setupGDirector];
+    [self setupGWorld];
+    [self setupPostMan];
+    [self setupDisplayLink];
 }
 
 - (void)setupLayer {
@@ -87,6 +84,27 @@ const GLubyte Indices[] = {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
 }
 
+-(void)setupGWorld
+{
+    gWorld = new GameWorld();
+    gWorld->initLevel();
+}
+
+-(void) setupPostMan {
+    postMan = new PostMan();
+    postMan->addReceiver(gWorld);
+}
+
+-(void) setupGDirector
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    GDirector::getInstance()->setWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
+}
+
+
 - (void)render:(CADisplayLink*)displayLink {
     
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
@@ -106,47 +124,6 @@ const GLubyte Indices[] = {
 - (void)setupDisplayLink {
     CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];    
-}
-
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    return self;
-}
-
--(void) setupGL
-{
-    [self setupLayer];
-    [self setupContext];
-    [self setupDepthBuffer];
-    [self setupRenderBuffer];
-    [self setupFrameBuffer];
-    [self setupGDirector];
-    [self setupGWorld];
-    [self setupPostMan];
-    [self setupDisplayLink];
-}
-
--(void)setupGWorld
-{
-    float gGravity = 5.0;
-    gWorld = new GameWorld(gGravity);
-    gWorld->initLevel();
-}
-
--(void) setupPostMan {
-    postMan = new PostMan();
-    postMan->addReceiver(gWorld);
-}
-
--(void) setupGDirector
-{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    
-    GDirector::getInstance()->setWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
 }
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)even

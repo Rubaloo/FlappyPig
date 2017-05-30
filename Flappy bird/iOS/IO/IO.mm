@@ -11,7 +11,7 @@
 @implementation IO
 
 
-const char* myreadFile(char* fileName)
+const char* iOSreadFile(char* fileName)
 {
     return [IO readFile:fileName];
 }
