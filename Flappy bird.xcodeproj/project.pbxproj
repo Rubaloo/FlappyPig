@@ -27,7 +27,7 @@
 		452C01851EDE0E400057BEAA /* BirdVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01731EDE0E400057BEAA /* BirdVertex.glsl */; };
 		452C01861EDE0E400057BEAA /* PipeFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01741EDE0E400057BEAA /* PipeFragment.glsl */; };
 		452C01871EDE0E400057BEAA /* PipeVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01751EDE0E400057BEAA /* PipeVertex.glsl */; };
-		452C01881EDE0E400057BEAA /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01761EDE0E400057BEAA /* VertexArray.cpp */; };
+		452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01761EDE0E400057BEAA /* GVertexArray.cpp */; };
 		452C01891EDE0E400057BEAA /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01791EDE0E400057BEAA /* GDirector.cpp */; };
 		452C018A1EDE0E400057BEAA /* GShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C017B1EDE0E400057BEAA /* GShaderUtils.cpp */; };
 		452C018E1EDE0E7B0057BEAA /* IO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 452C018D1EDE0E7B0057BEAA /* IO.mm */; };
@@ -72,8 +72,8 @@
 		452C01731EDE0E400057BEAA /* BirdVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BirdVertex.glsl; sourceTree = "<group>"; };
 		452C01741EDE0E400057BEAA /* PipeFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PipeFragment.glsl; sourceTree = "<group>"; };
 		452C01751EDE0E400057BEAA /* PipeVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PipeVertex.glsl; sourceTree = "<group>"; };
-		452C01761EDE0E400057BEAA /* VertexArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
-		452C01771EDE0E400057BEAA /* VertexArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
+		452C01761EDE0E400057BEAA /* GVertexArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GVertexArray.cpp; sourceTree = "<group>"; };
+		452C01771EDE0E400057BEAA /* GVertexArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GVertexArray.hpp; sourceTree = "<group>"; };
 		452C01791EDE0E400057BEAA /* GDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDirector.cpp; sourceTree = "<group>"; };
 		452C017A1EDE0E400057BEAA /* GDirector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GDirector.hpp; sourceTree = "<group>"; };
 		452C017B1EDE0E400057BEAA /* GShaderUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GShaderUtils.cpp; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 			children = (
 				45944A921ED367B400575060 /* GShader.hpp */,
 				45944A911ED367B400575060 /* GShader.cpp */,
-				452C01761EDE0E400057BEAA /* VertexArray.cpp */,
-				452C01771EDE0E400057BEAA /* VertexArray.hpp */,
+				452C01761EDE0E400057BEAA /* GVertexArray.cpp */,
+				452C01771EDE0E400057BEAA /* GVertexArray.hpp */,
 				452C01721EDE0E400057BEAA /* BirdFragment.glsl */,
 				452C01731EDE0E400057BEAA /* BirdVertex.glsl */,
 				452C01741EDE0E400057BEAA /* PipeFragment.glsl */,
@@ -353,7 +353,7 @@
 				452C017D1EDE0E400057BEAA /* GameObject.cpp in Sources */,
 				452C017F1EDE0E400057BEAA /* PipeColumn.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
-				452C01881EDE0E400057BEAA /* VertexArray.cpp in Sources */,
+				452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */,
 				452C013B1EDDCD240057BEAA /* main.m in Sources */,
 				452C01801EDE0E400057BEAA /* Player.cpp in Sources */,
 				452C01831EDE0E400057BEAA /* Box.cpp in Sources */,

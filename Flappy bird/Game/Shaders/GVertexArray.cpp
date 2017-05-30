@@ -1,16 +1,16 @@
 //
-//  VertexArray.cpp
+//  GVertexArray.cpp
 //  Flappy bird
 //
 //  Created by Ruben on 22/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#include "VertexArray.hpp"
+#include "GVertexArray.hpp"
 
 
-VertexArray::VertexArray() {}
-VertexArray::VertexArray(glVertex vertexs[4], GLubyte indexs[4]){
+GVertexArray::GVertexArray() {}
+GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4]){
     
     const glVertex Vertices[] = {
         {vertexs[0]},
@@ -37,26 +37,26 @@ VertexArray::VertexArray(glVertex vertexs[4], GLubyte indexs[4]){
     //glBindVertexArray(0);
 }
 
-void VertexArray::bind(){
+void GVertexArray::bind(){
     if(ibo > 0 && vbo > 0) {
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     }
 }
-void VertexArray::unbind(){
+void GVertexArray::unbind(){
     if(ibo > 0 && vbo > 0) {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 }
-void VertexArray::draw(){
+void GVertexArray::draw(){
     if(ibo > 0) {
         glVertexAttribPointer(GSHADER_VERTEX_ATTRIB, 3, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, position));
         glVertexAttribPointer(GSHADER_COLOR_ATTRIB, 4, GL_FLOAT, GL_FALSE, sizeof(glVertex), (void *)offsetof(glVertex, color));
         glDrawElements(GL_TRIANGLE_STRIP, indexCount, GL_UNSIGNED_BYTE, 0);
     }
 }
-void VertexArray::render(){
+void GVertexArray::render(){
     bind();
     draw();
 }

@@ -18,7 +18,7 @@
 #include "GTypes.hpp"
 #include "GLVertex.hpp"
 #include "Box.hpp"
-#include "VertexArray.hpp"
+#include "GVertexArray.hpp"
 #include "GLMatrix.hpp"
 
 using namespace std;
@@ -30,7 +30,7 @@ protected:
     GLMatrix modelView;
     Box body;
     vector<glVertex> vertexs;
-    VertexArray* modelMesh;
+    GVertexArray* modelMesh;
 
 public:
     GameObject();

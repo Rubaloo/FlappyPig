@@ -1,5 +1,5 @@
 //
-//  VertexArray.hpp
+//  GVertexArray.hpp
 //  Flappy bird
 //
 //  Created by Ruben on 22/5/17.
@@ -13,11 +13,11 @@
 #include "GTypes.hpp"
 #include "GShader.hpp"
 #include <OpenGLES/ES2/gl.h>
-class VertexArray {
+class GVertexArray {
     
 public:
-    VertexArray();
-    VertexArray(glVertex vertexs[], GLubyte indexs[]);
+    GVertexArray();
+    GVertexArray(glVertex vertexs[], GLubyte indexs[]);
     void bind();
     void unbind();
     void draw();

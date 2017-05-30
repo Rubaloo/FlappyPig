@@ -31,7 +31,7 @@ Pipe::Pipe(Box body) :GameObject(body)
     modelView.populateIdentity();
     move(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = new VertexArray(modelVertexs, modelIndexs);
+    modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
 
 Pipe::~Pipe(){};

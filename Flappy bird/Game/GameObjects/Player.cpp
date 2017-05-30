@@ -31,7 +31,7 @@ Player::Player(Box body, int firstScore) : GameObject(body)
     resetModelView();
     //moveTo(kmVec3Make(100, 100, 0.0));
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = new VertexArray(modelVertexs, modelIndexs);
+    modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
 
 Player::~Player(){};
