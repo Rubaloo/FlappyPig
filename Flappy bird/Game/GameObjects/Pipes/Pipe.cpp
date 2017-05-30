@@ -11,7 +11,7 @@
 #include "GameObject.hpp"
 
 Pipe::Pipe() : GameObject(){}
-Pipe::Pipe(Box body) :GameObject(body)
+Pipe::Pipe(GBox body) :GameObject(body)
 {
     kmSize size = body.getSize();
     

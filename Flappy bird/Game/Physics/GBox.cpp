@@ -1,18 +1,18 @@
 //
-//  Box.cpp
+//  GBox.cpp
 //  Flappy bird
 //
 //  Created by Ruben on 21/5/17.
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#include "Box.hpp"
+#include "GBox.hpp"
 #include "GDirector.hpp"
 #include <cmath>
 #define K_GRAVITY 300.0
 
-Box::Box(){};
-Box::Box(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
+GBox::GBox(){};
+GBox::GBox(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
 {
     shape = _shape;
     center = kmVec3Make(_center.x, _center.y, 0);
@@ -28,7 +28,7 @@ Box::Box(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
     endForce = kmVec3Make(0, 0, 0);
 }
 
-void Box::updateEndForce()
+void GBox::updateEndForce()
 {
     endForce = kmVec3Make(0,0,0);
     for(int i = 0; i < constantForces.size(); ++i) {
@@ -43,14 +43,14 @@ void Box::updateEndForce()
 }
 
 
-void Box::enableGravity()
+void GBox::enableGravity()
 {
     kmVec3 gravityForce = kmVec3Make(0.0, K_GRAVITY, 0.0);
     constantForces.push_back(gravityForce);
 }
 
-//triangle strip box representation
-kmRect Box::getRect()
+//triangle strip GBox representation
+kmRect GBox::getRect()
 {
     kmRect rect;
     
@@ -66,31 +66,31 @@ kmRect Box::getRect()
 }
 
 
-void Box::setVelocity(kmVec3 v)
+void GBox::setVelocity(kmVec3 v)
 {
     velocity = v;
 }
 
-kmVec3 Box::getCenter()
+kmVec3 GBox::getCenter()
 {
     return center;
 }
 
-kmSize Box::getSize(){
+kmSize GBox::getSize(){
     return size;
 }
 
-int Box::getShape() {
+int GBox::getShape() {
     return shape;
 }
 
-void Box::applyImpulse(float force, kmVec3 direction)
+void GBox::applyImpulse(float force, kmVec3 direction)
 {
     kmVec3 impulseForce = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
     momentForces.push_back(impulseForce);
 }
 
-kmVec3 Box::update(float dt)
+kmVec3 GBox::update(float dt)
 {
     updateEndForce();
     
@@ -109,12 +109,12 @@ kmVec3 Box::update(float dt)
     return nextPosition;
 }
 
-void Box::setCenter(kmVec3 c)
+void GBox::setCenter(kmVec3 c)
 {
     center = c;
 }
 
-bool Box::intersect(Box* gameObject) {
+bool GBox::intersect(GBox* gameObject) {
     
     bool intersect = false;
     if(gameObject->getShape() == SQUARE_SHAPE &&

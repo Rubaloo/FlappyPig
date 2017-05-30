@@ -1,5 +1,5 @@
 //
-//  Box.hpp
+//  GBox.hpp
 //  Flappy bird
 //
 //  Created by Ruben on 21/5/17.
@@ -18,13 +18,13 @@
 
 using namespace std;
 
-class Box {
+class GBox {
 public:
-    Box();
-    Box(kmVec3 center, kmSize size, int shape=SQUARE_SHAPE);
+    GBox();
+    GBox(kmVec3 center, kmSize size, int shape=SQUARE_SHAPE);
     
     int shape;
-    bool intersect(Box* gameObject);
+    bool intersect(GBox* gameObject);
     
     int getShape();
     kmRect getRect();

@@ -9,12 +9,12 @@
 #include "GameObject.hpp"
 
 GameObject::GameObject(){}
-GameObject::GameObject(Box b)
+GameObject::GameObject(GBox b)
 {
     body = b;
 }
 
-Box* GameObject::getBox()
+GBox* GameObject::getBox()
 {
     return &body;
 }
@@ -39,8 +39,8 @@ bool GameObject::intersect(GameObject* object)
     return body.intersect(object->getBox());
 }
 
-bool GameObject::intersect(Box* box) {
-    return body.intersect(box);
+bool GameObject::intersect(GBox* GBox) {
+    return body.intersect(GBox);
 }
 
 void GameObject::moveTo(kmVec3 translation)

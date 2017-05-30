@@ -16,7 +16,7 @@ class Pipe : public GameObject {
     
 public:
     Pipe();
-    Pipe(Box body);
+    Pipe(GBox body);
     ~Pipe();
     void update(float dt);
     void render();

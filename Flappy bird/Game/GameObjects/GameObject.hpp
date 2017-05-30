@@ -17,7 +17,7 @@
 #include "GDirector.hpp"
 #include "GTypes.hpp"
 #include "GLVertex.hpp"
-#include "Box.hpp"
+#include "GBox.hpp"
 #include "GVertexArray.hpp"
 #include "GLMatrix.hpp"
 
@@ -28,23 +28,23 @@ class GameObject {
 protected:
     
     GLMatrix modelView;
-    Box body;
+    GBox body;
     vector<glVertex> vertexs;
     GVertexArray* modelMesh;
 
 public:
     GameObject();
-    GameObject(Box b);
+    GameObject(GBox b);
     
     bool reachTop();
     bool reachFloor();
     bool outsideLeftLimits();
-    bool intersect(Box* box);
+    bool intersect(GBox* GBox);
     bool intersect(GameObject* object);
     void moveTo(kmVec3 translation);
     void resetModelView();
     virtual void update(float dt){};
     virtual void render(){};
-    Box* getBox();
+    GBox* getBox();
 };
 #endif /* GameObject_hpp */

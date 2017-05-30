@@ -26,7 +26,7 @@ GameWorld::GameWorld(float gGravity)
 void GameWorld::initLevel()
 {
     //Add player
-    Box pBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE);
+    GBox pBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE);
     pBox.enableGravity();
     bird = new Player(pBox, 0);
     

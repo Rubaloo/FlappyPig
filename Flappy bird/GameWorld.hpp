@@ -27,7 +27,7 @@ private:
     Player* bird;
     vector<PipeColumn*> cPipes;
     
-    Box playableArea;
+    GBox playableArea;
     float gravity;
     MessageManager* mm;
     queue<int> messages;

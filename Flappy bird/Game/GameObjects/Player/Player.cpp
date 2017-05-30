@@ -9,7 +9,7 @@
 #define K_PLAYER_JUMP 10000
 #include "Player.hpp"
 Player::Player() : GameObject(){}
-Player::Player(Box body, int firstScore) : GameObject(body)
+Player::Player(GBox body, int firstScore) : GameObject(body)
 {
     kmSize size = body.getSize();
     score = firstScore;

@@ -19,7 +19,7 @@
 		452C017D1EDE0E400057BEAA /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01611EDE0E400057BEAA /* GameObject.cpp */; };
 		452C01811EDE0E400057BEAA /* GLMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016A1EDE0E400057BEAA /* GLMatrix.cpp */; };
 		452C01821EDE0E400057BEAA /* GLVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016C1EDE0E400057BEAA /* GLVertex.cpp */; };
-		452C01831EDE0E400057BEAA /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016F1EDE0E400057BEAA /* Box.cpp */; };
+		452C01831EDE0E400057BEAA /* GBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C016F1EDE0E400057BEAA /* GBox.cpp */; };
 		452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01761EDE0E400057BEAA /* GVertexArray.cpp */; };
 		452C01891EDE0E400057BEAA /* GDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01791EDE0E400057BEAA /* GDirector.cpp */; };
 		452C018A1EDE0E400057BEAA /* GShaderUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C017B1EDE0E400057BEAA /* GShaderUtils.cpp */; };
@@ -60,8 +60,8 @@
 		452C016B1EDE0E400057BEAA /* GLMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLMatrix.hpp; sourceTree = "<group>"; };
 		452C016C1EDE0E400057BEAA /* GLVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLVertex.cpp; sourceTree = "<group>"; };
 		452C016D1EDE0E400057BEAA /* GLVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLVertex.hpp; sourceTree = "<group>"; };
-		452C016F1EDE0E400057BEAA /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
-		452C01701EDE0E400057BEAA /* Box.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
+		452C016F1EDE0E400057BEAA /* GBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GBox.cpp; sourceTree = "<group>"; };
+		452C01701EDE0E400057BEAA /* GBox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GBox.hpp; sourceTree = "<group>"; };
 		452C01761EDE0E400057BEAA /* GVertexArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GVertexArray.cpp; sourceTree = "<group>"; };
 		452C01771EDE0E400057BEAA /* GVertexArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GVertexArray.hpp; sourceTree = "<group>"; };
 		452C01791EDE0E400057BEAA /* GDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GDirector.cpp; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 		452C016E1EDE0E400057BEAA /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				452C016F1EDE0E400057BEAA /* Box.cpp */,
-				452C01701EDE0E400057BEAA /* Box.hpp */,
+				452C01701EDE0E400057BEAA /* GBox.hpp */,
+				452C016F1EDE0E400057BEAA /* GBox.cpp */,
 			);
 			path = Physics;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 				452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */,
 				452C01C71EDE17C00057BEAA /* Player.cpp in Sources */,
 				452C013B1EDDCD240057BEAA /* main.m in Sources */,
-				452C01831EDE0E400057BEAA /* Box.cpp in Sources */,
+				452C01831EDE0E400057BEAA /* GBox.cpp in Sources */,
 				45944A931ED367B400575060 /* GShader.cpp in Sources */,
 				452C018E1EDE0E7B0057BEAA /* IO.mm in Sources */,
 				452C01931EDE0F100057BEAA /* MessageManager.cpp in Sources */,

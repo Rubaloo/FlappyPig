@@ -19,8 +19,8 @@ PipeColumn::PipeColumn(int xCenter) {
     float uPipeHeight = random;
     float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - K_COLUMN_PIPES_SPACE;
     
-    Box uPipeBox(kmVec3Make(xCenter, uPipeHeight/2.0, 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, uPipeHeight));
-    Box dPipeBox(kmVec3Make(xCenter, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, dPipeHeight));
+    GBox uPipeBox(kmVec3Make(xCenter, uPipeHeight/2.0, 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, uPipeHeight));
+    GBox dPipeBox(kmVec3Make(xCenter, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, dPipeHeight));
     uPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
     dPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
     

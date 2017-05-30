@@ -18,7 +18,7 @@ class Player : public GameObject {
 public:
     Player();
     ~Player();
-    Player(Box body, int firstScore);
+    Player(GBox body, int firstScore);
     int getShape();
     void jump();
     void render();
