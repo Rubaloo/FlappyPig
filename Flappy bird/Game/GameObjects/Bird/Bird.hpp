@@ -17,16 +17,14 @@
 class Bird : public GObject {
 public:
     Bird();
+    Bird(GBox body);
     ~Bird();
-    Bird(GBox body, int firstScore);
+
     int getShape();
+    
     void jump();
     void render();
     void update(float dt);
-    
-private:
-    
-    int score;
 };
 
 #endif /* Player_hpp */

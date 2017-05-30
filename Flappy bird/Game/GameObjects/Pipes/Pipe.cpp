@@ -7,8 +7,6 @@
 //
 
 #include "Pipe.hpp"
-#include "GTypes.hpp"
-#include "GObject.hpp"
 
 Pipe::Pipe() : GObject(){}
 Pipe::Pipe(GBox body) :GObject(body)

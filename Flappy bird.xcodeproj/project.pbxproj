@@ -267,10 +267,10 @@
 			isa = PBXGroup;
 			children = (
 				452C01CD1EDE18DA0057BEAA /* Shader */,
-				452C01B61EDE17C00057BEAA /* Pipe.cpp */,
 				452C01B71EDE17C00057BEAA /* Pipe.hpp */,
-				452C01B81EDE17C00057BEAA /* PipeColumn.cpp */,
+				452C01B61EDE17C00057BEAA /* Pipe.cpp */,
 				452C01B91EDE17C00057BEAA /* PipeColumn.hpp */,
+				452C01B81EDE17C00057BEAA /* PipeColumn.cpp */,
 			);
 			path = Pipes;
 			sourceTree = "<group>";
@@ -287,8 +287,8 @@
 		452C01D21EDE19D30057BEAA /* Bird */ = {
 			isa = PBXGroup;
 			children = (
-				452C01D31EDE19D30057BEAA /* Bird.cpp */,
 				452C01D41EDE19D30057BEAA /* Bird.hpp */,
+				452C01D31EDE19D30057BEAA /* Bird.cpp */,
 				452C01D51EDE19D30057BEAA /* Shader */,
 			);
 			path = Bird;
@@ -297,8 +297,8 @@
 		452C01D51EDE19D30057BEAA /* Shader */ = {
 			isa = PBXGroup;
 			children = (
-				452C01D61EDE19D30057BEAA /* BirdFragment.glsl */,
 				452C01D71EDE19D30057BEAA /* BirdVertex.glsl */,
+				452C01D61EDE19D30057BEAA /* BirdFragment.glsl */,
 			);
 			path = Shader;
 			sourceTree = "<group>";

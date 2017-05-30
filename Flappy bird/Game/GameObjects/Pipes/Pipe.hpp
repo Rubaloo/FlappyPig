@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "GObject.hpp"
+#include "GTypes.hpp"
 
 class Pipe : public GObject {
     
@@ -18,9 +19,8 @@ public:
     Pipe();
     Pipe(GBox body);
     ~Pipe();
+    
     void update(float dt);
     void render();
-private:
-    int heigth;
 };
 #endif /* Pipe_hpp */

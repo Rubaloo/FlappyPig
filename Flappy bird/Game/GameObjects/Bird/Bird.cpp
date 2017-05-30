@@ -7,12 +7,13 @@
 //
 
 #define K_PLAYER_JUMP 10000
+
 #include "Bird.hpp"
+
 Bird::Bird() : GObject(){}
-Bird::Bird(GBox body, int firstScore) : GObject(body)
+Bird::Bird(GBox body) : GObject(body)
 {
     kmSize size = body.getSize();
-    score = firstScore;
     
     GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
     GLfloat h = size.h/SCREEN_HEIGHT;
@@ -29,7 +30,7 @@ Bird::Bird(GBox body, int firstScore) : GObject(body)
     };
     
     resetModelView();
-    //moveTo(kmVec3Make(100, 100, 0.0));
+    moveTo(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
