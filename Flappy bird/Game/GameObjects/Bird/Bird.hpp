@@ -1,5 +1,5 @@
 //
-//  Player.hpp
+//  Bird.hpp
 //  Flapi Pig
 //
 //  Created by Ruben on 13/5/17.
@@ -14,11 +14,11 @@
 
 #include "GObject.hpp"
 
-class Player : public GObject {
+class Bird : public GObject {
 public:
-    Player();
-    ~Player();
-    Player(GBox body, int firstScore);
+    Bird();
+    ~Bird();
+    Bird(GBox body, int firstScore);
     int getShape();
     void jump();
     void render();

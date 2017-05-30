@@ -25,10 +25,10 @@ GameWorld::GameWorld(float gGravity)
 
 void GameWorld::initLevel()
 {
-    //Add player
+    //Add Bird
     GBox pBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE);
     pBox.enableGravity();
-    bird = new Player(pBox, 0);
+    bird = new Bird(pBox, 0);
     
     //Add pipes
     float columnPipes = K_PIPES_COLUMNS_NUMBER;

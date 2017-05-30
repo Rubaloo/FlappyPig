@@ -14,7 +14,7 @@
 #include <vector>
 
 #include "PipeColumn.hpp"
-#include "Player.hpp"
+#include "Bird.hpp"
 #include "Pipe.hpp"
 #include "Receiver.hpp"
 #include "MessageManager.hpp"
@@ -24,7 +24,7 @@ using namespace std;
 class GameWorld : public Receiver {
     
 private:
-    Player* bird;
+    Bird* bird;
     vector<PipeColumn*> cPipes;
     
     GBox playableArea;

@@ -1,5 +1,5 @@
 //
-//  Player.cpp
+//  Bird.cpp
 //  Flapi Pig
 //
 //  Created by Ruben on 13/5/17.
@@ -7,9 +7,9 @@
 //
 
 #define K_PLAYER_JUMP 10000
-#include "Player.hpp"
-Player::Player() : GObject(){}
-Player::Player(GBox body, int firstScore) : GObject(body)
+#include "Bird.hpp"
+Bird::Bird() : GObject(){}
+Bird::Bird(GBox body, int firstScore) : GObject(body)
 {
     kmSize size = body.getSize();
     score = firstScore;
@@ -34,19 +34,19 @@ Player::Player(GBox body, int firstScore) : GObject(body)
     modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
 
-Player::~Player(){};
+Bird::~Bird(){};
 
-void Player::jump() {
+void Bird::jump() {
     body.setVelocity(kmVec3Make(0, 0, 0));
     body.applyImpulse(K_PLAYER_JUMP, kmVec3Make(0, -1, 0));
 }
-void Player::update(float dt)
+void Bird::update(float dt)
 {
     kmVec3 nextPosition = body.update(dt);
     moveTo(nextPosition);
 }
 
-void Player::render() {
+void Bird::render() {
     
     GLMatrix projection;
     projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
