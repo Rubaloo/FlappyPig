@@ -18,7 +18,7 @@ GInputManager::~GInputManager() {
     pthread_mutexattr_destroy(&mattr);
 };
 
-void GInputManager::add(int a) {
+void GInputManager::addInput(int a) {
     pthread_mutex_lock(&mutex);
     messages.push(a);
     ++messagesNumber;
@@ -37,7 +37,7 @@ int GInputManager::remove() {
     return num;
 };
 
-int GInputManager::getMessagesNumber() {
+int GInputManager::getInputsNumber() {
     int numMessages = -1;
     pthread_mutex_lock(&mutex);
     numMessages = messagesNumber;

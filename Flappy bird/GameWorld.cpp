@@ -133,7 +133,7 @@ void GameWorld::update(float dt)
 }
 
 void GameWorld::pollUpdates() {
-    int msgNumber = mm->getMessagesNumber();
+    int msgNumber = mm->getInputsNumber();
     if(msgNumber > 0) {
         for(int i = 0; i < msgNumber; ++i) {
             messages.push(mm->remove());
@@ -143,5 +143,5 @@ void GameWorld::pollUpdates() {
 
 void GameWorld::handleMessage(int msg)
 {
-    mm->add(msg);
+    mm->addInput(msg);
 }

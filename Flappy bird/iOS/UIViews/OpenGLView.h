@@ -18,4 +18,5 @@
     GLuint _colorRenderBuffer;
 }
 -(void) setupGL;
+
 @end

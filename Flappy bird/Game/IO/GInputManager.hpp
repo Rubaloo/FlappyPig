@@ -19,9 +19,9 @@ public:
     GInputManager();
     ~GInputManager();
     
-    void add(int a);
     int remove();
-    int getMessagesNumber();
+    void addInput(int a);
+    int getInputsNumber();
     
 private:
     pthread_mutex_t mutex;
