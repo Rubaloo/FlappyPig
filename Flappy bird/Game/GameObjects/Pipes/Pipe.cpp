@@ -32,7 +32,10 @@ Pipe::Pipe(GBox body) :GObject(body)
     modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
 
-Pipe::~Pipe(){};
+Pipe::~Pipe(){
+    modelMesh->unbind();
+    delete modelMesh;
+};
 
 void Pipe::update(float dt)
 {

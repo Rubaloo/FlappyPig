@@ -28,6 +28,11 @@ PipeColumn::PipeColumn(int xCenter) {
     down = new Pipe(dPipeBox);
 }
 
+PipeColumn::~PipeColumn(){
+    delete up;
+    delete down;
+}
+
 bool PipeColumn::intersect(GObject* gObject)
 {
     return (up->intersect(gObject)) || (down->intersect(gObject));

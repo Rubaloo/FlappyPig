@@ -35,7 +35,10 @@ Bird::Bird(GBox body) : GObject(body)
     modelMesh = new GVertexArray(modelVertexs, modelIndexs);
 }
 
-Bird::~Bird(){};
+Bird::~Bird(){
+    modelMesh->unbind();
+    delete modelMesh;
+};
 
 void Bird::jump() {
     body.setVelocity(kmVec3Make(0, 0, 0));

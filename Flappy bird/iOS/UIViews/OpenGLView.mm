@@ -105,11 +105,12 @@ PostMan* postMan;
     if(gWorld->isLevelFinished()) {
         gWorld->resetLevel();
         gWorld->setLevelFinished(false);
+    } else{
+        gWorld->pollUpdates();
+        gWorld->logic();
+        gWorld->update(dt);
+        gWorld->render();
     }
-    gWorld->pollUpdates();
-    gWorld->logic();
-    gWorld->update(dt);
-    gWorld->render();
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 

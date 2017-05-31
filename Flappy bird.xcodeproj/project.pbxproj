@@ -34,7 +34,7 @@
 		452C01D81EDE19D30057BEAA /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452C01D31EDE19D30057BEAA /* Bird.cpp */; };
 		452C01D91EDE19D30057BEAA /* BirdFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01D61EDE19D30057BEAA /* BirdFragment.glsl */; };
 		452C01DA1EDE19D30057BEAA /* BirdVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 452C01D71EDE19D30057BEAA /* BirdVertex.glsl */; };
-		45944A931ED367B400575060 /* GShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45944A911ED367B400575060 /* GShader.cpp */; };
+		45CE0DC81EDF57C600DDE5A5 /* GShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45CE0DC61EDF57C600DDE5A5 /* GShader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,8 +87,8 @@
 		452C01D41EDE19D30057BEAA /* Bird.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bird.hpp; sourceTree = "<group>"; };
 		452C01D61EDE19D30057BEAA /* BirdFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BirdFragment.glsl; sourceTree = "<group>"; };
 		452C01D71EDE19D30057BEAA /* BirdVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BirdVertex.glsl; sourceTree = "<group>"; };
-		45944A911ED367B400575060 /* GShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GShader.cpp; path = ../../../GShader.cpp; sourceTree = "<group>"; };
-		45944A921ED367B400575060 /* GShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GShader.hpp; path = ../../../GShader.hpp; sourceTree = "<group>"; };
+		45CE0DC61EDF57C600DDE5A5 /* GShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GShader.cpp; sourceTree = "<group>"; };
+		45CE0DC71EDF57C600DDE5A5 /* GShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GShader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,8 +212,8 @@
 		452C01711EDE0E400057BEAA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				45944A921ED367B400575060 /* GShader.hpp */,
-				45944A911ED367B400575060 /* GShader.cpp */,
+				45CE0DC61EDF57C600DDE5A5 /* GShader.cpp */,
+				45CE0DC71EDF57C600DDE5A5 /* GShader.hpp */,
 				452C01771EDE0E400057BEAA /* GVertexArray.hpp */,
 				452C01761EDE0E400057BEAA /* GVertexArray.cpp */,
 			);
@@ -383,12 +383,12 @@
 				452C01811EDE0E400057BEAA /* GLMatrix.cpp in Sources */,
 				452C01821EDE0E400057BEAA /* GLVertex.cpp in Sources */,
 				452C01C11EDE17C00057BEAA /* Pipe.cpp in Sources */,
+				45CE0DC81EDF57C600DDE5A5 /* GShader.cpp in Sources */,
 				452C017D1EDE0E400057BEAA /* GObject.cpp in Sources */,
 				4501FF8B1ED073ED00BBE43F /* GameWorld.cpp in Sources */,
 				452C01881EDE0E400057BEAA /* GVertexArray.cpp in Sources */,
 				452C013B1EDDCD240057BEAA /* main.m in Sources */,
 				452C01831EDE0E400057BEAA /* GBox.cpp in Sources */,
-				45944A931ED367B400575060 /* GShader.cpp in Sources */,
 				452C018E1EDE0E7B0057BEAA /* IO.mm in Sources */,
 				452C01931EDE0F100057BEAA /* GInputManager.cpp in Sources */,
 				452C01D81EDE19D30057BEAA /* Bird.cpp in Sources */,

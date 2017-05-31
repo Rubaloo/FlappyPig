@@ -48,20 +48,32 @@ void GameWorld::initLevel()
     }
 }
 
-void GameWorld::resetLevel()
+void GameWorld::clearLevelReferences()
 {
     delete bird;
     for (int i = 0; i < cPipes.size(); ++i) {
         delete cPipes[i];
     }
     cPipes.clear();
-    queue<int> empty;
-    swap(messages, empty);
+    
+    vector<PipeColumn*> vEmpty;
+    queue<int> qEmpty;
+    
+    cPipes.swap(vEmpty);
+    swap(messages, qEmpty);
+}
+void GameWorld::resetLevel()
+{
+    clearLevelReferences();
+    GShader::BIRD->
+    GShader::BIRD->disable();
     initLevel();
 }
 
 GameWorld::~GameWorld()
 {
+    clearLevelReferences();
+    delete gim;
 }
 
 void GameWorld::render()

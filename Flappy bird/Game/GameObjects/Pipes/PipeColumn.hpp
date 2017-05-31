@@ -23,7 +23,7 @@ private:
 public:
     PipeColumn();
     PipeColumn(int xCenter);
-    
+    ~PipeColumn();
     Pipe* getUpPipe();
     bool outsideLeftLimits();
     bool intersect(GObject* gObject);

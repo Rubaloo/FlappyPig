@@ -33,6 +33,10 @@ private:
     bool levelFinished;
     float lastPipeColumnX;
     
+    void checkEndConditions();
+    void processMessages();
+    void updateCPipes();
+    void clearLevelReferences();
     
     void handleInput(int msg);
 public:
@@ -41,6 +45,7 @@ public:
     
     bool isLevelFinished();
     void setLevelFinished(bool finished);
+    
     void initLevel();
     void resetLevel();
     
@@ -48,9 +53,5 @@ public:
     void logic();
     void pollUpdates();
     void update(float dt);
-    
-    void checkEndConditions();
-    void processMessages();
-    void updateCPipes();
 };
 #endif /* GameWorld_hpp */
