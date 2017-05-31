@@ -22,6 +22,8 @@ GShader::GShader(string vertexName, string fragmentName) {
     ID = GShaderUtils::getInstance()->load(vertexName, fragmentName);
 }
 
+GShader::~GShader(){}
+
 GLuint GShader::getID() {
     return ID;
 };

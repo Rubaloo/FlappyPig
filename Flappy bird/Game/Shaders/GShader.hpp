@@ -26,6 +26,7 @@ static const GLuint GSHADER_COLOR_ATTRIB = 1;
 class GShader {
 public:
     GShader(string vertex, string fragment);
+    ~GShader();
     
     static GShader* BIRD;
     static GShader* PIPE;
