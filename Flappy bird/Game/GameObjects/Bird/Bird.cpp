@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ruben. All rights reserved.
 //
 
-#define K_PLAYER_JUMP 10000
+#define K_PLAYER_JUMP 24000
 
 #include "Bird.hpp"
 

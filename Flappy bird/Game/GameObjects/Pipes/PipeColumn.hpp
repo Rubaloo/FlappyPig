@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "Pipe.hpp"
 
-#define K_COLUMN_PIPES_SPACE 150
+#define K_COLUMN_PIPES_SPACE 132
 #define k_COLUMN_SPEED -100
 #define K_COLUMN_PIPES_WIDTH 50
 
@@ -24,6 +24,7 @@ public:
     PipeColumn();
     PipeColumn(int xCenter);
     ~PipeColumn();
+    
     Pipe* getUpPipe();
     bool outsideLeftLimits();
     bool intersect(GObject* gObject);

@@ -8,7 +8,7 @@
 
 #include "GBox.hpp"
 
-#define K_GRAVITY 300.0
+#define K_GRAVITY 800.0
 
 GBox::GBox(){};
 GBox::GBox(kmVec3 _center, kmSize _size, int _shape /*SQUARE_SHAPE*/)
