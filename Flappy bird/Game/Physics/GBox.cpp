@@ -123,7 +123,6 @@ bool GBox::intersect(GBox* GObject) {
     }
     else if (shape == SQUARE_SHAPE &&
              GObject->getShape() == CIRCULAR_SHAPE){
-        intersect = true;
         kmSize circleSize = GObject->getSize();
         kmVec3 circleCenter = GObject->getCenter();
         kmSize rectSize = size;

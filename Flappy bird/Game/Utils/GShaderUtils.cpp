@@ -59,7 +59,7 @@ GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
     GLuint shaderHandle = glCreateShader(shaderType);
     
     const char * shaderStringUTF8 = &shaderString[0];
-    int shaderStringLength = shaderString.length();
+    GLint shaderStringLength = shaderString.length();
     glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
     
     glCompileShader(shaderHandle);
