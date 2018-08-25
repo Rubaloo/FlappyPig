@@ -1,12 +1,3 @@
-//
-//  GTypes.hpp
-//  Flapi Pig
-//
-//  Created by Ruben on 18/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
-
 #ifndef GTypes_hpp
 #define GTypes_hpp
 

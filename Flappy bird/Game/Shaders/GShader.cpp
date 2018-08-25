@@ -1,11 +1,3 @@
-//
-//  GShader.cpp
-//  Flappy bird
-//
-//  Created by Ruben on 22/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #include "GShader.hpp"
 
 #define BIRD_VERTEX_SHADER "BirdVertex"

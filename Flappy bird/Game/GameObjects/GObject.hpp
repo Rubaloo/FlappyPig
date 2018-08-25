@@ -1,11 +1,3 @@
-//
-//  GObject.hpp
-//  Flapi Pig
-//
-//  Created by Ruben on 13/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #ifndef GameObject_hpp
 #define GameObject_hpp
 

@@ -1,11 +1,3 @@
-//
-//  GLVertex.hpp
-//  Flapi Pig
-//
-//  Created by Ruben on 18/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #ifndef GLVertex_hpp
 #define GLVertex_hpp
 

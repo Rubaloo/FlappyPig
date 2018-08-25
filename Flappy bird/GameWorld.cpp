@@ -1,11 +1,3 @@
-//
-//  GameWorld.cpp
-//  Flapi Pig
-//
-//  Created by Ruben on 13/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #include "GameWorld.hpp"
 #include "Pipe.hpp"
 #include <stdlib.h>

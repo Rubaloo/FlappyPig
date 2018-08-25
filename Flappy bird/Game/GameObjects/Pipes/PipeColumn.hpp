@@ -1,11 +1,3 @@
-//
-//  PipeColumn.hpp
-//  Flappy bird
-//
-//  Created by Ruben on 27/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #ifndef PipeColumn_hpp
 #define PipeColumn_hpp
 

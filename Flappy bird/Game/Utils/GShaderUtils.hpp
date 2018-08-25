@@ -1,11 +1,3 @@
-//
-//  GShaderUtils.hpp
-//  Flappy bird
-//
-//  Created by Ruben on 22/5/17.
-//  Copyright © 2017 Ruben. All rights reserved.
-//
-
 #ifndef GShaderUtils_hpp
 #define GShaderUtils_hpp
 
