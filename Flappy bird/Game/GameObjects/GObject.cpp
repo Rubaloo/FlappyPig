@@ -26,6 +26,11 @@ bool GObject::reachTop() {
     return (body.getCenter().y - body.getSize().h/2.0) < 0;
 };
 
+void GObject::freeModelMesh()
+{
+    modelMesh->deleteBuffers();
+}
+
 bool GObject::intersect(GObject* object)
 {
     return body.intersect(object->getBox());

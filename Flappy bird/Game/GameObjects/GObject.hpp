@@ -30,6 +30,7 @@ public:
     
     void moveTo(kmVec3 translation);
     void resetModelView();
+    void freeModelMesh();
     
     bool intersect(GObject* object);
     bool reachTop();

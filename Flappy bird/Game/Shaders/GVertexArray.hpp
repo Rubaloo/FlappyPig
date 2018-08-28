@@ -11,6 +11,7 @@ public:
     GVertexArray();
     GVertexArray(glVertex vertexs[], GLubyte indexs[]);
     
+    void deleteBuffers();
     void bind();
     void unbind();
     void draw();

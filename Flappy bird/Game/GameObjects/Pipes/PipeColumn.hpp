@@ -23,5 +23,6 @@ public:
     void update(float dt);
     void moveTo(float xPosition);
     void render();
+    void freeModelMesh();
 };
 #endif /* PipeColumn_hpp */

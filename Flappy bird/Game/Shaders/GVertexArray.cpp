@@ -48,6 +48,13 @@ void GVertexArray::draw(){
         glDrawElements(GL_TRIANGLE_STRIP, indexCount, GL_UNSIGNED_BYTE, 0);
     }
 }
+
+void GVertexArray::deleteBuffers()
+{
+    glDeleteBuffers(1, &vbo);
+    glDeleteBuffers(1, &ibo);
+}
+
 void GVertexArray::render(){
     bind();
     draw();

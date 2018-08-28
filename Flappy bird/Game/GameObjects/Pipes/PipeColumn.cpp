@@ -55,3 +55,9 @@ void PipeColumn::render() {
     up->render();
     down->render();
 };
+
+void PipeColumn::freeModelMesh()
+{
+    up->freeModelMesh();
+    down->freeModelMesh();
+}
