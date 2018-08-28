@@ -6,6 +6,10 @@ GObject::GObject(GBox b)
     body = b;
 }
 
+GObject::~GObject()
+{
+}
+
 GBox* GObject::getBox()
 {
     return &body;

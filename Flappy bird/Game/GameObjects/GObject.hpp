@@ -25,6 +25,7 @@ protected:
 public:
     GObject();
     GObject(GBox b);
+    ~GObject();
     
     GBox* getBox();
     

@@ -42,14 +42,6 @@ void GameWorld::initLevel()
 
 void GameWorld::clearLevelReferences()
 {
-    //delete open gl object buffers
-    bird->freeModelMesh();
-    
-    for (int i = 0; i < cPipes.size(); ++i)
-    {
-        cPipes[i]->freeModelMesh();
-    }
-    
     delete bird;
     for (int i = 0; i < cPipes.size(); ++i) {
         delete cPipes[i];
