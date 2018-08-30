@@ -4,25 +4,44 @@
 #import "GDirector.hpp"
 #import "PostMan.hpp"
 
+struct CPPMembers
+{
+    GameWorld*  gWorld;
+    PostMan*    postman;
+};
+
+
 @interface OpenGLView (PrivateMethods)
-- (void)setupGWorld;
-- (void)setupGDirector;
+    - (void)setupGWorld;
+    - (void)setupGDirector;
 @end
 
-GameWorld* gWorld;
-PostMan* postMan;
+
+
 
 @implementation OpenGLView
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
+    
     self = [super initWithCoder:aDecoder];
+    if(self)
+    {
+        _cppMembers = new CPPMembers;
+    }
     return self;
 }
+
+- (void)dealloc
+{
+    delete _cppMembers;
+}
+
 
 + (Class)layerClass {
     return [CAEAGLLayer class];
 }
+
 
 -(void) setupGL
 {
@@ -70,13 +89,13 @@ PostMan* postMan;
 
 -(void)setupGWorld
 {
-    gWorld = new GameWorld();
-    gWorld->initLevel();
+    _cppMembers->gWorld = new GameWorld();
+    _cppMembers->gWorld->initLevel();
 }
 
 -(void) setupPostMan {
-    postMan = new PostMan();
-    postMan->addReceiver(gWorld);
+    _cppMembers->postman = new PostMan();
+    _cppMembers->postman->addReceiver(_cppMembers->gWorld);
 }
 
 -(void) setupGDirector
@@ -94,14 +113,14 @@ PostMan* postMan;
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
     //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
-    if(gWorld->isLevelFinished()) {
-        gWorld->resetLevel();
-        gWorld->setLevelFinished(false);
+    if(_cppMembers->gWorld->isLevelFinished()) {
+        _cppMembers->gWorld->resetLevel();
+        _cppMembers->gWorld->setLevelFinished(false);
     } else{
-        gWorld->pollUpdates();
-        gWorld->logic();
-        gWorld->update(dt);
-        gWorld->render();
+        _cppMembers->gWorld->pollUpdates();
+        _cppMembers->gWorld->logic();
+        _cppMembers->gWorld->update(dt);
+        _cppMembers->gWorld->render();
     }
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -113,6 +132,6 @@ PostMan* postMan;
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)even
 {
-    postMan->send(0);
+    _cppMembers->postman->send(0);
 }
 @end
