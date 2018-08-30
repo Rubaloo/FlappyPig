@@ -38,7 +38,7 @@ public:
     bool reachFloor();
     bool outsideLeftLimits();
     
-    virtual void update(float dt){};
-    virtual void render(){};
+    void update(float dt);
+    void render();
 };
 #endif /* GameObject_hpp */

@@ -48,3 +48,13 @@ void GObject::moveTo(kmVec3 translation)
 void GObject::resetModelView() {
     modelView.populateIdentity();
 }
+
+void GObject::update(float dt)
+{
+    cout << "Update method sould be implemented by GObject subclass" << endl;
+}
+    
+void GObject::render()
+{
+    cout << "GObject::reder method should be implemented by subclass" << endl;
+}
