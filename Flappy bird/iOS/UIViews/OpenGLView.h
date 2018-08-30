@@ -9,6 +9,8 @@ struct CPPMembers;
     CAEAGLLayer         * _eaglLayer;
     EAGLContext         * _context;
     GLuint              _colorRenderBuffer;
+    GLuint              _framebuffer;
+    
     struct CPPMembers   *_cppMembers;
 }
 -(void) setupGL;

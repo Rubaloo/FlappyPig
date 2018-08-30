@@ -35,10 +35,14 @@ struct CPPMembers
 - (void)dealloc
 {
     delete _cppMembers;
+    
+    glDeleteBuffers(1, &_colorRenderBuffer);
+    glDeleteBuffers(1, &_framebuffer);
 }
 
 
-+ (Class)layerClass {
++ (Class)layerClass
+{
     return [CAEAGLLayer class];
 }
 
@@ -55,12 +59,14 @@ struct CPPMembers
     [self setupDisplayLink];
 }
 
-- (void)setupLayer {
+- (void)setupLayer
+{
     _eaglLayer = (CAEAGLLayer*) self.layer;
     _eaglLayer.opaque = YES;
 }
 
-- (void)setupContext {   
+- (void)setupContext
+{
     EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
     _context = [[EAGLContext alloc] initWithAPI:api];
     if (!_context) {
@@ -74,16 +80,17 @@ struct CPPMembers
     }
 }
 
-- (void)setupRenderBuffer {
+- (void)setupRenderBuffer
+{
     glGenRenderbuffers(1, &_colorRenderBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);        
     [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];    
 }
 
-- (void)setupFrameBuffer {    
-    GLuint framebuffer;
-    glGenFramebuffers(1, &framebuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);   
+- (void)setupFrameBuffer
+{
+    glGenFramebuffers(1, &_framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderBuffer);
 }
 
@@ -93,7 +100,8 @@ struct CPPMembers
     _cppMembers->gWorld->initLevel();
 }
 
--(void) setupPostMan {
+-(void) setupPostMan
+{
     _cppMembers->postman = new PostMan();
     _cppMembers->postman->addReceiver(_cppMembers->gWorld);
 }
@@ -108,8 +116,8 @@ struct CPPMembers
 }
 
 
-- (void)render:(CADisplayLink*)displayLink {
-    
+- (void)render:(CADisplayLink*)displayLink
+{
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
     //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
@@ -125,7 +133,8 @@ struct CPPMembers
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
-- (void)setupDisplayLink {
+- (void)setupDisplayLink
+{
     CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];    
 }
