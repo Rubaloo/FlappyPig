@@ -16,7 +16,7 @@ using namespace std;
 class GameWorld : public Receiver {
     
 private:
-    Bird* bird;
+    Bird bird;
     vector<PipeColumn*> cPipes;
     
     GInputManager* gim;

@@ -6,8 +6,10 @@
 #define K_PIPES_OFFSET 250
 #define SCREEN_TOUCH 0
 
-GameWorld::GameWorld()
+GameWorld::GameWorld() : bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE))
 {
+    bird.getBox()->enableGravity();
+    
     levelFinished = false;
     lastPipeColumnX = -1;
     
@@ -26,11 +28,10 @@ void GameWorld::setLevelFinished(bool finished) {
 
 void GameWorld::initLevel()
 {
-    //Add Bird
-    GBox pBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE);
-    pBox.enableGravity();
-    bird = new Bird(pBox);
-    
+    //Set bird
+    bird.getBox()->setCenter(SCREEN_CENTER);
+    bird.getBox()->setVelocity(VELOCITY_IDDLE);
+
     //Add pipe columns
     float columnPipes = K_PIPES_COLUMNS_NUMBER;
     for(int i = 0; i < columnPipes; ++i) {
@@ -42,7 +43,6 @@ void GameWorld::initLevel()
 
 void GameWorld::clearLevelReferences()
 {
-    delete bird;
     for (int i = 0; i < cPipes.size(); ++i) {
         delete cPipes[i];
     }
@@ -75,7 +75,7 @@ void GameWorld::render()
     
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-    bird->render();
+    bird.render();
     for(int i = 0; i < cPipes.size(); ++i) {
         cPipes[i]->render();
     }
@@ -115,7 +115,7 @@ void GameWorld::processMessages()
         messages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird->jump();
+                bird.jump();
                 break;
             default:
                 break;
@@ -126,11 +126,11 @@ void GameWorld::processMessages()
 
 void GameWorld::checkEndConditions()
 {
-    levelFinished = (bird->reachFloor() || bird->reachTop());
+    levelFinished = (bird.reachFloor() || bird.reachTop());
     if(!levelFinished) {
         for(int i = 0; i < cPipes.size(); ++i) {
             PipeColumn* pc = cPipes[i];
-            if(pc->intersect(bird)){
+            if(pc->intersect(&bird)){
                 levelFinished = true;
             }
         }
@@ -139,7 +139,7 @@ void GameWorld::checkEndConditions()
 
 void GameWorld::update(float dt)
 {
-    bird->update(dt);
+    bird.update(dt);
     for(int i = 0; i < cPipes.size(); ++i) {
         cPipes[i]->update(dt);
     }
