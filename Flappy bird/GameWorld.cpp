@@ -6,7 +6,9 @@
 #define K_PIPES_OFFSET 250
 #define SCREEN_TOUCH 0
 
-GameWorld::GameWorld() : bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE))
+GameWorld::GameWorld() :
+    bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE)),
+    gim(GInputManager())
 {
     bird.getBox()->enableGravity();
     
@@ -18,7 +20,6 @@ GameWorld::GameWorld() : bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_S
     lastPipeColumnX = -1;
     
     GShader::loadAll();
-    gim = new GInputManager();
 }
 
 
@@ -60,7 +61,6 @@ void GameWorld::resetLevel()
 GameWorld::~GameWorld()
 {
     clearLevelReferences();
-    delete gim;
 }
 
 void GameWorld::render()
@@ -141,15 +141,15 @@ void GameWorld::update(float dt)
 }
 
 void GameWorld::pollUpdates() {
-    int msgNumber = gim->getInputsNumber();
+    int msgNumber = gim.getInputsNumber();
     if(msgNumber > 0) {
         for(int i = 0; i < msgNumber; ++i) {
-            messages.push(gim->remove());
+            messages.push(gim.remove());
         }
     }
 }
 
 void GameWorld::handleInput(int msg)
 {
-    gim->addInput(msg);
+    gim.addInput(msg);
 }

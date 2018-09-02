@@ -17,9 +17,10 @@ class GameWorld : public Receiver {
     
 private:
     Bird bird;
+    GInputManager gim;
     vector<PipeColumn> cPipes;
     
-    GInputManager* gim;
+    
     queue<int> messages;
     
     bool levelFinished;
