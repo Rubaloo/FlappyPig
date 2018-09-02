@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <string>
 #include "GTypes.hpp"
 #include "GShaderUtils.hpp"
 
@@ -17,29 +16,28 @@ static const GLuint GSHADER_COLOR_ATTRIB = 1;
 
 class GShader {
 public:
-    GShader(string vertex, string fragment);
-    ~GShader();
+    GShader(const char* aVertexName, const char* aFragmentName);
     
     static GShader* BIRD;
     static GShader* PIPE;
-    static void loadAll();
+    static void LoadAll();
     
-    GLuint getUniform(string name);
-    GLuint getAttribute(string name);
-    GLuint getID();
+    GLuint GetUniform(const char* aName);
+    GLuint GetAttribute(const char* aName);
+    GLuint GetID();
     
-    void setUniform1f(string name, GLfloat f);
-    void setUniform2f(string name, GLfloat x, GLfloat y);
-    void setUniform3f(string name, kmVec3 vector);
-    void setUniform4f(string name, GLfloat* matrix);
+    void SetUniform1f(const char* aName, GLfloat f);
+    void SetUniform2f(const char* aName, GLfloat x, GLfloat y);
+    void SetUniform3f(const char* aName, kmVec3 vector);
+    void SetUniform4f(const char* aName, GLfloat* matrix);
     
-    void enableVertexAttribute(string name);
-    void enable();
-    void disable();
+    void EnableVertexAttribute(const char* aName);
+    void Enable();
+    void Disable();
     
 private:
-    bool enabled;
-    GLuint ID;
+    bool mEnabled;
+    GLuint mID;
     
 };
 #endif /* GShader_hpp */

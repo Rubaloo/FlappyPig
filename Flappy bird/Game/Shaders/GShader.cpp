@@ -9,69 +9,67 @@
 GShader* GShader::BIRD;
 GShader* GShader::PIPE;
 
-GShader::GShader(string vertexName, string fragmentName) {
-    enabled = false;
-    ID = GShaderUtils::getInstance()->load(vertexName, fragmentName);
+GShader::GShader(const char* aVertexName, const char* aFragmentName) : mEnabled(false),
+    mID(GShaderUtils::getInstance()->load(aVertexName, aFragmentName))
+{
 }
 
-GShader::~GShader(){}
-
-GLuint GShader::getID() {
-    return ID;
+GLuint GShader::GetID() {
+    return mID;
 };
 
-void GShader::loadAll() {
+void GShader::LoadAll() {
     BIRD = new GShader(BIRD_VERTEX_SHADER, BIRD_FRAGMENT_SHADER);
     PIPE = new GShader(PIPE_VERTEX_SHADER, PIPE_FRAGMENT_SHADER);
 }
 
-GLuint GShader::getUniform(string name) {
-    GLuint result = glGetUniformLocation(ID, name.c_str());
+GLuint GShader::GetUniform(const char* aName) {
+    GLuint result = glGetUniformLocation(mID, aName);
     if(result == -1) {
-        printf("Cannot find uniform variable: %s", name.c_str());
+        printf("Cannot find uniform variable: %s", aName);
     }
     return result;
 }
 
-GLuint GShader::getAttribute(string name) {
-    GLuint result = glGetAttribLocation(ID, name.c_str());
+GLuint GShader::GetAttribute(const char* aName) {
+    GLuint result = glGetAttribLocation(mID, aName);
     if(result == -1) {
-        printf("Cannot find attribute variable: %s", name.c_str());
+        printf("Cannot find attribute variable: %s", aName);
     }
     return result;
 }
 
-void GShader::enableVertexAttribute(string name)
+void GShader::EnableVertexAttribute(const char* aName)
 {
-    glEnableVertexAttribArray(getAttribute(name));
+    glEnableVertexAttribArray(GetAttribute(aName));
 }
 
-void GShader::setUniform1f(string name, GLfloat f) {
-    if (!enabled) enable();
-    glUniform1f(getUniform(name), f);
+void GShader::SetUniform1f(const char* aName, GLfloat f) {
+    if (!mEnabled) Enable();
+    glUniform1f(GetUniform(aName), f);
 }
 
-void GShader::setUniform2f(string name, GLfloat x, GLfloat y) {
-    if (!enabled) enable();
-    glUniform2f(getUniform(name), x, y);
+void GShader::SetUniform2f(const char* aName, GLfloat x, GLfloat y) {
+    if (!mEnabled) Enable();
+    glUniform2f(GetUniform(aName), x, y);
 }
 
-void GShader::setUniform3f(string name, kmVec3 vector) {
-    if (!enabled) enable();
-    glUniform3f(getUniform(name), vector.x, vector.y, vector.z);
+void GShader::SetUniform3f(const char* aName, kmVec3 vector) {
+    if (!mEnabled) Enable();
+    glUniform3f(GetUniform(aName), vector.x, vector.y, vector.z);
 }
 
-void GShader::setUniform4f(string name, GLfloat* matrix) {
-    if (!enabled) enable();
-    glUniformMatrix4fv(getUniform(name), 1, GL_FALSE, matrix);
+void GShader::SetUniform4f(const char* aName, GLfloat* matrix) {
+    if (!mEnabled) Enable();
+    glUniformMatrix4fv(GetUniform(aName), 1, GL_FALSE, matrix);
 }
 
-void GShader::enable() {
-    glUseProgram(ID);
-    enabled = true;
+void GShader::Enable() {
+    glUseProgram(mID);
+    mEnabled = true;
 };
 
-void GShader::disable() {
+void GShader::Disable() {
     glUseProgram(0);
-    enabled = false;
+    mEnabled = false;
 }

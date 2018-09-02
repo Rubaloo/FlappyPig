@@ -41,14 +41,14 @@ private:
     //Physhcs
     vector<kmVec3> constantForces;
     vector<kmVec3> momentForces;
-    kmVec3 velocity;
-    kmVec3 direction;
-    kmVec3 endForce;
+    kmVec3 mVelocity;
+    kmVec3 mDirection;
+    kmVec3 mEndForce;
     
-    bool gravityEnabled;
-    bool isVisible;
+    bool mGravityEnabled;
+    bool mIsVisible;
     
-    void updateEndForce();
+    void UpdateEndForce();
 };
 
 #endif /* Box_hpp */

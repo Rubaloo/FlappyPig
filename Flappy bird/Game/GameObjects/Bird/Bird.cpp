@@ -45,23 +45,23 @@ void Bird::Render() {
     GLMatrix projection;
     projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
     
-    GShader::BIRD->enable();
-    GShader::BIRD->enableVertexAttribute("Position");
-    GShader::BIRD->enableVertexAttribute("SourceColor");
+    GShader::BIRD->Enable();
+    GShader::BIRD->EnableVertexAttribute("Position");
+    GShader::BIRD->EnableVertexAttribute("SourceColor");
     
     kmMat4 gMatrix;
     mModelView.gMatrix(&gMatrix);
-    GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
-    GShader::BIRD->setUniform4f("Projection", projection.matrix());
+    GShader::BIRD->SetUniform4f("ModelView", gMatrix.mat);
+    GShader::BIRD->SetUniform4f("Projection", projection.matrix());
     
     kmVec3 position = GetBox().GetCenter();
-    GShader::BIRD->setUniform1f("xPosition", position.x);
-    GShader::BIRD->setUniform1f("yPosition", SCREEN_HEIGHT - position.y);
-    GShader::BIRD->setUniform1f("radius", 15.0);
+    GShader::BIRD->SetUniform1f("xPosition", position.x);
+    GShader::BIRD->SetUniform1f("yPosition", SCREEN_HEIGHT - position.y);
+    GShader::BIRD->SetUniform1f("radius", 15.0);
     
     mMmodelMesh.render();
     ResetModelView();
-    GShader::BIRD->disable();
+    GShader::BIRD->Disable();
     
 
 };

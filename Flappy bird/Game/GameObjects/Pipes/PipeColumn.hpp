@@ -5,7 +5,7 @@
 #include "Pipe.hpp"
 
 #define K_COLUMN_PIPES_SPACE 132
-#define k_COLUMN_SPEED -100
+#define K_COLUMN_SPEED kmVec3Make(-100, 0, 0)
 #define K_COLUMN_PIPES_WIDTH 50
 
 class PipeColumn {

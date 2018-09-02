@@ -2,19 +2,16 @@
 
 #define K_GRAVITY 800.0
 
-GBox::GBox(kmVec3 aCenter, kmSize aSize, int aShape /*SQUARE_SHAPE*/)
-    : mShape(aShape)
+GBox::GBox(kmVec3 aCenter, kmSize aSize, int aShape /*SQUARE_SHAPE*/) :
+    mCenter(aCenter),
+    mSize(aSize),
+    mShape(aShape),
+    mVelocity(kmVec3Make(0, 0, 0)),
+    mMass(1),
+    mIsVisible(true),
+    mGravityEnabled(false),
+    mEndForce(kmVec3Make(0, 0, 0))
 {
-    mCenter = kmVec3Make(aCenter.x, aCenter.y, 0);
-    
-    mSize = kmSizeMake(aSize.w, aSize.h);
-    
-    velocity = kmVec3Make(0, 0, 0);
-    mMass = 1;
-    
-    isVisible = true;
-    gravityEnabled = false;
-    endForce = kmVec3Make(0, 0, 0);
 }
 
 kmRect GBox::GetRect() const
@@ -49,7 +46,7 @@ int GBox::GetShape() const
 
 void GBox::SetVelocity(kmVec3 v)
 {
-    velocity = v;
+    mVelocity = v;
 }
 
 void GBox::SetCenter(kmVec3 c)
@@ -57,15 +54,15 @@ void GBox::SetCenter(kmVec3 c)
     mCenter = c;
 }
 
-void GBox::updateEndForce()
+void GBox::UpdateEndForce()
 {
-    endForce = kmVec3Make(0,0,0);
+    mEndForce = kmVec3Make(0,0,0);
     for(int i = 0; i < constantForces.size(); ++i) {
-        endForce = kmVec3Add(endForce, constantForces[i]);
+        mEndForce = kmVec3Add(mEndForce, constantForces[i]);
     }
     
     for(int i = 0; i < momentForces.size(); ++i) {
-        endForce = kmVec3Add(endForce, momentForces[i]);
+        mEndForce = kmVec3Add(mEndForce, momentForces[i]);
     }
     
     momentForces.clear();
@@ -86,17 +83,17 @@ void GBox::ApplyImpulse(float force, kmVec3 direction)
 
 kmVec3 GBox::Update(double dt)
 {
-    updateEndForce();
+    UpdateEndForce();
     
     kmVec3 nextPosition = kmVec3Make(0, 0, 0);
     
-    kmVec3 acceleration = kmVec3Make(endForce.x/mMass, endForce.y/mMass, endForce.z/mMass);
+    kmVec3 acceleration = kmVec3Make(mEndForce.x/mMass, mEndForce.y/mMass, mEndForce.z/mMass);
     
     kmVec3 v = kmVec3Make(acceleration.x * dt, acceleration.y * dt, acceleration.z * dt);
     
-    velocity = kmVec3Make(v.x + velocity.x, v.y + velocity.y, v.z + velocity.z);
+    mVelocity = kmVec3Make(v.x + mVelocity.x, v.y + mVelocity.y, v.z + mVelocity.z);
     
-    kmVec3 step = kmVec3Make(velocity.x * dt, velocity.y * dt, velocity.z * dt);
+    kmVec3 step = kmVec3Make(mVelocity.x * dt, mVelocity.y * dt, mVelocity.z * dt);
     nextPosition = kmVec3Make(mCenter.x + step.x, mCenter.y + step.y, mCenter.z + step.z);
     SetCenter(nextPosition);
     
