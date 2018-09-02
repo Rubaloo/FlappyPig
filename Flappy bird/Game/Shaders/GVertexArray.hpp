@@ -8,18 +8,17 @@
 class GVertexArray {
     
 public:
-    GVertexArray();
     GVertexArray(glVertex vertexs[], GLubyte indexs[]);
     ~GVertexArray();
     
-    void deleteBuffers();
-    void bind();
-    void unbind();
-    void draw();
-    void render();
+    void DeleteBuffers();
+    void Bind();
+    void Unbind();
+    void Draw();
+    void Render();
 private:
-    GLuint vao, vbo, ibo, tbo;
-    GLuint indexCount;
+    GLuint mVbo, mIbo;
+    GLuint mIndexCount;
     
 };
 #endif /* VertexArray_hpp */

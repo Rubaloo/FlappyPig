@@ -45,7 +45,7 @@ void Pipe::Render() {
     GShader::PIPE->SetUniform4f("ModelView", gMatrix.mat);
     
     GShader::PIPE->SetUniform4f("Projection", projection.matrix());
-    mMmodelMesh.render();
+    mMmodelMesh.Render();
     ResetModelView();
     GShader::PIPE->Disable();
     

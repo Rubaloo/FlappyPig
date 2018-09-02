@@ -5,7 +5,7 @@ GObject::GObject(const GBox& aBox) : mBody(aBox)
 
 GObject::~GObject()
 {
-    mMmodelMesh.unbind();
+    mMmodelMesh.Unbind();
 };
 
 GBox& GObject::GetBox()
@@ -30,7 +30,7 @@ bool GObject::ReachTop() {
 
 void GObject::FreeModelMesh()
 {
-    mMmodelMesh.deleteBuffers();
+    mMmodelMesh.DeleteBuffers();
 }
 
 bool GObject::Intersect(const GObject& aObject)

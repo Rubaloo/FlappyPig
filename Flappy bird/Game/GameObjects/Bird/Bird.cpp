@@ -27,7 +27,7 @@ Bird::Bird(const GBox& aBody) : GObject(aBody)
 }
 
 Bird::~Bird(){
-    mMmodelMesh.unbind();
+    mMmodelMesh.Unbind();
 };
 
 void Bird::Jump() {
@@ -59,7 +59,7 @@ void Bird::Render() {
     GShader::BIRD->SetUniform1f("yPosition", SCREEN_HEIGHT - position.y);
     GShader::BIRD->SetUniform1f("radius", 15.0);
     
-    mMmodelMesh.render();
+    mMmodelMesh.Render();
     ResetModelView();
     GShader::BIRD->Disable();
     
