@@ -10,6 +10,10 @@ GameWorld::GameWorld() : bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_S
 {
     bird.getBox()->enableGravity();
     
+    for(int i = 0; i < K_PIPES_COLUMNS_NUMBER; ++i) {
+        cPipes.emplace_back(0);
+    }
+    
     levelFinished = false;
     lastPipeColumnX = -1;
     
@@ -32,28 +36,19 @@ void GameWorld::initLevel()
     bird.getBox()->setCenter(SCREEN_CENTER);
     bird.getBox()->setVelocity(VELOCITY_IDDLE);
 
-    //Add pipe columns
-    float columnPipes = K_PIPES_COLUMNS_NUMBER;
-    for(int i = 0; i < columnPipes; ++i) {
+    for(int i = 0; i < K_PIPES_COLUMNS_NUMBER; ++i) {
         GLfloat pipeX = SCREEN_WIDTH * 1.5 + (K_PIPES_OFFSET*i);
-        PipeColumn* pc = new PipeColumn(pipeX);
-        cPipes.push_back(pc);
+        cPipes[i].moveBy(pipeX);
     }
+    
 }
 
 void GameWorld::clearLevelReferences()
 {
-    for (int i = 0; i < cPipes.size(); ++i) {
-        delete cPipes[i];
-    }
-    cPipes.clear();
-    
-    vector<PipeColumn*> vEmpty;
     queue<int> qEmpty;
-    
-    cPipes.swap(vEmpty);
     swap(messages, qEmpty);
 }
+
 void GameWorld::resetLevel()
 {
     clearLevelReferences();
@@ -77,7 +72,7 @@ void GameWorld::render()
     
     bird.render();
     for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i]->render();
+        cPipes[i].render();
     }
 }
 
@@ -91,18 +86,18 @@ void GameWorld::logic()
 void GameWorld::updateCPipes()
 {
     for(int i = 0; i < cPipes.size(); ++i) {
-        PipeColumn* pc = cPipes[i];
-        if(pc->outsideLeftLimits()) {
+        PipeColumn& pc = cPipes[i];
+        if(pc.outsideLeftLimits()) {
             if(lastPipeColumnX == -1) {
-                lastPipeColumnX = cPipes[cPipes.size()-1]->getUpPipe()->getBox()->getCenter().x;
+                lastPipeColumnX = cPipes[cPipes.size()-1].getUpPipe().getBox()->getCenter().x;
             }
             float offset = 0;
             offset = lastPipeColumnX + K_PIPES_OFFSET;
             
-            Pipe*up = pc->getUpPipe();
-            kmVec3 next = up->getBox()->getCenter();
+            Pipe& up = pc.getUpPipe();
+            kmVec3 next = up.getBox()->getCenter();
             
-            pc->moveTo(next.x + offset);
+            pc.moveTo(next.x + offset);
             lastPipeColumnX = next.x + offset;
         }
     }
@@ -129,8 +124,8 @@ void GameWorld::checkEndConditions()
     levelFinished = (bird.reachFloor() || bird.reachTop());
     if(!levelFinished) {
         for(int i = 0; i < cPipes.size(); ++i) {
-            PipeColumn* pc = cPipes[i];
-            if(pc->intersect(&bird)){
+            PipeColumn& pc = cPipes[i];
+            if(pc.intersect(&bird)){
                 levelFinished = true;
             }
         }
@@ -141,7 +136,7 @@ void GameWorld::update(float dt)
 {
     bird.update(dt);
     for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i]->update(dt);
+        cPipes[i].update(dt);
     }
 }
 

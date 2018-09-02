@@ -19,7 +19,7 @@ class GObject {
 
 protected:
     GBox body;
-    GVertexArray* modelMesh;
+    GVertexArray modelMesh;
     GLMatrix modelView;
 
 public:
@@ -29,6 +29,7 @@ public:
     
     GBox* getBox();
     
+    void moveBy(kmVec3 point);
     void moveTo(kmVec3 translation);
     void resetModelView();
     void freeModelMesh();

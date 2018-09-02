@@ -17,7 +17,7 @@ class GameWorld : public Receiver {
     
 private:
     Bird bird;
-    vector<PipeColumn*> cPipes;
+    vector<PipeColumn> cPipes;
     
     GInputManager* gim;
     queue<int> messages;

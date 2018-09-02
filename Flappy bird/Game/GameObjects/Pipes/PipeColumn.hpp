@@ -10,18 +10,19 @@
 
 class PipeColumn : public GObject {
 private:
-    Pipe* up;
-    Pipe* down;
+    Pipe up;
+    Pipe down;
 public:
     PipeColumn();
     PipeColumn(int xCenter);
     ~PipeColumn();
     
-    Pipe* getUpPipe();
+    Pipe& getUpPipe();
     bool outsideLeftLimits();
     bool intersect(GObject* gObject);
     void update(float dt);
     void moveTo(float xPosition);
+    void moveBy(float xPosition);
     void render();
     void freeModelMesh();
 };

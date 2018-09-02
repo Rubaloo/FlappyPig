@@ -21,12 +21,11 @@ Pipe::Pipe(GBox body) :GObject(body)
     modelView.populateIdentity();
     move(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = new GVertexArray(modelVertexs, modelIndexs);
+    modelMesh = GVertexArray(modelVertexs, modelIndexs);
 }
 
 Pipe::~Pipe(){
-    modelMesh->unbind();
-    delete modelMesh;
+    modelMesh.unbind();
 };
 
 void Pipe::update(float dt)
@@ -51,7 +50,7 @@ void Pipe::render() {
     GShader::PIPE->setUniform4f("ModelView", gMatrix.mat);
     
     GShader::PIPE->setUniform4f("Projection", projection.matrix());
-    modelMesh->render();
+    modelMesh.render();
     resetModelView();
     GShader::PIPE->disable();
     

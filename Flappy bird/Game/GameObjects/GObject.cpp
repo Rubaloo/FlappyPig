@@ -32,7 +32,7 @@ bool GObject::reachTop() {
 
 void GObject::freeModelMesh()
 {
-    modelMesh->deleteBuffers();
+    modelMesh.deleteBuffers();
 }
 
 bool GObject::intersect(GObject* object)
@@ -43,6 +43,11 @@ bool GObject::intersect(GObject* object)
 void GObject::moveTo(kmVec3 translation)
 {
     modelView.addTranslation(translation);
+}
+
+void GObject::moveBy(kmVec3 point)
+{
+    body.setCenter(point);
 }
 
 void GObject::resetModelView() {

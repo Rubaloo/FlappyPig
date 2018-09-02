@@ -31,7 +31,7 @@ GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4]){
 
 GVertexArray::~GVertexArray()
 {
-    deleteBuffers();
+    //deleteBuffers();
 };
 
 void GVertexArray::bind(){

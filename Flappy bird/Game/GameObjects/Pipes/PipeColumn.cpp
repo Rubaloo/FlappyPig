@@ -15,49 +15,52 @@ PipeColumn::PipeColumn(int xCenter) {
     uPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
     dPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
     
-    up = new Pipe(uPipeBox);
-    down = new Pipe(dPipeBox);
+    up = Pipe(uPipeBox);
+    down = Pipe(dPipeBox);
 }
 
-PipeColumn::~PipeColumn(){
-    delete up;
-    delete down;
-}
+PipeColumn::~PipeColumn(){}
 
 bool PipeColumn::intersect(GObject* gObject)
 {
-    return (up->intersect(gObject)) || (down->intersect(gObject));
+    return (up.intersect(gObject)) || (down.intersect(gObject));
 }
 
 void PipeColumn::update(float dt)
 {
-    up->update(dt);
-    down->update(dt);
+    up.update(dt);
+    down.update(dt);
 }
 
-Pipe* PipeColumn::getUpPipe()
+Pipe& PipeColumn::getUpPipe()
 {
     return up;
 }
 
 bool PipeColumn::outsideLeftLimits()
 {
-    return up->outsideLeftLimits() || down->outsideLeftLimits();
+    return up.outsideLeftLimits() || down.outsideLeftLimits();
 }
 
 void PipeColumn::moveTo(float xTranslation)
 {
-    up->moveTo(kmVec3Make(xTranslation, 0, 0));
-    down->moveTo(kmVec3Make(xTranslation, 0, 0));
+    up.moveTo(kmVec3Make(xTranslation, 0, 0));
+    down.moveTo(kmVec3Make(xTranslation, 0, 0));
+}
+
+void PipeColumn::moveBy(float xPosition)
+{
+    up.moveBy(kmVec3Make(xPosition,  up.getBox()->getCenter().y, 0.0));
+    down.moveBy(kmVec3Make(xPosition,  down.getBox()->getCenter().y, 0.0));
 }
 
 void PipeColumn::render() {
-    up->render();
-    down->render();
+    up.render();
+    down.render();
 };
 
 void PipeColumn::freeModelMesh()
 {
-    up->freeModelMesh();
-    down->freeModelMesh();
+    up.freeModelMesh();
+    down.freeModelMesh();
 }

@@ -24,12 +24,11 @@ Bird::Bird(GBox body) : GObject(body)
     resetModelView();
     moveTo(body.getCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = new GVertexArray(modelVertexs, modelIndexs);
+    modelMesh = GVertexArray(modelVertexs, modelIndexs);
 }
 
 Bird::~Bird(){
-    modelMesh->unbind();
-    delete modelMesh;
+    modelMesh.unbind();
 };
 
 void Bird::jump() {
@@ -61,7 +60,7 @@ void Bird::render() {
     GShader::BIRD->setUniform1f("yPosition", SCREEN_HEIGHT - position.y);
     GShader::BIRD->setUniform1f("radius", 15.0);
     
-    modelMesh->render();
+    modelMesh.render();
     resetModelView();
     GShader::BIRD->disable();
     
