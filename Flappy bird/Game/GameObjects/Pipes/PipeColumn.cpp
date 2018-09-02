@@ -1,66 +1,52 @@
 #include "PipeColumn.hpp"
 
 
-PipeColumn::PipeColumn(){}
-PipeColumn::PipeColumn(int xCenter) {
-    const float MIN_RAND = SCREEN_HEIGHT/6.0, MAX_RAND = SCREEN_HEIGHT - MIN_RAND;
-    const float range = MAX_RAND - MIN_RAND;
-    float random = range * ((((float) rand()) / (float) RAND_MAX)) + MIN_RAND ;
-    
-    float uPipeHeight = random;
-    float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - K_COLUMN_PIPES_SPACE;
-    
-    GBox uPipeBox(kmVec3Make(xCenter, uPipeHeight/2.0, 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, uPipeHeight));
-    GBox dPipeBox(kmVec3Make(xCenter, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, dPipeHeight));
-    uPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
-    dPipeBox.setVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
-    
-    up = Pipe(uPipeBox);
-    down = Pipe(dPipeBox);
-}
-
-PipeColumn::~PipeColumn(){}
-
-bool PipeColumn::intersect(GObject* gObject)
+PipeColumn::PipeColumn(const GBox& aUpBox, const GBox& aDownBox) :
+    mUp(aUpBox),
+    mDown(aDownBox)
 {
-    return (up.intersect(gObject)) || (down.intersect(gObject));
 }
 
-void PipeColumn::update(float dt)
+bool PipeColumn::Intersect(GObject& gObject)
 {
-    up.update(dt);
-    down.update(dt);
+    return (mUp.Intersect(gObject)) || (mDown.Intersect(gObject));
 }
 
-Pipe& PipeColumn::getUpPipe()
+void PipeColumn::Update(float dt)
 {
-    return up;
+    mUp.Update(dt);
+    mDown.Update(dt);
 }
 
-bool PipeColumn::outsideLeftLimits()
+Pipe& PipeColumn::GetUp()
 {
-    return up.outsideLeftLimits() || down.outsideLeftLimits();
+    return mUp;
 }
 
-void PipeColumn::moveTo(float xTranslation)
+bool PipeColumn::OutsideLeftLimits()
 {
-    up.moveTo(kmVec3Make(xTranslation, 0, 0));
-    down.moveTo(kmVec3Make(xTranslation, 0, 0));
+    return mUp.OutsideLeftLimits() || mDown.OutsideLeftLimits();
 }
 
-void PipeColumn::moveBy(float xPosition)
+void PipeColumn::MoveTo(float xTranslation)
 {
-    up.moveBy(kmVec3Make(xPosition,  up.getBox()->getCenter().y, 0.0));
-    down.moveBy(kmVec3Make(xPosition,  down.getBox()->getCenter().y, 0.0));
+    mUp.MoveBy(kmVec3Make(xTranslation, 0, 0));
+    mDown.MoveBy(kmVec3Make(xTranslation, 0, 0));
 }
 
-void PipeColumn::render() {
-    up.render();
-    down.render();
+void PipeColumn::MoveBy(float xPosition)
+{
+    mUp.MoveTo(kmVec3Make(xPosition,  mUp.GetBox().GetCenter().y, 0.0));
+    mDown.MoveTo(kmVec3Make(xPosition,  mDown.GetBox().GetCenter().y, 0.0));
+}
+
+void PipeColumn::Render() {
+    mUp.Render();
+    mDown.Render();
 };
 
-void PipeColumn::freeModelMesh()
+void PipeColumn::FreeModelMesh()
 {
-    up.freeModelMesh();
-    down.freeModelMesh();
+    mUp.FreeModelMesh();
+    mDown.FreeModelMesh();
 }

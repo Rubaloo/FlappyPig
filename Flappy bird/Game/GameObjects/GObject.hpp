@@ -18,28 +18,27 @@ using namespace std;
 class GObject {
 
 protected:
-    GBox body;
-    GVertexArray modelMesh;
-    GLMatrix modelView;
+    GBox mBody;
+    GVertexArray mMmodelMesh;
+    GLMatrix mModelView;
 
 public:
-    GObject();
-    GObject(GBox b);
+    GObject(const GBox& aBox);
     ~GObject();
     
-    GBox* getBox();
+    GBox& GetBox();
     
-    void moveBy(kmVec3 point);
-    void moveTo(kmVec3 translation);
-    void resetModelView();
-    void freeModelMesh();
+    void MoveTo(kmVec3 point);
+    void MoveBy(kmVec3 translation);
+    void ResetModelView();
+    void FreeModelMesh();
     
-    bool intersect(GObject* object);
-    bool reachTop();
-    bool reachFloor();
-    bool outsideLeftLimits();
+    bool Intersect(const GObject& object);
+    bool ReachTop();
+    bool ReachFloor();
+    bool OutsideLeftLimits();
     
-    void update(float dt);
-    void render();
+    void Update(float dt);
+    void Render();
 };
 #endif /* GameObject_hpp */

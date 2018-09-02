@@ -14,31 +14,30 @@ using namespace std;
 
 class GBox {
 public:
-    GBox();
-    GBox(kmVec3 center, kmSize size, int shape=SQUARE_SHAPE);
+    GBox(kmVec3 aCenter, kmSize aSize, int aShape=SQUARE_SHAPE);
+    int mShape;
     
-    int shape;
-    bool intersect(GBox* GObject);
+    bool Intersect(const GBox& aBox) const;
     
-    int getShape();
-    kmRect getRect();
-    kmVec3 getCenter();
-    kmSize getSize();
+    int GetShape() const;
+    kmRect GetRect() const;
+    kmVec3 GetCenter() const;
+    kmSize GetSize() const;
 
     
-    void setCenter(kmVec3 center);
-    void setVelocity(kmVec3 velocity);
+    void SetCenter(kmVec3 aCenter);
+    void SetVelocity(kmVec3 aVelocity);
     
     
-    kmVec3 update(float dt);
+    kmVec3 Update(double dt);
     
-    void applyImpulse(float force, kmVec3 direction);
-    void enableGravity();
+    void ApplyImpulse(float force, kmVec3 direction);
+    void EnableGravity();
     
 private:
-    GLfloat mass;
-    kmVec3 center;
-    kmSize size;
+    GLfloat mMass;
+    kmVec3 mCenter;
+    kmSize mSize;
     //Physhcs
     vector<kmVec3> constantForces;
     vector<kmVec3> momentForces;

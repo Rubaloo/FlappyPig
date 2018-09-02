@@ -11,40 +11,41 @@
 #include "Receiver.hpp"
 #include "GInputManager.hpp"
 
-using namespace std;
-
-class GameWorld : public Receiver {
-    
-private:
-    Bird bird;
-    GInputManager gim;
-    vector<PipeColumn> cPipes;
-    
-    
-    queue<int> messages;
-    
-    bool levelFinished;
-    float lastPipeColumnX;
-    
-    void checkEndConditions();
-    void processMessages();
-    void updateCPipes();
-    void clearLevelReferences();
-    
-    void handleInput(int msg);
+class GameWorld : public Receiver
+{
 public:
     GameWorld();
     ~GameWorld();
     
-    bool isLevelFinished();
-    void setLevelFinished(bool finished);
+    bool IsLevelFinished();
+    void SetLevelFinished(bool aFinished);
     
-    void initLevel();
-    void resetLevel();
+    void InitLevel();
+    void ResetLevel();
     
-    void render();
-    void logic();
-    void pollUpdates();
-    void update(float dt);
+    void Render();
+    void Logic();
+    void PollUpdates();
+    void Update(double dt);
+    
+private:
+    Bird mBird;
+    GInputManager mGim;
+    bool mLevelFinished;
+    float mLastPipeColumnX;
+    /**
+     * Data structure to store user input
+     */
+    std::queue<int> mMessages;
+    std::vector<PipeColumn> mCPipes;
+    
+    void CheckEndConditions();
+    void UpdateCPipes();
+    
+    void ProcessMessages();
+    void ClearInputMessages();
+    
+    void HandleInput(int aMsg);
+    
 };
 #endif /* GameWorld_hpp */

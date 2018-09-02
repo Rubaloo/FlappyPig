@@ -9,6 +9,6 @@ void PostMan::send(int msg)
 {
     for(int i = 0; i < receivers.size(); ++i) {
         Receiver* r = receivers[i];
-        r->handleInput(0);
+        r->HandleInput(0);
     }
 }

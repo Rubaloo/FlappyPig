@@ -1,9 +1,8 @@
 #include "Pipe.hpp"
 
-Pipe::Pipe() : GObject(){}
-Pipe::Pipe(GBox body) :GObject(body)
+Pipe::Pipe(const GBox& aBody) : GObject(aBody)
 {
-    kmSize size = body.getSize();
+    kmSize size = aBody.GetSize();
     
     GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
     GLfloat h = size.h/SCREEN_HEIGHT;
@@ -18,25 +17,21 @@ Pipe::Pipe(GBox body) :GObject(body)
         {{w2,-h2, 0},{1,0,0,1}}
     };
 
-    modelView.populateIdentity();
-    move(body.getCenter());
+    mModelView.populateIdentity();
+    move(aBody.GetCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = GVertexArray(modelVertexs, modelIndexs);
+    mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
 }
 
-Pipe::~Pipe(){
-    modelMesh.unbind();
-};
-
-void Pipe::update(float dt)
+void Pipe::Update(double dt)
 {
-    kmVec3 nextPosition = body.update(dt);
-    kmVec3 translation = modelView.getTranslation();
-    body.setCenter(kmVec3Add(translation, body.getCenter()));
-    moveTo(nextPosition);
+    kmVec3 nextPosition = mBody.Update(dt);
+    kmVec3 translation = mModelView.getTranslation();
+    mBody.SetCenter(kmVec3Add(translation, mBody.GetCenter()));
+    MoveBy(nextPosition);
 }
 
-void Pipe::render() {
+void Pipe::Render() {
     
     GLMatrix projection;
     projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
@@ -46,12 +41,12 @@ void Pipe::render() {
     GShader::PIPE->enableVertexAttribute("SourceColor");
     
     kmMat4 gMatrix;
-    modelView.gMatrix(&gMatrix);
+    mModelView.gMatrix(&gMatrix);
     GShader::PIPE->setUniform4f("ModelView", gMatrix.mat);
     
     GShader::PIPE->setUniform4f("Projection", projection.matrix());
-    modelMesh.render();
-    resetModelView();
+    mMmodelMesh.render();
+    ResetModelView();
     GShader::PIPE->disable();
     
     

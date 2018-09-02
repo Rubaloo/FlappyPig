@@ -8,15 +8,14 @@
 
 class Bird : public GObject {
 public:
-    Bird();
-    Bird(GBox body);
+    Bird(const GBox& aBody);
     ~Bird();
 
-    int getShape();
+    int GetShape();
     
-    void jump();
-    void render();
-    void update(float dt);
+    void Jump();
+    void Render();
+    void Update(double dt);
 };
 
 #endif /* Player_hpp */

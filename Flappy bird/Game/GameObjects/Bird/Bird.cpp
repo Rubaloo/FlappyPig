@@ -2,10 +2,9 @@
 
 #include "Bird.hpp"
 
-Bird::Bird() : GObject(){}
-Bird::Bird(GBox body) : GObject(body)
+Bird::Bird(const GBox& aBody) : GObject(aBody)
 {
-    kmSize size = body.getSize();
+    kmSize size = aBody.GetSize();
     
     GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
     GLfloat h = size.h/SCREEN_HEIGHT;
@@ -21,27 +20,27 @@ Bird::Bird(GBox body) : GObject(body)
         {{w2,-h2, 0},{1,0,0,1}}
     };
     
-    resetModelView();
-    moveTo(body.getCenter());
+    ResetModelView();
+    MoveBy(aBody.GetCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
-    modelMesh = GVertexArray(modelVertexs, modelIndexs);
+    mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
 }
 
 Bird::~Bird(){
-    modelMesh.unbind();
+    mMmodelMesh.unbind();
 };
 
-void Bird::jump() {
-    body.setVelocity(kmVec3Make(0, 0, 0));
-    body.applyImpulse(K_PLAYER_JUMP, kmVec3Make(0, -1, 0));
+void Bird::Jump() {
+    mBody.SetVelocity(kmVec3Make(0, 0, 0));
+    mBody.ApplyImpulse(K_PLAYER_JUMP, kmVec3Make(0, -1, 0));
 }
-void Bird::update(float dt)
+void Bird::Update(double dt)
 {
-    kmVec3 nextPosition = body.update(dt);
-    moveTo(nextPosition);
+    kmVec3 nextPosition = mBody.Update(dt);
+    MoveBy(nextPosition);
 }
 
-void Bird::render() {
+void Bird::Render() {
     
     GLMatrix projection;
     projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
@@ -51,17 +50,17 @@ void Bird::render() {
     GShader::BIRD->enableVertexAttribute("SourceColor");
     
     kmMat4 gMatrix;
-    modelView.gMatrix(&gMatrix);
+    mModelView.gMatrix(&gMatrix);
     GShader::BIRD->setUniform4f("ModelView", gMatrix.mat);
     GShader::BIRD->setUniform4f("Projection", projection.matrix());
     
-    kmVec3 position = getBox()->getCenter();
+    kmVec3 position = GetBox().GetCenter();
     GShader::BIRD->setUniform1f("xPosition", position.x);
     GShader::BIRD->setUniform1f("yPosition", SCREEN_HEIGHT - position.y);
     GShader::BIRD->setUniform1f("radius", 15.0);
     
-    modelMesh.render();
-    resetModelView();
+    mMmodelMesh.render();
+    ResetModelView();
     GShader::BIRD->disable();
     
 

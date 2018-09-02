@@ -8,11 +8,9 @@
 class Pipe : public GObject {
     
 public:
-    Pipe();
-    Pipe(GBox body);
-    ~Pipe();
+    Pipe(const GBox& body);
     
-    void update(float dt);
-    void render();
+    void Update(double dt);
+    void Render();
 };
 #endif /* Pipe_hpp */

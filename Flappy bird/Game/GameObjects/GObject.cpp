@@ -1,65 +1,63 @@
 #include "GObject.hpp"
 
-GObject::GObject(){}
-GObject::GObject(GBox b)
-{
-    body = b;
-}
+GObject::GObject(const GBox& aBox) : mBody(aBox)
+{}
 
 GObject::~GObject()
 {
+    mMmodelMesh.unbind();
+};
+
+GBox& GObject::GetBox()
+{
+    return mBody;
 }
 
-GBox* GObject::getBox()
+bool GObject::OutsideLeftLimits()
 {
-    return &body;
-}
-
-bool GObject::outsideLeftLimits()
-{
-    kmRect rect = body.getRect();
-    kmSize size = body.getSize();
+    kmRect rect = mBody.GetRect();
+    kmSize size = mBody.GetSize();
     return (rect.tl.x + size.w) < 0;
 };
 
-bool GObject::reachFloor() {
-    return (body.getCenter().y + body.getSize().h/2.0) > SCREEN_HEIGHT;
+bool GObject::ReachFloor() {
+    return (mBody.GetCenter().y + mBody.GetSize().h/2.0) > SCREEN_HEIGHT;
 };
 
-bool GObject::reachTop() {
-    return (body.getCenter().y - body.getSize().h/2.0) < 0;
+bool GObject::ReachTop() {
+    return (mBody.GetCenter().y - mBody.GetSize().h/2.0) < 0;
 };
 
-void GObject::freeModelMesh()
+void GObject::FreeModelMesh()
 {
-    modelMesh.deleteBuffers();
+    mMmodelMesh.deleteBuffers();
 }
 
-bool GObject::intersect(GObject* object)
+bool GObject::Intersect(const GObject& aObject)
 {
-    return body.intersect(object->getBox());
+    return mBody.Intersect(aObject.mBody);
 }
 
-void GObject::moveTo(kmVec3 translation)
+void GObject::MoveBy(kmVec3 translation)
 {
-    modelView.addTranslation(translation);
+    mModelView.addTranslation(translation);
 }
 
-void GObject::moveBy(kmVec3 point)
+void GObject::MoveTo(kmVec3 point)
 {
-    body.setCenter(point);
+    mBody.SetCenter(point);
 }
 
-void GObject::resetModelView() {
-    modelView.populateIdentity();
+void GObject::ResetModelView() {
+    mModelView.populateIdentity();
 }
 
-void GObject::update(float dt)
+void GObject::Update(float dt)
 {
     cout << "Update method sould be implemented by GObject subclass" << endl;
 }
     
-void GObject::render()
+void GObject::Render()
 {
     cout << "GObject::reder method should be implemented by subclass" << endl;
 }

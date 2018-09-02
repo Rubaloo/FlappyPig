@@ -97,7 +97,7 @@ struct CPPMembers
 -(void)setupGWorld
 {
     _cppMembers->gWorld = new GameWorld();
-    _cppMembers->gWorld->initLevel();
+    _cppMembers->gWorld->InitLevel();
 }
 
 -(void) setupPostMan
@@ -121,14 +121,14 @@ struct CPPMembers
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
     //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
-    if(_cppMembers->gWorld->isLevelFinished()) {
-        _cppMembers->gWorld->resetLevel();
-        _cppMembers->gWorld->setLevelFinished(false);
+    if(_cppMembers->gWorld->IsLevelFinished()) {
+        _cppMembers->gWorld->ResetLevel();
+        _cppMembers->gWorld->SetLevelFinished(false);
     } else{
-        _cppMembers->gWorld->pollUpdates();
-        _cppMembers->gWorld->logic();
-        _cppMembers->gWorld->update(dt);
-        _cppMembers->gWorld->render();
+        _cppMembers->gWorld->PollUpdates();
+        _cppMembers->gWorld->Logic();
+        _cppMembers->gWorld->Update(dt);
+        _cppMembers->gWorld->Render();
     }
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }

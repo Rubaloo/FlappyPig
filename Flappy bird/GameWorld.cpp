@@ -6,111 +6,119 @@
 #define K_PIPES_OFFSET 250
 #define SCREEN_TOUCH 0
 
+using namespace std;
+
 GameWorld::GameWorld() :
-    bird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE)),
-    gim(GInputManager())
+    mBird(GBox(SCREEN_CENTER, kmSizeMake(30, 30), CIRCULAR_SHAPE)),
+    mGim(GInputManager()),
+    mLevelFinished(false),
+    mLastPipeColumnX(-1),
+    mMessages()
 {
-    bird.getBox()->enableGravity();
+    mBird.GetBox().EnableGravity();
     
-    for(int i = 0; i < K_PIPES_COLUMNS_NUMBER; ++i) {
-        cPipes.emplace_back(0);
+    // Add column pipes
+    const float MIN_RAND = SCREEN_HEIGHT/6.0, MAX_RAND = SCREEN_HEIGHT - MIN_RAND;
+    const float range = MAX_RAND - MIN_RAND;
+    for(size_t i = 0; i != K_PIPES_COLUMNS_NUMBER; ++i) {
+        float random = range * ((((float) rand()) / (float) RAND_MAX)) + MIN_RAND ;
+        float uPipeHeight = random;
+        float dPipeHeight = SCREEN_HEIGHT - uPipeHeight - K_COLUMN_PIPES_SPACE;
+        
+        GBox upPipeBox(kmVec3Make(0, uPipeHeight/2.0, 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, uPipeHeight));
+        GBox downPipeBox(kmVec3Make(0, SCREEN_HEIGHT - (dPipeHeight/2.0), 0.0), kmSizeMake(K_COLUMN_PIPES_WIDTH, dPipeHeight));
+        upPipeBox.SetVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
+        downPipeBox.SetVelocity(kmVec3Make(k_COLUMN_SPEED, 0, 0));
+        
+        mCPipes.emplace_back(upPipeBox, downPipeBox);
     }
-    
-    levelFinished = false;
-    lastPipeColumnX = -1;
     
     GShader::loadAll();
 }
 
 
-bool GameWorld::isLevelFinished() {
-    return levelFinished;
+bool GameWorld::IsLevelFinished() {
+    return mLevelFinished;
 }
 
-void GameWorld::setLevelFinished(bool finished) {
-    levelFinished = finished;
+void GameWorld::SetLevelFinished(bool aFinished) {
+    mLevelFinished = aFinished;
 }
 
-void GameWorld::initLevel()
+void GameWorld::InitLevel()
 {
     //Set bird
-    bird.getBox()->setCenter(SCREEN_CENTER);
-    bird.getBox()->setVelocity(VELOCITY_IDDLE);
+    mBird.GetBox().SetCenter(SCREEN_CENTER);
+    mBird.GetBox().SetVelocity(VELOCITY_IDDLE);
 
     for(int i = 0; i < K_PIPES_COLUMNS_NUMBER; ++i) {
         GLfloat pipeX = SCREEN_WIDTH * 1.5 + (K_PIPES_OFFSET*i);
-        cPipes[i].moveBy(pipeX);
+        mCPipes[i].MoveBy(pipeX);
     }
-    
 }
 
-void GameWorld::clearLevelReferences()
+void GameWorld::ResetLevel()
+{
+    ClearInputMessages();
+    GShader::BIRD->disable();
+    InitLevel();
+}
+
+void GameWorld::ClearInputMessages()
 {
     queue<int> qEmpty;
-    swap(messages, qEmpty);
+    swap(mMessages, qEmpty);
 }
 
-void GameWorld::resetLevel()
-{
-    clearLevelReferences();
-    GShader::BIRD->
-    GShader::BIRD->disable();
-    initLevel();
-}
-
-GameWorld::~GameWorld()
-{
-    clearLevelReferences();
-}
-
-void GameWorld::render()
+void GameWorld::Render()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
     
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-    bird.render();
-    for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i].render();
-    }
+    mBird.Render();
+    for_each(mCPipes.begin(), mCPipes.end(), [] (PipeColumn& pc){
+        pc.Render();
+    });
 }
 
-void GameWorld::logic()
+void GameWorld::Logic()
 {
-    updateCPipes();
-    processMessages();
-    checkEndConditions();
+    UpdateCPipes();
+    ProcessMessages();
+    CheckEndConditions();
 }
 
-void GameWorld::updateCPipes()
+void GameWorld::UpdateCPipes()
 {
-    for(int i = 0; i < cPipes.size(); ++i) {
-        PipeColumn& pc = cPipes[i];
-        if(pc.outsideLeftLimits()) {
-            if(lastPipeColumnX == -1) {
-                lastPipeColumnX = cPipes[cPipes.size()-1].getUpPipe().getBox()->getCenter().x;
+    for(int i = 0; i < mCPipes.size(); ++i) {
+        PipeColumn& pc = mCPipes[i];
+        if(pc.OutsideLeftLimits()) {
+            if(mLastPipeColumnX == -1)
+            {
+                mLastPipeColumnX = mCPipes[mCPipes.size()-1].GetUp().GetBox().GetCenter().x;
             }
             float offset = 0;
-            offset = lastPipeColumnX + K_PIPES_OFFSET;
+            offset = mLastPipeColumnX + K_PIPES_OFFSET;
             
-            Pipe& up = pc.getUpPipe();
-            kmVec3 next = up.getBox()->getCenter();
+            Pipe& up = pc.GetUp();
+            kmVec3 next = up.GetBox().GetCenter();
             
-            pc.moveTo(next.x + offset);
-            lastPipeColumnX = next.x + offset;
+            pc.MoveTo(next.x + offset);
+            mLastPipeColumnX = next.x + offset;
         }
     }
 }
 
-void GameWorld::processMessages()
+void GameWorld::ProcessMessages()
 {
-    for(int i = 0; i < messages.size(); ++i) {
-        int messageId = messages.front();
-        messages.pop();
+    for(int i = 0; i < mMessages.size(); ++i) {
+        int messageId = mMessages.front();
+        mMessages.pop();
         switch (messageId) {
             case SCREEN_TOUCH:
-                bird.jump();
+                mBird.Jump();
                 break;
             default:
                 break;
@@ -119,37 +127,38 @@ void GameWorld::processMessages()
 
 }
 
-void GameWorld::checkEndConditions()
+void GameWorld::CheckEndConditions()
 {
-    levelFinished = (bird.reachFloor() || bird.reachTop());
-    if(!levelFinished) {
-        for(int i = 0; i < cPipes.size(); ++i) {
-            PipeColumn& pc = cPipes[i];
-            if(pc.intersect(&bird)){
-                levelFinished = true;
+    mLevelFinished = (mBird.ReachFloor() || mBird.ReachTop());
+    if(!mLevelFinished) {
+        for_each(mCPipes.begin(), mCPipes.end(), [this](PipeColumn& pc)
+        {
+            if(pc.Intersect(mBird)){
+                mLevelFinished = true;
             }
-        }
+        });
     }
 }
 
-void GameWorld::update(float dt)
+void GameWorld::Update(double dt)
 {
-    bird.update(dt);
-    for(int i = 0; i < cPipes.size(); ++i) {
-        cPipes[i].update(dt);
-    }
+    mBird.Update(dt);
+    for_each(mCPipes.begin(), mCPipes.end(), [dt](PipeColumn& pc)
+    {
+        pc.Update(dt);
+    });
 }
 
-void GameWorld::pollUpdates() {
-    int msgNumber = gim.getInputsNumber();
+void GameWorld::PollUpdates() {
+    int msgNumber = mGim.getInputsNumber();
     if(msgNumber > 0) {
-        for(int i = 0; i < msgNumber; ++i) {
-            messages.push(gim.remove());
+        for(size_t i = 0; i < msgNumber; ++i) {
+            mMessages.push(mGim.remove());
         }
     }
 }
 
-void GameWorld::handleInput(int msg)
+void GameWorld::HandleInput(int aMsg)
 {
-    gim.addInput(msg);
+    mGim.addInput(aMsg);
 }
