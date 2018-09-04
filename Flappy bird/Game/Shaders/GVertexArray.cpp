@@ -1,14 +1,33 @@
 #include "GVertexArray.hpp"
+#include "GDirector.hpp"
 
-GVertexArray::GVertexArray(){};
-GVertexArray::GVertexArray(glVertex aVertexs[4], GLubyte aIndexs[4])
+GVertexArray::GVertexArray() = default;
+GVertexArray::GVertexArray(const GBox& aBody)
 {
+    kmSize size = aBody.GetSize();
+    
+    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
+    GLfloat h = size.h/SCREEN_HEIGHT;
+    
+    GLfloat h2 = h/2.0;
+    GLfloat w2 = w/2.0;
+    
+    
+    glVertex modelVertexs[] = {
+        {{-w2, h2, 0},{1,0,0,1}},
+        {{w2, h2, 0},{0,1,0,1}},
+        {{-w2, -h2, 0},{0,0,1,1}},
+        {{w2,-h2, 0},{1,0,0,1}}
+    };
+    
+    GLubyte modelIndexs[] = {0,1,2,3};
+    
     const glVertex Vertices[] = {
-        {aVertexs[0]}, {aVertexs[1]}, {aVertexs[2]}, {aVertexs[3]}
+        {modelVertexs[0]}, {modelVertexs[1]}, {modelVertexs[2]}, {modelVertexs[3]}
     };
     
     const GLubyte Indices[] = {
-        aIndexs[0], aIndexs[1], aIndexs[2], aIndexs[3]
+        modelIndexs[0], modelIndexs[1], modelIndexs[2], modelIndexs[3]
     };
     
     mIndexCount = sizeof(Indices);
@@ -24,8 +43,12 @@ GVertexArray::GVertexArray(glVertex aVertexs[4], GLubyte aIndexs[4])
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+GVertexArray::GVertexArray(glVertex aVertexs[4], GLubyte aIndexs[4])
+{
+  
+}
 
-GVertexArray::~GVertexArray(){}
+GVertexArray::~GVertexArray() = default;
 
 void GVertexArray::Bind()
 {

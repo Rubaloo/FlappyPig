@@ -18,7 +18,7 @@ class GObject
 
 protected:
     GBox mBody;
-    GVertexArray mMmodelMesh;
+    GVertexArray mModelMesh;
     GLMatrix mModelView;
 
 public:

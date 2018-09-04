@@ -2,36 +2,46 @@
 
 using namespace std;
 
-GObject::GObject(){}
-GObject::GObject(const GBox& aBody)
+GObject::GObject(const GBox& aBody) :
+    mBody(aBody),
+    mModelMesh(aBody),
+    mModelView()
 {
-    mBody = aBody;
-    kmSize size = aBody.GetSize();
     
-    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
-    GLfloat h = size.h/SCREEN_HEIGHT;
-    
-    GLfloat h2 = h/2.0;
-    GLfloat w2 = w/2.0;
-    
-    
-    glVertex modelVertexs[] = {
-        {{-w2, h2, 0},{1,0,0,1}},
-        {{w2, h2, 0},{0,1,0,1}},
-        {{-w2, -h2, 0},{0,0,1,1}},
-        {{w2,-h2, 0},{1,0,0,1}}
-    };
-    
-    GLubyte modelIndexs[] = {0,1,2,3};
-    mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
     
     ResetModelView();
     MoveTo(aBody.GetCenter());
 }
 
+//GObject::GObject(const GBox& aBody)
+//{
+//    mBody = aBody;
+//    kmSize size = aBody.GetSize();
+//
+//    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
+//    GLfloat h = size.h/SCREEN_HEIGHT;
+//
+//    GLfloat h2 = h/2.0;
+//    GLfloat w2 = w/2.0;
+//
+//
+//    glVertex modelVertexs[] = {
+//        {{-w2, h2, 0},{1,0,0,1}},
+//        {{w2, h2, 0},{0,1,0,1}},
+//        {{-w2, -h2, 0},{0,0,1,1}},
+//        {{w2,-h2, 0},{1,0,0,1}}
+//    };
+//
+//    GLubyte modelIndexs[] = {0,1,2,3};
+//    mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
+//
+//    ResetModelView();
+//    MoveTo(aBody.GetCenter());
+//}
+
 GObject::~GObject()
 {
-    mMmodelMesh.Unbind();
+    mModelMesh.Unbind();
 };
 
 GBox& GObject::GetBox()
@@ -56,7 +66,7 @@ bool GObject::ReachTop() {
 
 void GObject::FreeModelMesh()
 {
-    mMmodelMesh.DeleteBuffers();
+    mModelMesh.DeleteBuffers();
 }
 
 bool GObject::Intersect(const GObject& aObject)
