@@ -19,7 +19,7 @@ private:
     GLuint Create();
     GLuint CompileShader(const std::string& aShaderName, GLenum aShaderType);
     
-    std::string ReadFile(const char* fileName);
+    const char* ReadFile(const char* fileName);
 public:
     static GShaderUtils* GetInstance();
     ~GShaderUtils()

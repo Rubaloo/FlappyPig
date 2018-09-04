@@ -48,12 +48,10 @@ GLuint GShaderUtils::Load(const string& aVertexName, const string& aFragmentName
 
 GLuint GShaderUtils::CompileShader(const string& aShaderFileName, GLenum aShaderType)
 {
-    const string& shaderString = ReadFile(&aShaderFileName[0]);
+    const char * shaderStringUTF8 = ReadFile(&aShaderFileName[0]);
     GLuint shaderHandle = glCreateShader(aShaderType);
-    
-    const char * shaderStringUTF8 = &shaderString[0];
-    GLint shaderStringLength = shaderString.length();
-    glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
+    GLint shaderLength = static_cast<GLint>(strlen(shaderStringUTF8));
+    glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderLength);
     
     glCompileShader(shaderHandle);
     
@@ -69,7 +67,7 @@ GLuint GShaderUtils::CompileShader(const string& aShaderFileName, GLenum aShader
     return shaderHandle;
 }
 
-string GShaderUtils::ReadFile(const char* fileName)
+const char* GShaderUtils::ReadFile(const char* fileName)
 {
-    return string(iOSReadFile(fileName));
+    return iOSReadFile(fileName);
 }

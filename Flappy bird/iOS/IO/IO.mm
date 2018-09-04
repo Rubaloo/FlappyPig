@@ -9,8 +9,8 @@ const char* iOSReadFile(const char* fileName)
 }
 
 
-+(const char*)ReadFile:(const char*) fileName {
-    NSString* shaderPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String:fileName] ofType:@"glsl"];
++(const char*)ReadFile:(const std::string&) fileName {
+    NSString* shaderPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String:fileName.c_str()] ofType:@"glsl"];
     NSError* error;
     NSString* shaderString = [NSString stringWithContentsOfFile:shaderPath
                                                        encoding:NSUTF8StringEncoding error:&error];
