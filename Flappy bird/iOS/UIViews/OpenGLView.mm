@@ -112,7 +112,7 @@ struct CPPMembers
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     
-    GDirector::getInstance()->setWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
+    GDirector::getInstance()->SetWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
 }
 
 

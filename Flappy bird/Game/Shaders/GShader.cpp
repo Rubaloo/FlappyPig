@@ -5,6 +5,7 @@
 #define PIPE_VERTEX_SHADER "PipeVertex"
 #define PIPE_FRAGMENT_SHADER "PipeFragment"
 
+using namespace std;
 
 GShader* GShader::BIRD;
 GShader* GShader::PIPE;

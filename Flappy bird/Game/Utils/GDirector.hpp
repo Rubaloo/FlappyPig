@@ -8,21 +8,21 @@
 class GDirector
 {
 private:
-    static bool instanceFlag;
+    static bool sInstanceFlag;
     
-    kmSize screenSize;
-    static GDirector *single;
+    kmSize mScreenSize;
+    static GDirector *sSingle;
     GDirector(){}
 public:
     ~GDirector()
     {
-        instanceFlag = false;
+        sInstanceFlag = false;
     }
     
     static GDirector* getInstance();
     
-    kmSize getWinSizeInPixels();
-    void setWinSizeInPixels(kmSize winSize);
+    kmSize GetWinSizeInPixels();
+    void SetWinSizeInPixels(const kmSize& winSize);
 };
 
 #endif /* Director_hpp */

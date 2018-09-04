@@ -1,17 +1,14 @@
 #include "GVertexArray.hpp"
 
 GVertexArray::GVertexArray(){};
-GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4])
+GVertexArray::GVertexArray(glVertex aVertexs[4], GLubyte aIndexs[4])
 {
     const glVertex Vertices[] = {
-        {vertexs[0]},
-        {vertexs[1]},
-        {vertexs[2]},
-        {vertexs[3]}
+        {aVertexs[0]}, {aVertexs[1]}, {aVertexs[2]}, {aVertexs[3]}
     };
     
     const GLubyte Indices[] = {
-        indexs[0], indexs[1], indexs[2], indexs[3]
+        aIndexs[0], aIndexs[1], aIndexs[2], aIndexs[3]
     };
     
     mIndexCount = sizeof(Indices);

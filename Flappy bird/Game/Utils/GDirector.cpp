@@ -1,27 +1,27 @@
 #include "GDirector.hpp"
 
 
-bool GDirector::instanceFlag = false;
-GDirector* GDirector::single = NULL;
+bool GDirector::sInstanceFlag = false;
+GDirector* GDirector::sSingle = NULL;
 
 GDirector* GDirector::getInstance()
 {
-    if(! instanceFlag)
+    if(! sInstanceFlag)
     {
-        single = new GDirector();
-        instanceFlag = true;
-        return single;
+        sSingle = new GDirector();
+        sInstanceFlag = true;
+        return sSingle;
     }
     else
     {
-        return single;
+        return sSingle;
     }
 }
 
-void GDirector::setWinSizeInPixels(kmSize deviceSize) {
-    screenSize = deviceSize;
+void GDirector::SetWinSizeInPixels(const kmSize& aWinSize) {
+    mScreenSize = aWinSize;
 };
 
-kmSize GDirector::getWinSizeInPixels() {
-    return screenSize;
+kmSize GDirector::GetWinSizeInPixels() {
+    return mScreenSize;
 };

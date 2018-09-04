@@ -5,11 +5,12 @@
 #include "GTypes.hpp"
 #include "GShader.hpp"
 #include <OpenGLES/ES2/gl.h>
-class GVertexArray {
-    
+
+class GVertexArray
+{    
 public:
     GVertexArray();
-    GVertexArray(glVertex vertexs[], GLubyte indexs[]);
+    GVertexArray(glVertex aVertexs[], GLubyte aIndexs[]);
     ~GVertexArray();
     
     void DeleteBuffers();

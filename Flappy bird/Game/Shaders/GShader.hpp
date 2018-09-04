@@ -8,13 +8,12 @@
 
 #include <OpenGLES/ES2/gl.h>
 
-using namespace std;
-
 static const GLuint GSHADER_VERTEX_ATTRIB = 0;
 static const GLuint GSHADER_COLOR_ATTRIB = 1;
 
-
-class GShader {
+class GShader
+{
+    
 public:
     GShader(const char* aVertexName, const char* aFragmentName);
     
