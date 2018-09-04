@@ -8,7 +8,8 @@
 #define K_COLUMN_SPEED kmVec3Make(-100, 0, 0)
 #define K_COLUMN_PIPES_WIDTH 50
 
-class PipeColumn {
+class PipeColumn
+{
 private:
     Pipe mUp;
     Pipe mDown;

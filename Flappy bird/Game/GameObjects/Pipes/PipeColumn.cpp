@@ -4,8 +4,7 @@
 PipeColumn::PipeColumn(const GBox& aUpBox, const GBox& aDownBox) :
     mUp(aUpBox),
     mDown(aDownBox)
-{
-}
+{}
 
 bool PipeColumn::Intersect(GObject& gObject)
 {

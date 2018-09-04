@@ -3,28 +3,7 @@
 #include "Bird.hpp"
 
 Bird::Bird(const GBox& aBody) : GObject(aBody)
-{
-    kmSize size = aBody.GetSize();
-    
-    GLfloat w = (size.w*ASPECT_RATIO)/SCREEN_WIDTH;
-    GLfloat h = size.h/SCREEN_HEIGHT;
-
-    GLfloat h2 = h/2.0;
-    GLfloat w2 = w/2.0;
-    
-    
-    glVertex modelVertexs[] = {
-        {{-w2, h2, 0},{1,0,0,1}},
-        {{w2, h2, 0},{0,1,0,1}},
-        {{-w2, -h2, 0},{0,0,1,1}},
-        {{w2,-h2, 0},{1,0,0,1}}
-    };
-    
-    ResetModelView();
-    MoveBy(aBody.GetCenter());
-    GLubyte modelIndexs[] = {0,1,2,3};
-    mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
-}
+{}
 
 Bird::~Bird(){
     mMmodelMesh.Unbind();
