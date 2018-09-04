@@ -43,7 +43,7 @@ void Bird::Update(double dt)
 void Bird::Render() {
     
     GLMatrix projection;
-    projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
+    projection.PopulateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
     
     GShader::BIRD->Enable();
     GShader::BIRD->EnableVertexAttribute("Position");
@@ -52,7 +52,7 @@ void Bird::Render() {
     kmMat4 gMatrix;
     mModelView.gMatrix(&gMatrix);
     GShader::BIRD->SetUniform4f("ModelView", gMatrix.mat);
-    GShader::BIRD->SetUniform4f("Projection", projection.matrix());
+    GShader::BIRD->SetUniform4f("Projection", projection.Matrix());
     
     kmVec3 position = GetBox().GetCenter();
     GShader::BIRD->SetUniform1f("xPosition", position.x);

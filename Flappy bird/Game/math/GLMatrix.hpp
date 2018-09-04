@@ -7,26 +7,29 @@
 #include "GDirector.hpp"
 #include "GTypes.hpp"
 
-class GLMatrix {
-
+class GLMatrix
+{
+    
 public:
-    GLfloat* matrix();
-    void gMatrix(kmMat4* mat);
-    void populateOrtho(GLfloat left,
-                       GLfloat right,
-                       GLfloat bottom,
-                       GLfloat top,
-                       GLfloat near,
-                       GLfloat far);
+    GLfloat* Matrix();
     
-    void populateFromTranslation(kmVec3 translation);
-    void addTranslation(kmVec3 translation);
-    kmVec3 getTranslation();
-    
-    void populateIdentity();
+    void gMatrix(kmMat4* aMat);
+    void PopulateOrtho(GLfloat aLeft,
+                       GLfloat aRight,
+                       GLfloat aBottom,
+                       GLfloat aTop,
+                       GLfloat aNear,
+                       GLfloat aFar);
+
+    void PopulateFromTranslation(const kmVec3& translation);
+    void PopulateIdentity();
+    void AddTranslation(const kmVec3& translation);
+
+
+    kmVec3 GetTranslation();
     
 private:
-    bool initialized = false;
+    bool mInitialized = false;
     kmMat4 glMatrix;
 };
 

@@ -6,7 +6,8 @@
 
 #include "GObject.hpp"
 
-class Bird : public GObject {
+class Bird : public GObject
+{
 public:
     Bird(const GBox& aBody);
     ~Bird();

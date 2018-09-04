@@ -1,5 +1,6 @@
 #include "GObject.hpp"
 
+using namespace std;
 
 GObject::GObject(){}
 GObject::GObject(const GBox& aBox)
@@ -44,7 +45,7 @@ bool GObject::Intersect(const GObject& aObject)
 
 void GObject::MoveBy(kmVec3 translation)
 {
-    mModelView.addTranslation(translation);
+    mModelView.AddTranslation(translation);
 }
 
 void GObject::MoveTo(kmVec3 point)
@@ -53,7 +54,7 @@ void GObject::MoveTo(kmVec3 point)
 }
 
 void GObject::ResetModelView() {
-    mModelView.populateIdentity();
+    mModelView.PopulateIdentity();
 }
 
 void GObject::Update(float dt)

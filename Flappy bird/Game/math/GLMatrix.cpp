@@ -6,7 +6,7 @@ static const GLfloat identityContents[] = {
     0.0f, 0.0f, 1.0f, 0.0f,
     0.0f, 0.0f, 0.0f, 1.0f };
 
-GLfloat* GLMatrix::matrix() {
+GLfloat* GLMatrix::Matrix() {
     return glMatrix.mat;
 };
 
@@ -33,8 +33,8 @@ void GLMatrix::gMatrix(kmMat4* gMatrix) {
     gMatrix->mat[15] = m1[15];
 };
 
-void GLMatrix::populateIdentity() {
-    initialized = true;
+void GLMatrix::PopulateIdentity() {
+    mInitialized = true;
     float *m1 = glMatrix.mat;
     m1[0]  = identityContents[0];
     m1[1]  = identityContents[1];
@@ -57,7 +57,7 @@ void GLMatrix::populateIdentity() {
     m1[15] = identityContents[15];
 }
 
-void GLMatrix::populateOrtho(GLfloat left,
+void GLMatrix::PopulateOrtho(GLfloat left,
                    GLfloat right,
                    GLfloat bottom,
                    GLfloat top,
@@ -86,7 +86,7 @@ void GLMatrix::populateOrtho(GLfloat left,
     m1[15] = 1.0;
 }
 
-void GLMatrix::addTranslation(kmVec3 translation)
+void GLMatrix::AddTranslation(const kmVec3& translation)
 {
     float *m1 = glMatrix.mat;
     m1[12] = m1[12] + translation.x;
@@ -94,14 +94,14 @@ void GLMatrix::addTranslation(kmVec3 translation)
     m1[14] = m1[14] + translation.z;
 }
 
-kmVec3 GLMatrix::getTranslation()
+kmVec3 GLMatrix::GetTranslation()
 {
     float *m1 = glMatrix.mat;
     return kmVec3Make(m1[12], m1[13], m1[14]);
 }
 
-void GLMatrix::populateFromTranslation (kmVec3 tVector) {
-    populateIdentity();
+void GLMatrix::PopulateFromTranslation (const kmVec3& tVector) {
+    PopulateIdentity();
     
     float *m1 = glMatrix.mat;
     m1[12] = tVector.x;

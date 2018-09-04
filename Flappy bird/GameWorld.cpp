@@ -155,15 +155,15 @@ void GameWorld::Update(double dt)
 }
 
 void GameWorld::PollUpdates() {
-    int msgNumber = mGim.getInputsNumber();
+    int msgNumber = mGim.GetInputsNumber();
     if(msgNumber > 0) {
         for(size_t i = 0; i < msgNumber; ++i) {
-            mMessages.push(mGim.remove());
+            mMessages.push(mGim.Remove());
         }
     }
 }
 
 void GameWorld::HandleInput(int aMsg)
 {
-    mGim.addInput(aMsg);
+    mGim.AddInput(aMsg);
 }

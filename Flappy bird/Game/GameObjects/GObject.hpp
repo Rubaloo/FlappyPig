@@ -13,9 +13,8 @@
 #include "GVertexArray.hpp"
 #include "GLMatrix.hpp"
 
-using namespace std;
-
-class GObject {
+class GObject
+{
 
 protected:
     GBox mBody;

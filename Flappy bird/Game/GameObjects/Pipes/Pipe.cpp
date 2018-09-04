@@ -17,7 +17,7 @@ Pipe::Pipe(const GBox& aBody) : GObject(aBody)
         {{w2,-h2, 0},{1,0,0,1}}
     };
 
-    mModelView.populateIdentity();
+    mModelView.PopulateIdentity();
     move(aBody.GetCenter());
     GLubyte modelIndexs[] = {0,1,2,3};
     mMmodelMesh = GVertexArray(modelVertexs, modelIndexs);
@@ -26,7 +26,7 @@ Pipe::Pipe(const GBox& aBody) : GObject(aBody)
 void Pipe::Update(double dt)
 {
     kmVec3 nextPosition = mBody.Update(dt);
-    kmVec3 translation = mModelView.getTranslation();
+    kmVec3 translation = mModelView.GetTranslation();
     mBody.SetCenter(kmVec3Add(translation, mBody.GetCenter()));
     MoveBy(nextPosition);
 }
@@ -34,7 +34,7 @@ void Pipe::Update(double dt)
 void Pipe::Render() {
     
     GLMatrix projection;
-    projection.populateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
+    projection.PopulateOrtho(0, ASPECT_RATIO, 1, 0, -1, 1);
     
     GShader::PIPE->Enable();
     GShader::PIPE->EnableVertexAttribute("Position");
@@ -44,7 +44,7 @@ void Pipe::Render() {
     mModelView.gMatrix(&gMatrix);
     GShader::PIPE->SetUniform4f("ModelView", gMatrix.mat);
     
-    GShader::PIPE->SetUniform4f("Projection", projection.matrix());
+    GShader::PIPE->SetUniform4f("Projection", projection.Matrix());
     mMmodelMesh.Render();
     ResetModelView();
     GShader::PIPE->Disable();
