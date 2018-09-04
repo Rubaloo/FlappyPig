@@ -7,26 +7,25 @@
 #include <iostream>
 #include <OpenGLES/ES2/gl.h>
 
-using namespace std;
 
 class GShaderUtils
 {
 private:
-    static bool instanceFlag;
-    static GShaderUtils *single;
+    static bool sInstanceFlag;
+    static GShaderUtils* sSingle;
     
     GShaderUtils(){}
     
-    GLuint create();
-    GLuint compileShader(string shaderName, GLenum shaderType);
+    GLuint Create();
+    GLuint CompileShader(const std::string& aShaderName, GLenum aShaderType);
     
-    string readFile(char* fileName);
+    std::string ReadFile(const char* fileName);
 public:
-    static GShaderUtils* getInstance();
+    static GShaderUtils* GetInstance();
     ~GShaderUtils()
     {
-        instanceFlag = false;
+        sInstanceFlag = false;
     }
-    GLuint load(string vertexName, string fragmentName);
+    GLuint Load(const std::string& aVertexName, const std::string& aFragmentName);
 };
 #endif /* GShaderUtils_hpp */

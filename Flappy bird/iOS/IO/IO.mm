@@ -3,13 +3,13 @@
 @implementation IO
 
 
-const char* iOSreadFile(char* fileName)
+const char* iOSReadFile(const char* fileName)
 {
-    return [IO readFile:fileName];
+    return [IO ReadFile:fileName];
 }
 
 
-+(const char*)readFile:(char*) fileName {
++(const char*)ReadFile:(const char*) fileName {
     NSString* shaderPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithUTF8String:fileName] ofType:@"glsl"];
     NSError* error;
     NSString* shaderString = [NSString stringWithContentsOfFile:shaderPath

@@ -10,7 +10,7 @@ GShader* GShader::BIRD;
 GShader* GShader::PIPE;
 
 GShader::GShader(const char* aVertexName, const char* aFragmentName) : mEnabled(false),
-    mID(GShaderUtils::getInstance()->load(aVertexName, aFragmentName))
+    mID(GShaderUtils::GetInstance()->Load(aVertexName, aFragmentName))
 {
 }
 

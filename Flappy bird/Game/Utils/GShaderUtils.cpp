@@ -4,29 +4,30 @@
 #include "GShaderUtils.hpp"
 #include "IO-C-Interface.h"
 
+using namespace std;
 
-bool GShaderUtils::instanceFlag = false;
-GShaderUtils* GShaderUtils::single = NULL;
+bool GShaderUtils::sInstanceFlag = false;
+GShaderUtils* GShaderUtils::sSingle = NULL;
 
-GShaderUtils* GShaderUtils::getInstance()
+GShaderUtils* GShaderUtils::GetInstance()
 {
-    if(!instanceFlag)
+    if(!sInstanceFlag)
     {
-        single = new GShaderUtils();
-        instanceFlag = true;
-        return single;
+        sSingle = new GShaderUtils();
+        sInstanceFlag = true;
+        return sSingle;
     }
     else
     {
-        return single;
+        return sSingle;
     }
 }
 
 
-GLuint GShaderUtils::load(string vertexName, string fragmentName)
+GLuint GShaderUtils::Load(const string& aVertexName, const string& aFragmentName)
 {
-    GLuint vertexShader = compileShader(vertexName, GL_VERTEX_SHADER);
-    GLuint fragmentShader = compileShader(fragmentName, GL_FRAGMENT_SHADER);
+    GLuint vertexShader = CompileShader(aVertexName, GL_VERTEX_SHADER);
+    GLuint fragmentShader = CompileShader(aFragmentName, GL_FRAGMENT_SHADER);
     
     GLuint programHandle = glCreateProgram();
     glAttachShader(programHandle, vertexShader);
@@ -45,10 +46,10 @@ GLuint GShaderUtils::load(string vertexName, string fragmentName)
     return programHandle;
 }
 
-GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
+GLuint GShaderUtils::CompileShader(const string& aShaderFileName, GLenum aShaderType)
 {
-    string shaderString = readFile(&shaderFileName[0]);
-    GLuint shaderHandle = glCreateShader(shaderType);
+    const string& shaderString = ReadFile(&aShaderFileName[0]);
+    GLuint shaderHandle = glCreateShader(aShaderType);
     
     const char * shaderStringUTF8 = &shaderString[0];
     GLint shaderStringLength = shaderString.length();
@@ -68,7 +69,7 @@ GLuint GShaderUtils::compileShader(string shaderFileName, GLenum shaderType)
     return shaderHandle;
 }
 
-string GShaderUtils::readFile(char* fileName)
+string GShaderUtils::ReadFile(const char* fileName)
 {
-    return string(iOSreadFile(fileName));
+    return string(iOSReadFile(fileName));
 }

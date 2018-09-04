@@ -2,7 +2,7 @@
 #include "IO-C-Interface.h"
 
 @interface IO : NSObject
-+(const char*)readFile:(char*)fileName;
++(const char*)ReadFile:(const char*)fileName;
 @end
 
 
