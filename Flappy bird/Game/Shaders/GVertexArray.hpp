@@ -8,6 +8,7 @@
 class GVertexArray {
     
 public:
+    GVertexArray();
     GVertexArray(glVertex vertexs[], GLubyte indexs[]);
     ~GVertexArray();
     

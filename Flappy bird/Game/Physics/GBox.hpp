@@ -14,6 +14,7 @@ using namespace std;
 
 class GBox {
 public:
+    GBox();
     GBox(kmVec3 aCenter, kmSize aSize, int aShape=SQUARE_SHAPE);
     int mShape;
     

@@ -1,7 +1,11 @@
 #include "GObject.hpp"
 
-GObject::GObject(const GBox& aBox) : mBody(aBox)
-{}
+
+GObject::GObject(){}
+GObject::GObject(const GBox& aBox)
+{
+    mBody = aBox;
+}
 
 GObject::~GObject()
 {

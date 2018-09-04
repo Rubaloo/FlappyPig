@@ -23,6 +23,7 @@ protected:
     GLMatrix mModelView;
 
 public:
+    GObject();
     GObject(const GBox& aBox);
     ~GObject();
     

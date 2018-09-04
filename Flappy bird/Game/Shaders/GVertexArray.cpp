@@ -1,5 +1,6 @@
 #include "GVertexArray.hpp"
 
+GVertexArray::GVertexArray(){};
 GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4])
 {
     const glVertex Vertices[] = {
@@ -26,6 +27,8 @@ GVertexArray::GVertexArray(glVertex vertexs[4], GLubyte indexs[4])
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+GVertexArray::~GVertexArray(){}
 
 void GVertexArray::Bind()
 {
