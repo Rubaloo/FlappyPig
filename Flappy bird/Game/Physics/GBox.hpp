@@ -10,9 +10,8 @@
 #define SQUARE_SHAPE 0
 #define CIRCULAR_SHAPE 1
 
-using namespace std;
-
-class GBox {
+class GBox
+{
 public:
     GBox(kmVec3 aCenter, kmSize aSize, int aShape=SQUARE_SHAPE);
    
@@ -26,7 +25,7 @@ public:
     
     kmVec3 Update(double dt);
     bool Intersect(const GBox& aBox) const;
-    void ApplyImpulse(float force, kmVec3 direction);
+    void ApplyImpulse(float aForce, kmVec3 aDirection);
     void EnableGravity();
     
 private:
@@ -36,12 +35,11 @@ private:
     
     //Physhics
     int mShape;
-    vector<kmVec3> constantForces;
-    vector<kmVec3> momentForces;
+    std::vector<kmVec3> mConstantForces;
+    std::vector<kmVec3> mMomentForces;
     kmVec3 mVelocity;
     kmVec3 mDirection;
     kmVec3 mEndForce;
-    
     bool mGravityEnabled;
     bool mIsVisible;
     

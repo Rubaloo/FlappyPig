@@ -1,6 +1,9 @@
 #include "GBox.hpp"
+#include <numeric>
 
 #define K_GRAVITY 800.0
+
+using namespace std;
 
 GBox::GBox(kmVec3 aCenter, kmSize aSize, int aShape /*SQUARE_SHAPE*/) :
     mCenter(aCenter),
@@ -56,29 +59,31 @@ void GBox::SetCenter(kmVec3 c)
 
 void GBox::UpdateEndForce()
 {
-    mEndForce = kmVec3Make(0,0,0);
-    for(int i = 0; i < constantForces.size(); ++i) {
-        mEndForce = kmVec3Add(mEndForce, constantForces[i]);
-    }
+    auto sumKmVec = [](kmVec3 a, kmVec3 b)
+                    {
+                        return kmVec3Add(a, b);
+                    };
     
-    for(int i = 0; i < momentForces.size(); ++i) {
-        mEndForce = kmVec3Add(mEndForce, momentForces[i]);
-    }
+    mEndForce = accumulate(mConstantForces.begin(), mConstantForces.end(),
+                           kmVec3Make(0,0,0), sumKmVec);
     
-    momentForces.clear();
+    mEndForce = accumulate(mMomentForces.begin(), mMomentForces.end(),
+                           mEndForce, sumKmVec);
+    
+    mMomentForces.clear();
 }
 
 
 void GBox::EnableGravity()
 {
     kmVec3 gravityForce = kmVec3Make(0.0, K_GRAVITY, 0.0);
-    constantForces.push_back(gravityForce);
+    mConstantForces.push_back(gravityForce);
 }
 
 void GBox::ApplyImpulse(float force, kmVec3 direction)
 {
     kmVec3 impulseForce = kmVec3Make(force * direction.x, force * direction.y, force * direction.z);
-    momentForces.push_back(impulseForce);
+    mMomentForces.push_back(impulseForce);
 }
 
 kmVec3 GBox::Update(double dt)
