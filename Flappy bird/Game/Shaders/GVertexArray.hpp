@@ -5,7 +5,8 @@
 #include "GTypes.hpp"
 #include "GShader.hpp"
 #include <OpenGLES/ES2/gl.h>
-#include "GBox.hpp"
+
+class GBox;
 
 class GVertexArray
 {    
