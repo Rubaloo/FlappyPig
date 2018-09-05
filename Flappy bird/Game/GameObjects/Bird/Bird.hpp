@@ -10,8 +10,7 @@ class Bird : public GObject
 {
 public:
     Bird(const GBox& aBody);
-    ~Bird();
-
+    
     int GetShape();
     
     void Jump();

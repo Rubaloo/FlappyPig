@@ -5,10 +5,6 @@
 Bird::Bird(const GBox& aBody) : GObject(aBody)
 {}
 
-Bird::~Bird(){
-    mModelMesh.Unbind();
-};
-
 void Bird::Jump() {
     mBody.SetVelocity(kmVec3Make(0, 0, 0));
     mBody.ApplyImpulse(K_PLAYER_JUMP, kmVec3Make(0, -1, 0));
