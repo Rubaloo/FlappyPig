@@ -1,6 +1,7 @@
 #define K_PLAYER_JUMP 24000
 
 #include "Bird.hpp"
+#include "GShader.hpp"
 
 Bird::Bird(const GBox& aBody) : GObject(aBody)
 {}

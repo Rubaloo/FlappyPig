@@ -1,4 +1,5 @@
 #include "GameWorld.hpp"
+#include "GShader.hpp"
 #include "Pipe.hpp"
 #include <stdlib.h>
 

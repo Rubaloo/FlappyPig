@@ -1,4 +1,5 @@
 #include "GObject.hpp"
+#include "GShader.hpp"
 
 using namespace std;
 

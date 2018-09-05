@@ -1,4 +1,5 @@
 #include "Pipe.hpp"
+#include "GShader.hpp"
 
 Pipe::Pipe(const GBox& aBody) : GObject(aBody)
 {}

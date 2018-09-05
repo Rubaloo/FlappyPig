@@ -1,6 +1,7 @@
 #include "GVertexArray.hpp"
 #include "GDirector.hpp"
 #include "GBox.hpp"
+#include "GShader.hpp"
 
 GVertexArray::GVertexArray(const GBox& aBody)
 {

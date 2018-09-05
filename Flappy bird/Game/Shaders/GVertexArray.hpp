@@ -3,13 +3,13 @@
 
 #include <stdio.h>
 #include "GTypes.hpp"
-#include "GShader.hpp"
+
 #include <OpenGLES/ES2/gl.h>
 
 class GBox;
 
 class GVertexArray
-{    
+{
 public:
     GVertexArray(const GBox& aBody);
     
