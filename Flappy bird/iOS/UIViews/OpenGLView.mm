@@ -103,7 +103,7 @@ struct CPPMembers
 -(void) setupPostMan
 {
     _cppMembers->postman = new PostMan();
-    _cppMembers->postman->addReceiver(_cppMembers->gWorld);
+    _cppMembers->postman->AddReceiver(_cppMembers->gWorld);
 }
 
 -(void) setupGDirector
@@ -141,6 +141,6 @@ struct CPPMembers
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)even
 {
-    _cppMembers->postman->send(0);
+    _cppMembers->postman->Send(0);
 }
 @end

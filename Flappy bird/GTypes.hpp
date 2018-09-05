@@ -1,5 +1,5 @@
-#ifndef GTypes_hpp
-#define GTypes_hpp
+#ifndef GTYPES_HPP
+#define GTYPES_HPP
 
 
 #define KM_FALSE 0
@@ -18,8 +18,6 @@
 #import <memory.h>
 #import <math.h>
 #import <cmath>
-
-using namespace std;
 
 typedef struct glVertex {
     kmScalar position[3];

@@ -5,15 +5,13 @@
 #include "Receiver.hpp"
 #include <vector>
 
-using namespace std;
-
-class PostMan {
-    
+class PostMan
+{
 public:
-    void send(int msg);
-    void addReceiver(Receiver* receiver);
+    void Send(int msg);
+    void AddReceiver(Receiver* receiver);
 private:
-    vector<Receiver*> receivers;
+    std::vector<Receiver*> mReceivers;
 };
 
 #endif /* PostMan_hpp */

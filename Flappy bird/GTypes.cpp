@@ -1,5 +1,6 @@
 #include "GTypes.hpp"
 
+using namespace std;
 
 kmVec3 kmVec3Add(kmVec3 v, kmVec3 k) {
     kmVec3 sum;
