@@ -14,24 +14,18 @@ using namespace std;
 
 class GBox {
 public:
-    GBox();
     GBox(kmVec3 aCenter, kmSize aSize, int aShape=SQUARE_SHAPE);
-    int mShape;
-    
-    bool Intersect(const GBox& aBox) const;
-    
+   
     int GetShape() const;
     kmRect GetRect() const;
     kmVec3 GetCenter() const;
     kmSize GetSize() const;
 
-    
     void SetCenter(kmVec3 aCenter);
     void SetVelocity(kmVec3 aVelocity);
     
-    
     kmVec3 Update(double dt);
-    
+    bool Intersect(const GBox& aBox) const;
     void ApplyImpulse(float force, kmVec3 direction);
     void EnableGravity();
     
@@ -39,7 +33,9 @@ private:
     GLfloat mMass;
     kmVec3 mCenter;
     kmSize mSize;
-    //Physhcs
+    
+    //Physhics
+    int mShape;
     vector<kmVec3> constantForces;
     vector<kmVec3> momentForces;
     kmVec3 mVelocity;

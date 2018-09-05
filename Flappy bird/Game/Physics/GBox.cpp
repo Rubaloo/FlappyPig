@@ -2,7 +2,6 @@
 
 #define K_GRAVITY 800.0
 
-GBox::GBox(){};
 GBox::GBox(kmVec3 aCenter, kmSize aSize, int aShape /*SQUARE_SHAPE*/) :
     mCenter(aCenter),
     mSize(aSize),
