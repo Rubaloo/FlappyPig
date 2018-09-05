@@ -2,8 +2,8 @@
 #define PostMan_hpp
 
 #include <stdio.h>
-#include "Receiver.hpp"
 #include <vector>
+class Receiver;
 
 class PostMan
 {

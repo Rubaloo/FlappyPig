@@ -2,10 +2,10 @@
 #define Box_hpp
 
 #include <stdio.h>
-#include "GTypes.hpp"
 #include <vector>
-#include "GDirector.hpp"
 #include <cmath>
+#include "GDirector.hpp"
+#include "GTypes.hpp"
 
 #define SQUARE_SHAPE 0
 #define CIRCULAR_SHAPE 1

@@ -1,22 +1,23 @@
 #include "GLVertex.hpp"
 
 
-GLVertex::GLVertex(kmVec3 position, kmVec4 color) {
-    populate(position, color);
+GLVertex::GLVertex(kmVec3 aPosition, kmVec4 aColor)
+{
+    Populate(aPosition, aColor);
 }
 
 glVertex GLVertex::glVertex()
 {
-    return vertex;
+    return mVertex;
 }
 
-void GLVertex::populate(kmVec3 gPosition, kmVec4 gColor) {
-    vertex.position[0] = gPosition.x;
-    vertex.position[1] = gPosition.y;
-    vertex.position[2] = gPosition.z;
+void GLVertex::Populate(kmVec3 gPosition, kmVec4 gColor) {
+    mVertex.position[0] = gPosition.x;
+    mVertex.position[1] = gPosition.y;
+    mVertex.position[2] = gPosition.z;
     
-    vertex.color[0] = gColor.x;
-    vertex.color[1] = gColor.y;
-    vertex.color[2] = gColor.z;
-    vertex.color[3] = gColor.w;
+    mVertex.color[0] = gColor.x;
+    mVertex.color[1] = gColor.y;
+    mVertex.color[2] = gColor.z;
+    mVertex.color[3] = gColor.w;
 };

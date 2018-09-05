@@ -5,20 +5,17 @@
 #include <OpenGLES/ES2/gl.h>
 #include "GTypes.hpp"
 
-
-
-
-class GLVertex {
-    
+class GLVertex
+{
 public:
-    GLVertex(kmVec3 position, kmVec4 color);
+    GLVertex(kmVec3 aPosition, kmVec4 aColor);
     glVertex glVertex();
-    void populate(kmVec3 position, kmVec4 color);
+    void Populate(kmVec3 aPosition, kmVec4 aColor);
     
 private:
-    struct glVertex vertex;
-    GLfloat position[2];
-    GLfloat color[4];
+    struct glVertex mVertex;
+    GLfloat mPosition[2];
+    GLfloat mColor[4];
 };
 
 #endif /* GLVertex_hpp */

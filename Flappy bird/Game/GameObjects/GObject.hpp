@@ -5,22 +5,20 @@
 #include <stdio.h>
 #include <vector>
 #include <OpenGLES/ES2/gl.h>
-#include "GLMatrix.hpp"
-#include "GDirector.hpp"
-#include "GTypes.hpp"
-#include "GLVertex.hpp"
-#include "GBox.hpp"
+
+//Forward declaration
+class GBox;
+
 #include "GVertexArray.hpp"
 #include "GLMatrix.hpp"
 
+
 class GObject
 {
-
 protected:
     GBox mBody;
     GVertexArray mModelMesh;
     GLMatrix mModelView;
-
 public:
     GObject();
     GObject(const GBox& aBox);

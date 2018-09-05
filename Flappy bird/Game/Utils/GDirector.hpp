@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include "GTypes.hpp"
 
-
 class GDirector
 {
 private:
