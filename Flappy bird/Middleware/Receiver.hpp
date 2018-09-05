@@ -6,6 +6,6 @@
 class Receiver {
     
 public:
-    virtual void HandleInput(int i)=0;
+    virtual void HandleInput(int i) = 0;
 };
 #endif /* Receiver_hpp */
