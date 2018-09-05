@@ -1,4 +1,6 @@
 #include "GShader.hpp"
+#include "GShaderUtils.hpp"
+#include "GTypes.hpp"
 
 #define BIRD_VERTEX_SHADER "BirdVertex"
 #define BIRD_FRAGMENT_SHADER "BirdFragment"

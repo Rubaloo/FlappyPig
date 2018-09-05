@@ -1,9 +1,8 @@
 #ifndef Receiver_hpp
 #define Receiver_hpp
 
-#include <stdio.h>
-
-class Receiver {
+class Receiver
+{
     
 public:
     virtual void HandleInput(int i) = 0;

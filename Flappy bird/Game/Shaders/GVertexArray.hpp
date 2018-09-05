@@ -1,7 +1,6 @@
 #ifndef VertexArray_hpp
 #define VertexArray_hpp
 
-#include <stdio.h>
 #include <OpenGLES/ES2/gl.h>
 
 class GBox;

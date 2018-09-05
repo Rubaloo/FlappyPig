@@ -1,7 +1,6 @@
 #ifndef PostMan_hpp
 #define PostMan_hpp
 
-#include <stdio.h>
 #include <vector>
 
 //Forward declaration

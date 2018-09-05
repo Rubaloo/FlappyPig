@@ -1,19 +1,16 @@
 #ifndef GShader_hpp
 #define GShader_hpp
 
-#include <stdio.h>
-#include <iostream>
-#include "GTypes.hpp"
-#include "GShaderUtils.hpp"
-
 #include <OpenGLES/ES2/gl.h>
+
+//Forward declaration
+struct kmVec3;
 
 static const GLuint GSHADER_VERTEX_ATTRIB = 0;
 static const GLuint GSHADER_COLOR_ATTRIB = 1;
 
 class GShader
 {
-    
 public:
     GShader(const char* aVertexName, const char* aFragmentName);
     
