@@ -2,8 +2,6 @@
 #define VertexArray_hpp
 
 #include <stdio.h>
-#include "GTypes.hpp"
-
 #include <OpenGLES/ES2/gl.h>
 
 class GBox;
