@@ -10,10 +10,7 @@
 class GVertexArray
 {    
 public:
-    GVertexArray();
     GVertexArray(const GBox& aBody);
-    GVertexArray(glVertex aVertexs[], GLubyte aIndexs[]);
-    ~GVertexArray();
     
     void DeleteBuffers();
     void Bind();

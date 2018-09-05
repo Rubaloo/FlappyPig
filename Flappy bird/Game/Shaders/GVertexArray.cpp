@@ -1,7 +1,6 @@
 #include "GVertexArray.hpp"
 #include "GDirector.hpp"
 
-GVertexArray::GVertexArray() = default;
 GVertexArray::GVertexArray(const GBox& aBody)
 {
     kmSize size = aBody.GetSize();
@@ -43,12 +42,8 @@ GVertexArray::GVertexArray(const GBox& aBody)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-GVertexArray::GVertexArray(glVertex aVertexs[4], GLubyte aIndexs[4])
-{
-  
-}
 
-GVertexArray::~GVertexArray() = default;
+
 
 void GVertexArray::Bind()
 {
