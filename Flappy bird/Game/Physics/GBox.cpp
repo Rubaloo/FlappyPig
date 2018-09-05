@@ -1,5 +1,8 @@
 #include "GBox.hpp"
 #include <numeric>
+#include <cmath>
+#include "GDirector.hpp"
+
 
 #define K_GRAVITY 800.0
 

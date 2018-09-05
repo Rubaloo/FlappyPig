@@ -1,10 +1,7 @@
 #ifndef Box_hpp
 #define Box_hpp
 
-#include <stdio.h>
 #include <vector>
-#include <cmath>
-#include "GDirector.hpp"
 #include "GTypes.hpp"
 
 #define SQUARE_SHAPE 0
