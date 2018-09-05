@@ -2,7 +2,6 @@
 #define MessageManager_hpp
 
 #include <queue>
-#include <stdio.h>
 #include <iostream>
 
 class GInputManager
