@@ -1,12 +1,11 @@
 #ifndef PipeColumn_hpp
 #define PipeColumn_hpp
 
-#include <stdio.h>
-#include "Pipe.hpp"
-
 #define K_COLUMN_PIPES_SPACE 132
 #define K_COLUMN_SPEED kmVec3Make(-100, 0, 0)
 #define K_COLUMN_PIPES_WIDTH 50
+
+#include "Pipe.hpp"
 
 class PipeColumn
 {

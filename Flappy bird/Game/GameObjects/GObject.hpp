@@ -7,8 +7,8 @@
 #include <OpenGLES/ES2/gl.h>
 
 //Forward declaration
-class GBox;
 
+#include "GBox.hpp"
 #include "GVertexArray.hpp"
 #include "GLMatrix.hpp"
 

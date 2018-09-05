@@ -1,12 +1,10 @@
 #ifndef Pipe_hpp
 #define Pipe_hpp
 
-#include <stdio.h>
 #include "GObject.hpp"
-#include "GTypes.hpp"
 
-class Pipe : public GObject {
-    
+class Pipe : public GObject
+{
 public:
     Pipe(const GBox& body);
     

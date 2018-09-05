@@ -1,9 +1,6 @@
 #ifndef Player_hpp
 #define Player_hpp
 
-#include <stdio.h>
-#include <iostream>
-
 #include "GObject.hpp"
 
 class Bird : public GObject
