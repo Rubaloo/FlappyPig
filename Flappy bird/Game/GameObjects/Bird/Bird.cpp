@@ -2,6 +2,7 @@
 
 #include "Bird.hpp"
 #include "GShader.hpp"
+#include "GDirector.hpp"
 
 Bird::Bird(const GBox& aBody) : GObject(aBody)
 {}

@@ -1,4 +1,5 @@
 #include "GTypes.hpp"
+#include "GDirector.hpp"
 
 using namespace std;
 

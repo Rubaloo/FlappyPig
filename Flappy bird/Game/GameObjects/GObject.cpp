@@ -1,5 +1,6 @@
 #include "GObject.hpp"
 #include "GShader.hpp"
+#include "GDirector.hpp"
 
 using namespace std;
 

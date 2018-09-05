@@ -1,4 +1,5 @@
 #include "GLMatrix.hpp"
+#include "GDirector.hpp"
 
 static const GLfloat identityContents[] = {
     1.0f, 0.0f, 0.0f, 0.0f,

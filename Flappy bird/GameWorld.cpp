@@ -1,6 +1,7 @@
 #include "GameWorld.hpp"
 #include "GShader.hpp"
 #include "Pipe.hpp"
+#include "GDirector.hpp"
 #include <stdlib.h>
 
 #define K_PIPES_COLUMNS_NUMBER 100

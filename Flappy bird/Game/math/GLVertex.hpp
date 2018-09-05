@@ -1,7 +1,6 @@
 #ifndef GLVertex_hpp
 #define GLVertex_hpp
 
-#include <stdio.h>
 #include <OpenGLES/ES2/gl.h>
 #include "GTypes.hpp"
 
