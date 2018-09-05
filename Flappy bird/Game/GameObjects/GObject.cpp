@@ -1,8 +1,11 @@
 #include "GObject.hpp"
 #include "GShader.hpp"
 #include "GDirector.hpp"
+#include "GTypes.hpp"
+#include <iostream>
 
 using namespace std;
+
 
 GObject::GObject(const GBox& aBody) :
     mBody(aBody),

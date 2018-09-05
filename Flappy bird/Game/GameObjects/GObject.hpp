@@ -1,12 +1,8 @@
 #ifndef GameObject_hpp
 #define GameObject_hpp
 
-#include <iostream>
-#include <stdio.h>
-#include <vector>
-#include <OpenGLES/ES2/gl.h>
-
 //Forward declaration
+struct kmVec3;
 
 #include "GBox.hpp"
 #include "GVertexArray.hpp"
@@ -20,7 +16,6 @@ protected:
     GVertexArray mModelMesh;
     GLMatrix mModelView;
 public:
-    GObject();
     GObject(const GBox& aBox);
     ~GObject();
     

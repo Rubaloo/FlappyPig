@@ -14,6 +14,8 @@ struct CPPMembers
 @interface OpenGLView (PrivateMethods)
     - (void)setupGWorld;
     - (void)setupGDirector;
+    - (PostMan*&) GetPostman;
+    - (GameWorld*&) GetGameWorld;
 @end
 
 
@@ -23,7 +25,6 @@ struct CPPMembers
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    
     self = [super initWithCoder:aDecoder];
     if(self)
     {
@@ -96,14 +97,14 @@ struct CPPMembers
 
 -(void)setupGWorld
 {
-    _cppMembers->gWorld = new GameWorld();
-    _cppMembers->gWorld->InitLevel();
+    [self GetGameWorld] = new GameWorld();
+    [self GetGameWorld]->InitLevel();
 }
 
 -(void) setupPostMan
 {
-    _cppMembers->postman = new PostMan();
-    _cppMembers->postman->AddReceiver(_cppMembers->gWorld);
+    [self GetPostman] = new PostMan();
+    [self GetPostman]->AddReceiver([self GetGameWorld]);
 }
 
 -(void) setupGDirector
@@ -115,20 +116,32 @@ struct CPPMembers
     GDirector::getInstance()->SetWinSizeInPixels(kmSizeMake(screenWidth, screenHeight));
 }
 
+- (PostMan*&) GetPostman
+{
+    return _cppMembers->postman;
+}
+
+- (GameWorld*&) GetGameWorld
+{
+    return _cppMembers->gWorld;
+}
+
 
 - (void)render:(CADisplayLink*)displayLink
 {
     float dt = (displayLink.targetTimestamp - displayLink.timestamp);
     //float FPS = 1 / (displayLink.targetTimestamp - displayLink.timestamp);
     
-    if(_cppMembers->gWorld->IsLevelFinished()) {
-        _cppMembers->gWorld->ResetLevel();
-        _cppMembers->gWorld->SetLevelFinished(false);
+    GameWorld* gWorld = [self GetGameWorld];
+    
+    if(gWorld->IsLevelFinished()) {
+        gWorld->ResetLevel();
+        gWorld->SetLevelFinished(false);
     } else{
-        _cppMembers->gWorld->PollUpdates();
-        _cppMembers->gWorld->Logic();
-        _cppMembers->gWorld->Update(dt);
-        _cppMembers->gWorld->Render();
+        gWorld->PollUpdates();
+        gWorld->Logic();
+        gWorld->Update(dt);
+        gWorld->Render();
     }
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -141,6 +154,7 @@ struct CPPMembers
 
 -(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)even
 {
-    _cppMembers->postman->Send(0);
+    [self GetPostman]->Send(0);
 }
+
 @end
